@@ -4,16 +4,16 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ## Location-specific Configurations:
 
-| Language | Configuration Link                                            |
+| Language | Subscription Link                                            |
 |----------|-----------------------------------------------------------------|
 | English Countries | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
 | Europe   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
 | IRAN     | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
-| MIX  | [MIX Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) |
+|✅ MIX  | [MIX Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) |
 
 ## Protocol-specific Configurations:
 
-| Protocol                    | Configuration Link                                            | Notes                                                                                                 |
+| Protocol                    | Subscription Link                                            | Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | VMess                       | [VMess Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/vmess) | VMess is a versatile protocol with strong encryption. Refer to VMess documentation for setup details. |
 | Shadowsocks (SS)            | [Shadowsocks Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/ss) | Shadowsocks offers a secure and fast proxy. Check Shadowsocks documentation for proper configuration. |
@@ -25,7 +25,7 @@ This script is designed to automatically update V2Ray configuration files from v
 | SOCKS5                       | [SOCKS5 Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/socks5) | SOCKS5 is a widely used proxy protocol. Review SOCKS5 documentation for proper implementation.        |
 | ShadowsocksR (SSR)          | [SSR Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/ssr) | SSR is an enhanced version of Shadowsocks. Refer to SSR documentation for detailed setup instructions. |
 
-
+⚠  **Some Subscription links may contain large amounts of Configurations, and may cause errors and overload.**
 
 ## GUI Clients
 - Windows
