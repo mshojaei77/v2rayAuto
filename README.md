@@ -9,7 +9,7 @@ This script is designed to automatically update V2Ray configuration files from v
 | English Countries | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
 | Europe   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
 | IRAN     | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
-| Unknown  | [Unknown Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Unknown) |
+| MIX  | [MIX Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) |
 
 ## Protocol-specific Configurations:
 
