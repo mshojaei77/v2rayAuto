@@ -192,7 +192,7 @@ def generate_file_content(subscription_links):
     return file_content
 
 
-github_token = "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"  # Replace with your GitHub token
+github_token = ""  # Replace with your GitHub token
 raw_file_content = generate_file_content(subscription_links)
 
 for config_type, content_set in raw_file_content.items():
