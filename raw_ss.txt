@@ -1,8 +1,0 @@
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E6%88%91%E7%94%A8%E7%9A%84%E4%BB%93%E5%BA%93.txt | ss | 筛选节点示例
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E4%BB%A3%E7%90%86%E6%B1%A0%E9%93%BE%E6%8E%A501.txt | ss | 筛选节点示例
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E6%96%B9%E6%B3%95.txt | ss | https://proxy.yugogo.xyz/clash/proxies?type=ss
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E6%96%B9%E6%B3%95.txt | ss | 筛选节点示例
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E6%88%91%E7%94%A8%E7%9A%84%E4%BB%93%E5%BA%93.txt | ss | https://proxy.yugogo.xyz/clash/proxies?type=ss
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E6%96%B9%E6%B3%95.txt | ss | https://hm2019721.ml/clash/proxies?c=CN,HK,TW&speed=15,30&type=ss
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E4%BB%A3%E7%90%86%E6%B1%A0%E9%93%BE%E6%8E%A501.txt | ss | https://proxy.yugogo.xyz/clash/proxies?type=ss
-https://raw.githubusercontent.com/sunshinehome/zidong/b4a61de307b189c6585a72642d737b0833d8d31e/%E6%88%91%E7%94%A8%E7%9A%84%E4%BB%93%E5%BA%93.txt | ss | https://hm2019721.ml/clash/proxies?c=CN,HK,TW&speed=15,30&type=ss
