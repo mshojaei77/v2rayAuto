@@ -66,7 +66,9 @@ This script is designed to automatically update V2Ray configuration files from v
   - [sing-box-for-ios](https://github.com/SagerNet/sing-box-for-ios)
 
 ## On worker
-https://github.com/vfarid/v2ray-worker-sub
+#### https://github.com/vfarid/v2ray-worker-sub
+
+
 این لینک sub را همراه با کد اپراتور در اپ v2ray خود کپی کنید. برای مثال در همراه اول به شکل زیر خواهد بود:
 
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci
