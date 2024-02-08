@@ -32,63 +32,37 @@ This script is designed to automatically update V2Ray configuration files from v
   - [v2rayN](https://github.com/2dust/v2rayN)
   - [HiddifyNext](https://github.com/hiddify/hiddify-next)
   - [NekoRay](https://github.com/Matsuridayo/nekoray)
-  - [Furious](https://github.com/LorenEteval/Furious)
-  - [HiddifyN](https://github.com/hiddify/HiddifyN)
-  - [Invisible Man - Xray](https://github.com/InvisibleManVPN/InvisibleMan-XRayClient)
+
 - Android
   - [v2rayNG](https://github.com/2dust/v2rayNG)
   - [HiddifyNext](https://github.com/hiddify/hiddify-next)
-  - [HiddifyNG](https://github.com/hiddify/HiddifyNG)
-  - [X-flutter](https://github.com/XTLS/X-flutter)
 - iOS & macOS arm64
   - [Mango](https://github.com/arror/Mango)
   - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
-  - [Streisand](https://apps.apple.com/app/streisand/id6450534064)
 - macOS arm64 & x64
   - [V2rayU](https://github.com/yanue/V2rayU)
-  - [V2RayXS](https://github.com/tzmax/V2RayXS)
-  - [Furious](https://github.com/LorenEteval/Furious)
   - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
 - Linux
   - [v2rayA](https://github.com/v2rayA/v2rayA)
   - [NekoRay](https://github.com/Matsuridayo/nekoray)
-  - [Furious](https://github.com/LorenEteval/Furious)
-- iOS & macOS arm64
-  - [Shadowrocket](https://apps.apple.com/app/shadowrocket/id932747118)
-- [Clash.Meta](https://github.com/MetaCubeX/Clash.Meta)
-  - [Clash Verge](https://github.com/zzzgydi/clash-verge)
-  - [clashN](https://github.com/2dust/clashN)
-  - [Clash Meta for Android](https://github.com/MetaCubeX/ClashMetaForAndroid)
-  - [meta_for_ios](https://t.me/meta_for_ios)
-- [sing-box](https://github.com/SagerNet/sing-box)
-  - [installReality](https://github.com/BoxXt/installReality)
-  - [sbox-reality](https://github.com/Misaka-blog/sbox-reality)
-  - [sing-box-for-ios](https://github.com/SagerNet/sing-box-for-ios)
+
 
 ## On worker
-#### https://github.com/vfarid/v2ray-worker-sub
+#### main project: https://github.com/vfarid/v2ray-worker-sub
 
-
-این لینک sub را همراه با کد اپراتور در اپ v2ray خود کپی کنید. برای مثال در همراه اول به شکل زیر خواهد بود:
-
+لینک ساب کامل روی ورکر: 
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub
+همراه اول:
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci
+ایرانسل:
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mtn
 
 و یا همین لینک را همراه آی‌پی تمیز در اپ خود اضافه کنید:
 
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4
-
-می‌توانید چند آی‌پی تمیز را با کاما جدا کنید. در این صورت برای هر آی‌پی تمیز به تعداد قدید شده، کانفیک ترکیب شده با ورکر تحویل می دهد:
-
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4,9.8.7.6
-
-دقیقا با همین مدل می‌توانید دامین آی‌پی تمیز نیز استفاده کنید:
+می‌توانید دامین آی‌پی تمیز نیز استفاده کنید:
 
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci.ircf.space
-
-می‌توانید از چند سابدامنین آیءی تمیز نیز استفاده کنید:
-
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci.ircf.space,my.domain.me
-
 می‌توانید با متغیر max تعداد کانفیگ را مشخص کنید:
 
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200
