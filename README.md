@@ -65,7 +65,34 @@ This script is designed to automatically update V2Ray configuration files from v
   - [sbox-reality](https://github.com/Misaka-blog/sbox-reality)
   - [sing-box-for-ios](https://github.com/SagerNet/sing-box-for-ios)
 
-## Contributions
+## On worker
+همه چی درسته
+این لینک sub را همراه با کد اپراتور در اپ v2ray خود کپی کنید. برای مثال در همراه اول به شکل زیر خواهد بود:
 
-Contributions are welcome! Feel free to open issues, submit pull requests, or suggest improvements.
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci
 
+و یا همین لینک را همراه آی‌پی تمیز در اپ خود اضافه کنید:
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4
+
+می‌توانید چند آی‌پی تمیز را با کاما جدا کنید. در این صورت برای هر آی‌پی تمیز به تعداد قدید شده، کانفیک ترکیب شده با ورکر تحویل می دهد:
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4,9.8.7.6
+
+دقیقا با همین مدل می‌توانید دامین آی‌پی تمیز نیز استفاده کنید:
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci.ircf.space
+
+می‌توانید از چند سابدامنین آیءی تمیز نیز استفاده کنید:
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci.ircf.space,my.domain.me
+
+می‌توانید با متغیر max تعداد کانفیگ را مشخص کنید:
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200
+
+همچنین می‌توانید با متغیر original با عدد 0 یا 1 و یا با yes/no مشخص کنید که کانفیگ‌های اصلی (ترکیب نشده با ورکر) هم در خروجی آورده شوند یا نه:
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200&original=yes
+
+https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200&original=0
