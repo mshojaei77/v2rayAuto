@@ -2,15 +2,8 @@
 
 This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
 
-## Location-specific :
 
-| Language | Subscription Link                                            |
-|----------|-----------------------------------------------------------------|
-| English Countries | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
-| Europe   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
-| IRAN     | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
-|✅ MIX  | [MIX Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) , [MIX on Worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/original=yes) | 
-
+### ✅ Automatic Tested Configs : [Subscription Link ](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) | [Subscription Link on Worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/original=yes) 
 
 ## Protocol-specific :
 
@@ -28,32 +21,18 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ⚠  **Some Subscription links may contain large amounts of Configurations, and may cause errors and overload.**
 
-## GUI Clients
-- Windows
-  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
-  - [NekoRay](https://github.com/Matsuridayo/nekoray)
-  - [v2rayN](https://github.com/2dust/v2rayN)
+## Location-specific :
 
-- Android
-  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
-  -   - [v2rayNG](https://github.com/2dust/v2rayNG)
-
-- iOS & macOS arm64
-  - [Mango](https://github.com/arror/Mango)
-  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
-- macOS arm64 & x64
-  - [V2rayU](https://github.com/yanue/V2rayU)
-  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
-- Linux
-  - [v2rayA](https://github.com/v2rayA/v2rayA)
-  - [NekoRay](https://github.com/Matsuridayo/nekoray)
-
-
+| Language | Subscription Link                                            |
+|----------|-----------------------------------------------------------------|
+| English Countries | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
+| Europe   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
+| IRAN     | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
 
 ## Oprator-specific
 sub link | oprator      
 ---         | --- 
-all : [worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub) | همه
+[all](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub) | همه
 [mci](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci)         | همراه اول    
 [mtn](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mtn)         | ایرانسل      
 [ztl](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/ztl)         | زیتل
@@ -74,4 +53,25 @@ all : [worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub) | همه
 
 ---         | ---
 
-thanks vfarid for [worker projects ](https://github.com/vfarid/v2ray-worker-sub)https://github.com/vfarid/v2ray-worker-sub 
+thanks vfarid for [worker projects](https://github.com/vfarid/v2ray-worker-sub)
+
+## GUI Clients
+- Windows
+  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
+  - [NekoRay](https://github.com/Matsuridayo/nekoray)
+  - [v2rayN](https://github.com/2dust/v2rayN)
+
+- Android
+  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
+  -  [v2rayNG](https://github.com/2dust/v2rayNG)
+
+- iOS & macOS arm64
+  - [Mango](https://github.com/arror/Mango)
+  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
+- macOS arm64 & x64
+  - [V2rayU](https://github.com/yanue/V2rayU)
+  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
+- Linux
+  - [v2rayA](https://github.com/v2rayA/v2rayA)
+  - [NekoRay](https://github.com/Matsuridayo/nekoray)
+
