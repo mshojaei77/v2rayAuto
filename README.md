@@ -2,16 +2,17 @@
 
 This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
 
-## Location-specific Configurations:
+## Location-specific :
 
 | Language | Subscription Link                                            |
 |----------|-----------------------------------------------------------------|
 | English Countries | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
 | Europe   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
 | IRAN     | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
-|✅ MIX  | [MIX Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) |
+|✅ MIX  | [MIX Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) , [MIX on Worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/original=yes) | 
 
-## Protocol-specific Configurations:
+
+## Protocol-specific :
 
 | Protocol                    | Subscription Link                                            | Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -29,13 +30,14 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ## GUI Clients
 - Windows
-  - [v2rayN](https://github.com/2dust/v2rayN)
   - [HiddifyNext](https://github.com/hiddify/hiddify-next)
   - [NekoRay](https://github.com/Matsuridayo/nekoray)
+  - [v2rayN](https://github.com/2dust/v2rayN)
 
 - Android
-  - [v2rayNG](https://github.com/2dust/v2rayNG)
   - [HiddifyNext](https://github.com/hiddify/hiddify-next)
+  -   - [v2rayNG](https://github.com/2dust/v2rayNG)
+
 - iOS & macOS arm64
   - [Mango](https://github.com/arror/Mango)
   - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
@@ -47,38 +49,29 @@ This script is designed to automatically update V2Ray configuration files from v
   - [NekoRay](https://github.com/Matsuridayo/nekoray)
 
 
-## On worker
-#### main project: https://github.com/vfarid/v2ray-worker-sub
 
-لینک ساب کامل روی ورکر: 
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub
--
-همراه اول:
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci
--
-ایرانسل:
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mtn
--
+## Oprator-specific
+sub link | oprator      
+---         | --- 
+all : [worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub) | همه
+[mci](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci)         | همراه اول    
+[mtn](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mtn)         | ایرانسل      
+[ztl](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/ztl)         | زیتل
+[afn](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/afn)         | افرانت       
+[ast](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/ast)         | آسیاتک       
+[dbn](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/dbn)         | دیده‌بان     
+[dtk](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/dtk)         | داتک    
+[fnv](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/fnv)         | فن‌آوا        
+[hwb](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/hwb)         | های‌وب        
+[mbt](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mbt)         | مبین‌نت       
+[mkh](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mkh)         | مخابرات      
+[prs](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/prs)         | پارس‌آنلاین    
+[psm](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/psm)         | پیشگامان    
+[rsp](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/rsp)         | رسپینا       
+[rtl](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/rtl)         | رایتل        
+[sht](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/sht)         | شاتل         
+[apt](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/apt)         | عصر تلکام    
 
-و یا همین لینک را همراه آی‌پی تمیز در اپ خود اضافه کنید:
+---         | ---
 
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4
--
-می‌توانید دامین آی‌پی تمیز نیز استفاده کنید:
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci.ircf.space
--
-می‌توانید با متغیر max تعداد کانفیگ را مشخص کنید:
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200
--
-
-همچنین می‌توانید با متغیر original با عدد 0 یا 1 و یا با yes/no مشخص کنید که کانفیگ‌های اصلی (ترکیب نشده با ورکر) هم در خروجی آورده شوند یا نه:
--
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200&original=yes
-
-https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4?max=200&original=0
+thanks vfarid for [worker projects ](https://github.com/vfarid/v2ray-worker-sub)https://github.com/vfarid/v2ray-worker-sub 
