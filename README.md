@@ -51,13 +51,17 @@ This script is designed to automatically update V2Ray configuration files from v
 #### main project: https://github.com/vfarid/v2ray-worker-sub
 
 لینک ساب کامل روی ورکر: 
+
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub
 همراه اول:
+
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mci
 ایرانسل:
+
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/mtn
 
 و یا همین لینک را همراه آی‌پی تمیز در اپ خود اضافه کنید:
+
 
 https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/1.2.3.4
 می‌توانید دامین آی‌پی تمیز نیز استفاده کنید:
