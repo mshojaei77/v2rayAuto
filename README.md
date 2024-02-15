@@ -23,11 +23,11 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ## Location-specific :
 
-| Language | Subscription Link                                            |
+| Country Codes | Subscription Link                                            |
 |----------|-----------------------------------------------------------------|
-| English Countries | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
-| Europe   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
-| IRAN     | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
+| `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
+| `DE`, `FR`, `NL`, `FI`, `IT`, `AL`, `TR`, `SE`   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
+| `IR`    | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
 
 ## Oprator-specific
 sub link | oprator      
