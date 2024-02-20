@@ -27,34 +27,34 @@ This script is designed to automatically update V2Ray configuration files from v
 
 | Country Codes | Subscription Link                                            |  Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) | |
-| `DE`, `FR`, `NL`, `FI`, `IT`, `AL`, `TR`, `SE`   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) | |
-| `IR`    | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) | |
+| `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) | This link provides a subscription to servers located in the United States, the United Kingdom, Canada, Australia, Ireland, and New Zealand. It is suitable for users that want to use servers in these areas for specific reasons, such as faster connection speeds or better streaming quality. |
+| `DE`, `FR`, `NL`, `FI`, `IT`, `AL`, `TR`, `SE`   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) | This link provides a subscription to servers located in Germany, France, the Netherlands, Finland, Italy, Albania, Turkey, and Sweden. It is ideal for users that want to access content from these regions. |
+| `IR`    | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) | This link provides a subscription to servers located in Iran. It is tailored for users who are in Iran or those who want to access content from Iran. |
 
 ## Security-specific :
 
 | Security                    | Subscription Link                                            | Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Reality                       | [Reality Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/reality) |  |
-| TLS          | [TLS Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tls) |  |
+| Reality                       | [Reality Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/reality) | This link provides a subscription to servers that prioritize security and privacy, with a focus on real-world privacy measures. It is suitable for users who are particularly concerned about their online anonymity and privacy.  |
+| TLS          | [TLS Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tls) |  This link provides a subscription to servers that use TLS (Transport Layer Security) for secure communication. It is ideal for users who want to ensure that their data is encrypted during transmission. |
 
 ## Type-specific :
 
 | Security                    | Subscription Link                                            | Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| WebSocket                    | [WebSocket Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/ws) |  |
-| TCP          | [TCP Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tcp) |  |
-| gRPC          | [gRPC Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/grpc) |  |
+| WebSocket                    | [WebSocket Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/ws) |  This link provides a subscription to servers that use the WebSocket protocol, which is often used for bypassing web filtering and censorship. It is suitable for users who require WebSocket support. |
+| TCP          | [TCP Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tcp) | This link provides a subscription to servers that use the TCP protocol, which is a reliable and commonly used protocol for internet communication. It is ideal for users who prefer the stability of TCP connections.  |
+| gRPC          | [gRPC Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/grpc) | This link provides a subscription to servers that use the gRPC protocol, which is a high-performance, open-source framework for remote procedure calls (RPCs). It is suitable for users who need to use gRPC for their applications. |
 
 ## Ping-specific :
 
 | Security                    | Subscription Link                                            | Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| High Ping                       | [High Ping Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Highping) |  |
-| Medium Ping          | [Medium Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Midping) |  |
+| High Ping                       | [High Ping Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Highping) | This link provides a subscription to servers with higher ping times, which might be necessary for users with slower internet connections or those who prioritize reliability over speed.  |
+| Medium Ping          | [Medium Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Midping) | This link provides a subscription to servers with medium ping times, offering a balance between speed and reliability. It is ideal for users with moderate internet speeds.  |
 
 
-## Oprator-specific
+## Oprator-specific (on  Worker)
 sub link | oprator      
 ---         | --- 
 [all](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub) | همه
