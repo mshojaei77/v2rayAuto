@@ -23,20 +23,36 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ⚠  **Some Subscription links may contain large amounts of Configurations, and may cause errors and overload.**
 
+## Location-specific :
+
+| Country Codes | Subscription Link                                            |  Notes                                                                                                 |
+|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) | |
+| `DE`, `FR`, `NL`, `FI`, `IT`, `AL`, `TR`, `SE`   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) | |
+| `IR`    | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) | |
+
 ## Security-specific :
 
 | Security                    | Subscription Link                                            | Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Reality                       | [Reality Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/reality) | VMess is a versatile protocol with strong encryption. Refer to VMess documentation for setup details. |
-| TLS          | [TLS Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tls) | Shadowsocks offers a secure and fast proxy. Check Shadowsocks documentation for proper configuration. |
+| Reality                       | [Reality Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/reality) |  |
+| TLS          | [TLS Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tls) |  |
 
-## Location-specific :
+## Type-specific :
 
-| Country Codes | Subscription Link                                            |
-|----------|-----------------------------------------------------------------|
-| `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) |
-| `DE`, `FR`, `NL`, `FI`, `IT`, `AL`, `TR`, `SE`   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) |
-| `IR`    | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) |
+| Security                    | Subscription Link                                            | Notes                                                                                                 |
+|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| WebSocket                    | [WebSocket Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/ws) |  |
+| TCP          | [TCP Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tcp) |  |
+| gRPC          | [gRPC Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/grpc) |  |
+
+## Ping-specific :
+
+| Security                    | Subscription Link                                            | Notes                                                                                                 |
+|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| High Ping                       | [High Ping Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Highping) |  |
+| Medium Ping          | [Medium Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Midping) |  |
+
 
 ## Oprator-specific
 sub link | oprator      
@@ -60,7 +76,7 @@ sub link | oprator
 [sht](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/sht)         | شاتل         
 [apt](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/apt)         | عصر تلکام    
 
----         | ---
+
 
 thanks vfarid for [worker projects](https://github.com/vfarid/v2ray-worker-sub)
 
