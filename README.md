@@ -3,7 +3,7 @@
 This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
 
 
-### ✅ Automatic Tested Configs : [Subscription Link ](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) | [Subscription Link on Worker](https://only-vless.fcrcvsgmwmspdgwpkl.workers.dev/sub/original=yes) 
+### ✅ Automatic Tested Configs : [Subscription Link 1 ](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) | [Subscription Link 2](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mix) 
 
 ## Protocol-specific :
 
