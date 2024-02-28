@@ -80,9 +80,9 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@172.245.218.162:800#US_104
 trojan://3628ca8d-6371-45df-879c-2d3e5d110b51@24.199.70.112:443?security=tls&allowInsecure=1&type=tcp#US🇺🇸 | 24.199.70.112-443 | 49.91ms
 trojan://tune7jerky7HAYRICK@96.126.123.244:443?security=tls&sni=ap-northeast-1.openssl3.com&allowInsecure=1&type=tcp#AU🇦🇺 | ap-northeast-1.openssl3.com-443 | 177.77ms
 trojan://bfb23be0-6c4f-11ee-8513-1239d0255272@51.210.182.170:443?security=tls&sni=zula.ir&allowInsecure=1&type=tcp#US🇺🇸 | zula.ir-443 | 2.74ms
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206bDQrR21zWXVZaFdJMWdqWFBhOHdtSHB6Z2VDb2hzOEgrbmdUNTVGcWQvVT06aWgzVHNraDJCWjBJSU1scWRid1hCU29TUU9BKzFrNFoybGRvMFVJTXpvVT0=@us1.dart-vpn.com:443#US%2BDataCamp+1
 vless://a74068d7-7aee-4cc9-a0a8-954df6ceafd0@172.67.204.84:2082?security=&type=ws&path=%2F%3Fed%3D2048Telegram-v2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud&host=sg1.vlessx.xyz&encryption=none#US🇺🇸 | sg1.vlessx.xyz-2082 | 2.15ms
 vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.143:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 15.67ms
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206bDQrR21zWXVZaFdJMWdqWFBhOHdtSHB6Z2VDb2hzOEgrbmdUNTVGcWQvVT06aWgzVHNraDJCWjBJSU1scWRid1hCU29TUU9BKzFrNFoybGRvMFVJTXpvVT0=@us1.dart-vpn.com:443#US%2BDataCamp+1
 vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada102.oshtd.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada102.oshtd.com-443 | 126.88ms
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:809#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-809+%7C+18.35ms
 trojan://pjdnqv@aws-us-nyc-1.f1rocketnode.com:443?security=tls&sni=aws-us-nyc-1.f1rocketnode.com&type=tcp#US🇺🇸 | aws-us-nyc-1.f1rocketnode.com-443 | 31.92ms
@@ -105,6 +105,7 @@ trojan://your_password@3.27.95.146:443?security=tls&sni=aws-aus-sydney-1.f1rocke
 vless://c17ee8d1-c7a3-4666-83da-d923ae45c31d@104.31.16.32:443?security=tls&sni=oniyx.fun&type=ws&path=%2Fuorpws&host=oniyx.fun&encryption=none#US🇺🇸 | oniyx.fun-443 | 57.63ms
 trojan://c38059a9-02f4-436c-891e-3818cd601e5a@95.164.116.35:443#US🇺🇸 | 95.164.116.35-443 | 137.46ms
 vless://22c311d2-d1cb-4f31-828f-05a57cfffaaf@bia.zedmodeon.lat:443?security=tls&sni=bia.zedmodeon.lat&alpn=h2&type=grpc&serviceName=%40ZEDMODEON&encryption=none#US🇺🇸 | bia.zedmodeon.lat-443 | 72.94ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo4am9DdHd3c05IdEtNeENibFBkQ2xP@us1.dart-vpn.com:443#US
 vless://8a5d06d3-67af-43db-9632-54474883b3eb@170.114.46.79:443?security=tls&sni=test.worse.workers.dev&type=ws&path=%2F%3Fed%3D2048&host=test.worse.workers.dev&encryption=none#US🇺🇸 | test.worse.workers.dev-443 | 25.59ms
 vless://8f07dc3b-8a0f-430f-a0fc-25e07760502c@104.21.12.150:2086?security=&type=ws&path=%2F%3Fed%3D2048%2FTelegram%3A%40https_config_injector&host=nl54.vlessx.us&encryption=none#US🇺🇸 | nl54.vlessx.us-2086 | 3.06ms
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpQbHNRMnpORkd4aDhwZzc3T1lZdElK@44.192.77.61:20051#Us
