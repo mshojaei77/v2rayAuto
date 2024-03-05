@@ -1,207 +1,183 @@
-vless://2014e8ab-f385-40e2-8c59-46b138c4c4dc@185.162.228.3:80?security=&type=ws&path=%2Fbackup&host=cDAvHA.dL-oNlInEdOcTOR.Bio&encryption=none#GB🇬🇧 | cDAvHA.dL-oNlInEdOcTOR.Bio-80 | 350.2ms
-vless://a2dadb95-3f15-4e1c-b517-0b54c336a5fd@104.21.12.150:8443?security=tls&sni=nl57.Vlessx.us&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=nl57.vlessx.us&encryption=none#US🇺🇸 | nl57.Vlessx.us-8443 | 2.3ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@190.93.247.14:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 2.86ms
-trojan://your_password@104.21.7.241:443?security=tls&sni=aws-sg-1.f1cflineb.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-sg-1.f1cflineb.com#US🇺🇸 | aws-sg-1.f1cflineb.com-443 | 57.27ms
-trojan://your_password@aws-in-mumbai-1.f1cflinea.com:443?security=tls&sni=aws-in-mumbai-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-in-mumbai-1.f1cflinea.com#US🇺🇸 | aws-in-mumbai-1.f1cflinea.com-443 | 36.04ms
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@146.59.55.84:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+146.59.55.84-443+%7C+120.69ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.21.25.85:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 30.26ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@172.67.186.42:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 36.14ms
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.28:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.28-443+%7C+93.52ms
-ss://YWVzLTI1Ni1nY206S2l4THZLendqZWtHMDBybQ==@198.57.27.225:5500#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_34
-trojan://01596265-168b-46a7-bcb7-25662c7a9546@188.114.98.0:443?security=tls&sni=hdfy7c1.foriran2.eu.org&allowInsecure=1&type=grpc&serviceName=fYn1ncaQMA1foaK1hpquM#US🇺🇸 | hdfy7c1.foriran2.eu.org-443 | 225.22ms
-trojan://f10d81d8-ad4b-300a-825b-f54f515bd06e@us1.jjzgy.live:443?security=tls&sni=us1.jjzgy.live&allowInsecure=1&type=tcp#AU🇦🇺 | us1.jjzgy.live-443 | 748.49ms
-vless://22c311d2-d1cb-4f31-828f-05a57cfffaaf@bia.zedmodeon.lat:443?security=tls&sni=bia.zedmodeon.lat&alpn=h2&type=grpc&serviceName=%40ZEDMODEON&encryption=none#US🇺🇸 | bia.zedmodeon.lat-443 | 72.94ms
-ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@38.121.43.51:2376#US%F0%9F%87%BA%F0%9F%87%B8+%7C+38.121.43.51-2376+%7C+17.6ms
-ss://YWVzLTI1Ni1nY206WEtGS2wyclVMaklwNzQ=@198.57.27.225:8009#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_20
-trojan://2e7d3f13-be1b-479c-94ff-0e95c2bd565d@209.46.30.17:443?security=tls&sni=2jp4.pqjc.buzz&type=tcp#US🇺🇸 | 2jp4.pqjc.buzz-443 | 18.13ms
-ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@169.197.142.99:8118#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_412
-vless://a74068d7-7aee-4cc9-a0a8-954df6ceafd0@172.67.204.84:2082?security=&type=ws&path=%2F%3Fed%3D2048Telegram-v2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud&host=sg1.vlessx.xyz&encryption=none#US🇺🇸 | sg1.vlessx.xyz-2082 | 2.15ms
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada102.oshtd.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada102.oshtd.com-443 | 126.88ms
-trojan://b291d129-ee55-4801-a9b8-b5316e5c37b7@138.2.113.84:443?security=tls&type=tcp&headerType=none#US15%E2%86%92v2cross.com_1
-ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@198.57.27.225:8888#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_19
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:806#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-806+%7C+17.26ms
-vless://9a237f52-35f4-411f-a544-f5b574324c6b@172.67.135.195:80?security=&type=ws&path=%2F&host=bia-to-channel4.unlimiteddev.shop&encryption=none#US🇺🇸 | bia-to-channel4.unlimiteddev.shop-80 | 3.9ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:809#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-809+%7C+18.35ms
-vless://4291f2c0-887c-4a39-b74c-aa8c0b755650@104.18.202.232:443?security=tls&sni=pr.valivali.top&alpn=h2%2Chttp%2F1.1&fp=chrome&type=grpc&serviceName=%40vmesskhodam&encryption=none#US🇺🇸 | pr.valivali.top-443 | 204.69ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@172.66.209.117:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 3.07ms
-trojan://dbf9bf9c-2c3f-474a-8031-d4c00666a989@fhcamd2.gaox.ml:443?security=tls&type=tcp&headerType=none#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_160
-ss://YWVzLTI1Ni1nY206S2l4THZLendqZWtHMDBybQ==@38.68.135.19:5500#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_491
-vless://8deeb237-5a89-41be-94b1-32734d1e59a6@104.21.94.85:2095?security=&type=ws&path=%2F%3Fed%3D2048&host=nl41.vlessx.us&encryption=none#US🇺🇸 | nl41.vlessx.us-2095 | 39.18ms
-vless://376b9861-2fc6-4647-959c-18185cd9c95a@104.17.88.212:443?security=tls&sni=lmn59.sbs&type=ws&path=%2Ffflsws&host=lmn59.sbs&encryption=none#US🇺🇸 | lmn59.sbs-443 | 53.16ms
-ss://YWVzLTI1Ni1nY206Rm9PaUdsa0FBOXlQRUdQ@38.68.135.19:7306#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_156
-ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@38.68.135.19:5004#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_155
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.74:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.74-443+%7C+99.29ms
-ss://YWVzLTI1Ni1nY206UmV4bkJnVTdFVjVBRHhH@198.57.27.225:7002#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_26
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.21.25.188:443?security=tls&sni=iraniancp.click&type=ws&path=%2F%3Fed%3D2048&host=worker.iraniancp.click&encryption=none#US🇺🇸 | iraniancp.click-443 | 141.27ms
-ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@38.68.135.19:9102#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_154
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:800#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-800+%7C+21.22ms
-trojan://pjdnqv@172.67.216.95:443?security=tls&sni=aws-us-oregon-1.f1cflined.com&alpn=http%2F1.1&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-us-oregon-1.f1cflined.com#US🇺🇸 | aws-us-oregon-1.f1cflined.com-443 | 91.09ms
-ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@198.57.27.225:8118#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_23
-vless://8f07dc3b-8a0f-430f-a0fc-25e07760502c@172.67.197.107:2095?security=&type=ws&path=%2F%3Fed%3D2048&host=nl54.vlessx.us&encryption=none#US🇺🇸 | nl54.vlessx.us-2095 | 2.96ms
-trojan://tune7jerky7HAYRICK@96.126.123.244:443?security=tls&sni=ap-northeast-1.openssl3.com&allowInsecure=1&type=tcp#AU🇦🇺 | ap-northeast-1.openssl3.com-443 | 177.77ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.18.118.51:443?security=tls&sni=c2mk.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mk.ciscocdn1.live-443 | 172.56ms
-ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@169.197.142.99:9101#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_401
-ss://YWVzLTI1Ni1nY206WEtGS2wyclVMaklwNzQ=@198.57.27.225:8008#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_28
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.25:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.25-443+%7C+94.35ms
-ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@198.57.27.225:5600#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_21
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpXNzRYRkFMTEx1dzZtNUlB@13.42.186.197:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+13.42.186.197-443+%7C+96.55ms
-vless://535c22af-c632-434e-9cff-33df14ed8f2a@104.16.29.8:80?security=&type=ws&path=%2F&host=gdaf0Z.PrE-loAD.SiTe&encryption=none#GB🇬🇧 | gdaf0Z.PrE-loAD.SiTe-80 | 490.19ms
-vless://3ab1e793-7cd7-49a1-bb14-b68043888482@104.21.4.8:2096?security=tls&sni=nl25.vlessx.us&fp=randomized&type=ws&path=%2F%3Fed%3D2048&host=nl25.vlessx.us&encryption=none#US🇺🇸 | nl25.vlessx.us-2096 | 20.46ms
-vless://d342d11e-d424-4583-b36e-524ab1f0afa4@[::ffff:104.18.186.83]:443?security=tls&sni=xxx.donated001.workers.dev&type=ws&path=%2F%40V2VIPCHANNEL%2F%3Fed%3D2048&host=xxx.donated001.workers.dev&encryption=none#US🇺🇸 | xxx.donated001.workers.dev-443 | 53.17ms
-vless://a74068d7-7aee-4cc9-a0a8-954df6ceafd0@104.21.70.25:2082?security=&type=ws&path=%2F%3Fed%3D2048&host=sg1.vlessx.xyz&encryption=none#US🇺🇸 | sg1.vlessx.xyz-2082 | 30.15ms
-trojan://your_password@52.56.183.187:443?security=tls&sni=aws-uk-london-1.f1rocketnode.com&type=tcp#GB🇬🇧 | aws-uk-london-1.f1rocketnode.com-443 | 105.25ms
-vless://161f6b0b-47c3-487e-bffd-90b74fb67539@104.21.48.84:8443?security=tls&sni=cloud.barfak123.eu.org&fp=chrome&type=grpc&serviceName=%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF&encryption=none#US🇺🇸 | cloud.barfak123.eu.org-8443 | 242.21ms
-trojan://0ad5e311-7189-4124-ac8f-f828b681f10e@104.21.60.120:443?security=tls&sni=c5mt.cdncisco.org&type=tcp#US🇺🇸 | c5mt.cdncisco.org-443 | 255.53ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiNWY3MTk2NC03NmI3LTQxOWQtYmI5YS03MTJkMGUzMjQyMTE@edge-earth.themars.top:50011#Australia-02
-ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@169.197.142.99:5001#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_402
-vless://ba3b1bb0-466e-4d7d-92d7-f2eeb4c73e76@172.67.218.115:2086?security=&type=ws&path=%2F%3Fed%3D2048&host=de2.vlessx.xyz&encryption=none#US🇺🇸 | de2.vlessx.xyz-2086 | 72.06ms
-trojan://d2698cf9-c47e-455c-8384-12e642cbba15@89.116.180.179:443?security=tls&sni=p6us4.pqjc.buzz&type=ws&path=%2Fpq%2Fus4&host=p6us4.pqjc.buzz#US🇺🇸 | p6us4.pqjc.buzz-443 | 23.68ms
-vless://0a1d78ed-b293-4e70-a1ca-fefab75167fa@172.67.132.41:80?security=&type=ws&path=%2F%3Fed%3D2048&host=nl42.vlessx.us&encryption=none#US🇺🇸 | nl42.vlessx.us-80 | 18.87ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTplMFpjTlJtS09aTHZzTEpiUlhuUnBm@35.87.41.80:20051#Us
-vless://a74068d7-7aee-4cc9-a0a8-954df6ceafd0@104.21.4.8:2082?security=&type=ws&path=%2F%3Fed%3D2048&host=sg1.vlessx.xyz&encryption=none#US🇺🇸 | sg1.vlessx.xyz-2082 | 2.84ms
-trojan://yZOZ8GWc8K@104.21.44.126:443?security=tls&sni=de.vpncustomize.website&type=tcp#US🇺🇸 | de.vpncustomize.website-443 | 406.86ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.24.20.194:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 4.09ms
-vless://1b6ae0f5-01dc-4b96-bca9-31c672dcf0aa@50.7.85.221:443?security=tls&sni=mohsenfitshr.wibibin259.workers.dev&type=ws&path=%2F%3Fed%3D2048&host=mohsenfitshr.wibibin259.workers.dev&encryption=none#US🇺🇸 | mohsenfitshr.wibibin259.workers.dev-443 | 44.53ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.143:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 15.67ms
-ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@198.57.27.225:9102#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_22
-ss://Y2hhY2hhMjAtcG9seTEzMDU6dTE3VDNCdnBZYWFpdVcyYw==@18.132.234.67:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+18.132.234.67-443+%7C+98.97ms
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.157.222:443?security=tls&sni=ada36.qvqag.com&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada36.qvqag.com-443 | 110.3ms
-trojan://c2b60d6a-a2f5-40ff-b7f9-f7658abcbf26@jgwxn2.gaox.ml:443?security=tls&type=tcp&headerType=none#AU_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_17
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:810#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-810+%7C+29.28ms
 ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@198.57.27.225:443#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_24
-vless://0e989a0e-264b-4bbb-baa4-31603314531f@172.67.132.41:2083?security=tls&sni=nl48.vlessx.us&fp=randomized&type=ws&path=%2F%3Fed%3D2048&host=nl48.vlessx.us&encryption=none#US🇺🇸 | nl48.vlessx.us-2083 | 16.33ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:803#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-803+%7C+14.55ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.27.91.235:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 2.96ms
-ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@172.99.190.87:6679#US_578
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@172.245.218.162:800#US_1040
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.24.20.111:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 380.7ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpQbHNRMnpORkd4aDhwZzc3T1lZdElK@44.192.77.61:20051#Us
-trojan://c38059a9-02f4-436c-891e-3818cd601e5a@95.164.116.35:443#US🇺🇸 | 95.164.116.35-443 | 137.46ms
-trojan://tune7jerky7HAYRICK@45.79.19.196:443?security=tls&sni=ap-northeast-1.openssl3.com&allowInsecure=1&type=tcp#AU🇦🇺 | ap-northeast-1.openssl3.com-443 | 104.74ms
-trojan://dongtaiwang.com@trojan33.free4444.xyz:443?security=tls&type=tcp&headerType=none#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_135
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.148.254:443?security=tls&sni=ada21.npbjn.com&fp=chrome&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada21.npbjn.com-443 | 75.98ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpITmtra2N4UmdDa1BEUTBaMGxuN3d4@ca.yangon.club:443#Canada+eSecureData
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.158.206:443?security=tls&sni=mt1.nabsk.com&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | mt1.nabsk.com-443 | 78.02ms
-trojan://21c6c7cb-332b-4a0c-9ad7-dff9c3111442@104.21.19.64:443?security=tls&sni=us02web.zoom.us&type=tcp#US🇺🇸 | us02web.zoom.us-443 | 34.91ms
-trojan://your_password@aws-ar-buenosaires-1.f1cflinea.com:443?security=tls&sni=aws-ar-buenosaires-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-ar-buenosaires-1.f1cflinea.com#US🇺🇸 | aws-ar-buenosaires-1.f1cflinea.com-443 | 34.6ms
-trojan://your_password@aws-ca-central-1.f1cflineb.com:443?security=tls&sni=aws-ca-central-1.f1cflineb.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-ca-central-1.f1cflineb.com#US🇺🇸 | aws-ca-central-1.f1cflineb.com-443 | 37.84ms
-vless://acca9938-3695-43df-872a-9c7d2b11f3bd@172.67.193.36:8443?security=tls&sni=felinetest.site&type=ws&path=%2F&host=felinetest.site&encryption=none#US🇺🇸 | felinetest.site-8443 | 57.12ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.25.254.46:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 38.71ms
-trojan://00ad4330-8d40-11ee-8d1a-1239d0255272@172.67.204.84:443?security=tls&sni=us1.test3.net&type=ws&path=%2Fhowdy&host=us1.test3.net#US🇺🇸 | us1.test3.net-443 | 31.46ms
-trojan://xl87654321@199.59.243.225:443?security=tls&sni=stonebreak.online&allowInsecure=1&type=tcp#US🇺🇸 | stonebreak.online-443 | 135.52ms
-vless://a6784d39-64c1-4ead-9845-9b1b95753718@104.21.72.166:443?security=tls&sni=joinbede.zedmodeon.lat&alpn=h2&fp=chrome&type=grpc&serviceName=%40ZEDMODEON&encryption=none#US🇺🇸 | joinbede.zedmodeon.lat-443 | 72.58ms
-trojan://79770a32-9607-4919-9483-0f1794559390@172.67.177.123:443?security=tls&sni=nika3hdfy2.foriran.trade&allowInsecure=1&type=tcp#US🇺🇸 | nika3hdfy2.foriran.trade-443 | 3.27ms
-vless://72090163-17a9-4200-893e-215786a48523@hk7.vlessx.xyz:8080?security=&type=ws&path=%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray&host=hk7.vlessx.xyz&encryption=none#US🇺🇸 | hk7.vlessx.xyz-8080 | 2.3ms
-trojan://79770a32-9607-4919-9483-0f1794559390@188.114.97.3:443?security=tls&sni=nika3hdfy2.foriran.trade&type=tcp#US🇺🇸 | nika3hdfy2.foriran.trade-443 | 270.15ms
-ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@169.197.142.99:5004#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_406
-trojan://your_password@3.27.95.146:443?security=tls&sni=aws-aus-sydney-1.f1rocketnode.com&type=tcp#AU🇦🇺 | aws-aus-sydney-1.f1rocketnode.com-443 | 197.57ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo2Q3U3Y2JSSUVuUnpTUHdGTlZLdnl6@192.18.150.179:443#Canada+Oracle
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo0QmlWVmh4WEIwWHlCRXZiVU9nd2pt@twlatx.dnset.com:8443#Canada+Telus
-ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@198.57.27.225:5004#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_31
-vless://a9202ced-3185-489c-8b28-74e9a00d894d@dongtaiwang3.com:443?security=tls&allowInsecure0&flow=&type=ws&fp=chrome&pbk=&sid=&sni=dongtaiwang.dtku47.xyz&serviceName=&path=/eobjws&host=#Canada_vless_0
-ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@169.197.142.99:3306#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_159
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpCb2cwRUxtTU05RFN4RGRR@jseyu.arvancode.eu.org:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+jseyu.arvancode.eu.org-443+%7C+278ms
-trojan://d7fd8aaa-4581-4281-80aa-4b63e5e1f157@jgwld2.gaox.ml:443?security=tls&type=tcp&headerType=none#GB_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_54
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.1:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 3.56ms
-vless://8a5d06d3-67af-43db-9632-54474883b3eb@170.114.46.79:443?security=tls&sni=test.worse.workers.dev&type=ws&path=%2F%3Fed%3D2048&host=test.worse.workers.dev&encryption=none#US🇺🇸 | test.worse.workers.dev-443 | 25.59ms
-vless://8f07dc3b-8a0f-430f-a0fc-25e07760502c@104.21.12.150:2086?security=&type=ws&path=%2F%3Fed%3D2048%2FTelegram%3A%40https_config_injector&host=nl54.vlessx.us&encryption=none#US🇺🇸 | nl54.vlessx.us-2086 | 3.06ms
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.34:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.34-443+%7C+94.39ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.16.237.74:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 82.57ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.19.235.14:443?security=tls&sni=c2mk.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mk.ciscocdn1.live-443 | 4.4ms
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206UjFsS0d2TEU5bGxyc3JFOCtsalNjYVRTT1BUWnozTFpHYXZuOU8zWHBoVT06RVhtQVNicHh3b2huOTN4aHQzM21ZcG8vZnltWHlUS3JtM3Y0RERNTFo4RT0=@us2.dart-vpn.com:443#US%2BDataCamp+2
-ss://YWVzLTI1Ni1nY206UmV4bkJnVTdFVjVBRHhH@198.57.27.225:7001#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_27
-vless://855d54f7-944d-4f04-9171-1ee5ab1d8b60@v2rayngcloud.ddns.net:80?security=&type=ws&path=Telegram-v2rayNGcloud-Telegram-%40v2rayNGcloud-Telegram-%40v2rayNGcloud&host=nl5.vlessx.us&encryption=none#US🇺🇸 | nl5.vlessx.us-80 | 16.9ms
-hysteria://172.105.18.102:8443/?peer=ca-hysteria.racevpn.com&upmbps=10&downmbps=50&obfs=xplus&obfsParam=qGDBJ7euzN#Canada%E2%80%A0%F0%9F%87%A8%F0%9F%87%A6
-trojan://00ad4330-8d40-11ee-8d1a-1239d0255272@104.21.69.44:443?security=tls&sni=us1.test3.net&type=ws&path=%2Fhowdy&host=us1.test3.net#US🇺🇸 | us1.test3.net-443 | 22.89ms
-vless://72090163-17a9-4200-893e-215786a48523@104.21.70.25:8080?security=&type=ws&path=%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray&host=hk7.vlessx.xyz&encryption=none#US🇺🇸 | hk7.vlessx.xyz-8080 | 34.98ms
-vless://376b9861-2fc6-4647-959c-18185cd9c95a@216.116.134.227:443?security=tls&sni=lmn59.sbs&type=ws&path=%2Ffflsws&host=lmn59.sbs&encryption=none#US🇺🇸 | lmn59.sbs-443 | 2ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpQNEp1SzFMWVlLV0dtemdhRk5qdUI5@192.18.150.179:443#Canada+Oracle
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.47.151:443?security=tls&sni=ada70.fupaj.com&alpn=http%2F1.1&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada70.fupaj.com-443 | 28.82ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.16.110.215:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 3.15ms
-vless://b91131f7-c382-4be8-9e7d-a373a3d23d77@104.21.63.160:443?security=tls&sni=finland.kanal-tel-nufilter.site&fp=chrome&type=grpc&serviceName=Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER&encryption=none#US🇺🇸 | finland.kanal-tel-nufilter.site-443 | 31.57ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@203.23.106.193:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 187.53ms
-trojan://pjdnqv@aws-us-nyc-1.f1rocketnode.com:443?security=tls&sni=aws-us-nyc-1.f1rocketnode.com&type=tcp#US🇺🇸 | aws-us-nyc-1.f1rocketnode.com-443 | 31.92ms
-trojan://jagoanssh-Aweqdcc@104.21.32.17:443?security=tls&sni=to.ruangguru.com&allowInsecure=1&type=tcp#US🇺🇸 | to.ruangguru.com-443 | 92.01ms
-ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@169.197.142.99:9102#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_404
-trojan://xxoo@146.19.230.241:443?security=tls&type=tcp&headerType=none#GB_146.19.230.241_070620233b3e-932
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo4am9DdHd3c05IdEtNeENibFBkQ2xP@us1.dart-vpn.com:443#US
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.26:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.26-443+%7C+93.6ms
-ss://YWVzLTI1Ni1nY206UENubkg2U1FTbmZvUzI3@169.197.142.99:8090#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_407
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@143.244.43.216:110#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+143.244.43.216-110+%7C+14.94ms
-vless://b8ce0288-e7c4-482a-be24-364f7d724585@104.21.94.85:8880?security=&type=ws&path=%2F%3Fed%3D2048&host=nl20.vlessx.us&encryption=none#US🇺🇸 | nl20.vlessx.us-8880 | 2.77ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:808#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-808+%7C+24.46ms
-ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@38.68.135.19:3389#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_405
-trojan://af6a3685-c423-4579-bfea-784c453d5e23@t5.teslacdn2.live:443?security=tls&sni=t5.teslacdn2.live&allowInsecure=1&type=tcp#US🇺🇸 | t5.teslacdn2.live-443 | 266.58ms
-trojan://pjdnqv@15.181.162.90:443?security=tls&sni=aws-us-nyc-1.f1rocketnode.com&allowInsecure=1&type=tcp#US🇺🇸 | aws-us-nyc-1.f1rocketnode.com-443 | 38.43ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.16.237.74:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 16.02ms
-trojan://3ad41c7b-b772-3f96-9986-66d1a2b79820cmynw@45.79.73.131:443?security=tls&sni=kaizen-us-14.cmy-dns.com&allowInsecure=1&type=tcp#US🇺🇸 | kaizen-us-14.cmy-dns.com-443 | 253.73ms
-vless://9e5c214e-746a-44d5-a9d0-0b0a8d37a957@104.18.13.130:443?security=tls&sni=vpn442vpn442442.hianif.workers.dev&fp=randomized&type=ws&path=%2F%3Fed%3D2048&host=vpn442vpn442442.hianif.workers.dev&encryption=none#US🇺🇸 | vpn442vpn442442.hianif.workers.dev-443 | 23.98ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@103.21.244.5:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 2.25ms
-ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@38.68.135.19:5003#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_408
-vless://e4e80428-c1e2-44b5-a8ce-7b868d41b49b@47.74.37.50:80?security=&type=ws&path=%2F&host=jp3.rtacg.com&encryption=none#US🇺🇸 | jp3.rtacg.com-80 | 3.33ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.143:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 2.64ms
-trojan://your_password@aws-se-stockholm-1.f1cflinea.com:443?security=tls&sni=aws-se-stockholm-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-se-stockholm-1.f1cflinea.com#US🇺🇸 | aws-se-stockholm-1.f1cflinea.com-443 | 85.61ms
-vless://913dfd5d-c4ab-4bd9-af2d-fd320252e9f5@104.21.12.150:2095?security=&type=ws&path=%2F%3Fed%3D2048&host=us4.vlessx.us&encryption=none#US🇺🇸 | us4.vlessx.us-2095 | 19.42ms
-trojan://ZVqSTHcLasKIKGnzjnr8aHRPATiaTj5U@23.106.33.156:443?security=tls&sni=scottie.golfland.club&type=tcp#GB🇬🇧 | scottie.golfland.club-443 | 150.85ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@172.66.209.117:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 50.76ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.17.245.1:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 30.92ms
-trojan://211f5876-8c89-4d97-9004-ff16acddd506@51.38.71.175:80?security=tls&type=tcp&headerType=none#GB_51.38.71.175_07012023ede7-1389
-trojan://3628ca8d-6371-45df-879c-2d3e5d110b51@24.199.70.112:443?security=tls&allowInsecure=1&type=tcp#US🇺🇸 | 24.199.70.112-443 | 49.91ms
-trojan://your_password@35.183.238.42:443?security=tls&sni=aws-ca-central-1.f1rocketnode.com&allowInsecure=1&type=tcp#CA🇨🇦 | aws-ca-central-1.f1rocketnode.com-443 | 28.26ms
-ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@198.57.27.225:6697#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_29
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3WFNGbWdDdXdhVEVIUklRTUNmQlZO@twlatx.dnset.com:8443#Canada+Telus
-trojan://0346cf80-8b9b-11ee-ac12-1239d0255272@162.159.138.232:443?security=tls&sni=us1.test3.net&type=ws&path=%2Fhowdy&host=us1.test3.net#US🇺🇸 | us1.test3.net-443 | 22.26ms
-trojan://2e7d3f13-be1b-479c-94ff-0e95c2bd565d@89.116.180.158:443?security=tls&sni=3us2.pqjc.buzz&type=tcp#US🇺🇸 | 3us2.pqjc.buzz-443 | 17.14ms
-ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@169.197.142.99:6697#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_280
-ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@172.99.190.149:443#US_597
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiNWY3MTk2NC03NmI3LTQxOWQtYmI5YS03MTJkMGUzMjQyMTE@edge-hncm.themars.top:50011#Australia-03
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:811#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-811+%7C+26.01ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiNWY3MTk2NC03NmI3LTQxOWQtYmI5YS03MTJkMGUzMjQyMTE@edge-mars.themars.top:50011#Australia-01
+trojan://your_password@aws-uk-london-1.f1cflinea.com:443?security=tls&sni=aws-uk-london-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-uk-london-1.f1cflinea.com#US🇺🇸 | aws-uk-london-1.f1cflinea.com-443 | 106.18ms
+trojan://HdsUZmsHQW@148.113.141.99:443?security=tls&type=tcp#CA🇨🇦 | 148.113.141.99-443 | 33.64ms
+trojan://b21af1e78d194c2093aabbee770c8529@118.142.17.238:443?security=tls&sni=www.gpt123.one&allowInsecure=1&type=tcp#US🇺🇸 | www.gpt123.one-443 | 26.59ms
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada102.oshtd.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada102.oshtd.com-443 | 195.48ms
+trojan://your_password@188.114.99.0:443?security=tls&sni=aws-ge-frankfurt-1.f1cflinea.com&allowInsecure=1&type=ws&path=%2Ff1rocket&host=aws-ge-frankfurt-1.f1cflinea.com#US🇺🇸 | aws-ge-frankfurt-1.f1cflinea.com-443 | 10.5ms
+trojan://-40f9-475c-bf46-e3883ee7da5c2b60d6a-a2f5-40ff-b7f9-f7658abcbf26@67.21.93.242:443?security=tls&sni=upay.com&allowInsecure=1&type=tcp#US🇺🇸 | upay.com-443 | 38.96ms
+vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@172.66.209.117:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 6.14ms
 ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@38.68.135.19:2376#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_157
-vless://7b671cd2-233d-406c-88da-1c687727dc52@dongtaiwang3.com:443?security=tls&allowInsecure=0&flow=&type=ws&fp=chrome&pbk=&sid=&sni=fr.freeh1.xyz&serviceName=&path=/kfhaws&host=fr.freeh1.xyz#Canada_vless_0
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206bDQrR21zWXVZaFdJMWdqWFBhOHdtSHB6Z2VDb2hzOEgrbmdUNTVGcWQvVT06aWgzVHNraDJCWjBJSU1scWRid1hCU29TUU9BKzFrNFoybGRvMFVJTXpvVT0=@us1.dart-vpn.com:443#US%2BDataCamp+1
-ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@51.68.206.229:8118#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+51.68.206.229-8118+%7C+93.84ms
-ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@198.57.27.225:6679#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_32
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.132.6:443?security=tls&sni=ada145.lefxb.com&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada145.lefxb.com-443 | 95.96ms
-trojan://bfb23be0-6c4f-11ee-8513-1239d0255272@51.210.182.170:443?security=tls&sni=zula.ir&allowInsecure=1&type=tcp#US🇺🇸 | zula.ir-443 | 2.74ms
-trojan://46d69a7e-9002-44a3-99c1-01c412f29726@185.176.24.105:443?security=tls&sni=k9de1.djjc.sbs&allowInsecure=1&type=tcp#US🇺🇸 | k9de1.djjc.sbs-443 | 40.41ms
-vless://0773256c-d020-436d-afea-6eee7cb6c872@dongtaiwang2.com:443?security=tls&allowInsecure=0&flow=&type=ws&fp=chrome&pbk=&sid=&sni=xray1.freegradely.xyz&serviceName=&path=/bodhws&host=xray1.freegradely.xyz#Canada_vless_1
-trojan://pjdnqv@aws-us-dallas-1.f1rocketnode.com:443?security=tls&sni=aws-us-dallas-1.f1rocketnode.com&type=tcp#US🇺🇸 | aws-us-dallas-1.f1rocketnode.com-443 | 45.23ms
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada70.fupaj.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada70.fupaj.com-443 | 84.94ms
-trojan://-40f9-475c-bf46-e3883ee7da5c2b60d6a-a2f5-40ff-b7f9-f7658abcbf26@67.21.93.242:443?security=tls&sni=upay.com&allowInsecure=1&type=tcp#US🇺🇸 | upay.com-443 | 305.12ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpYbVBzeURiTlVFaUpabjB0allob0Fa@192.18.150.179:443#Canada+Oracle
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:807#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-807+%7C+25.28ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.1:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 61.7ms
-vless://9a237f52-35f4-411f-a544-f5b574324c6b@104.20.163.162:80?security=&type=ws&path=%2F&host=bia-to-channel4.unlimiteddev.shop&encryption=none#US🇺🇸 | bia-to-channel4.unlimiteddev.shop-80 | 2.32ms
-vless://64543a64-0d50-434c-8924-5fc6b3022f79@172.67.172.214:80?security=&type=ws&path=%2Fbackup&host=QS8EQM.SPamDEtEcToR.wOrlD&encryption=none#US🇺🇸 | QS8EQM.SPamDEtEcToR.wOrlD-80 | 68.7ms
-vless://9a237f52-35f4-411f-a544-f5b574324c6b@104.18.221.160:80?security=&type=ws&path=%2F&host=bia-to-channel4.unlimiteddev.shop&encryption=none#US🇺🇸 | bia-to-channel4.unlimiteddev.shop-80 | 11.24ms
-ss://YWVzLTI1Ni1nY206UENubkg2U1FTbmZvUzI3@172.99.190.149:8090#US_744
-trojan://af6a3685-c423-4579-bfea-784c453d5e23@146.59.3.14:443?security=tls&allowInsecure=1&type=tcp#GB🇬🇧 | 146.59.3.14-443 | 118.8ms
-trojan://72d8e820-7926-4ce3-a87c-b6969f425c79@103.235.46.40:443?security=tls&sni=www.baidu.com&allowInsecure=1&type=tcp#US🇺🇸 | www.baidu.com-443 | 631.48ms
-vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada145.lefxb.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada145.lefxb.com-443 | 97.33ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.25.233.226:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 3.41ms
-trojan://f10d81d8-ad4b-300a-825b-f54f515bd06e@sg2.jjzgy.live:443?security=tls&sni=sg2.jjzgy.live&allowInsecure=1&type=tcp#AU🇦🇺 | sg2.jjzgy.live-443 | 282.94ms
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@plus2---join.outline-vpn.cloud:443?security=tls&sni=current.iraniancp.click&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.click&encryption=none#US🇺🇸 | current.iraniancp.click-443 | 83.82ms
-vless://e5daf8cb-6cef-48af-b3c6-8f71cac01479@104.21.4.8:2052?security=&type=ws&path=%2F%3Fed%3D2048&host=nl22.vlessx.us&encryption=none#US🇺🇸 | nl22.vlessx.us-2052 | 14.51ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpyMEcyT1dkRnFxZmN6MzRMWXI5aW56@13.87.75.178:7294#GB_13.87.75.178_070620231df3-821
-ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@172.99.190.87:8118#US_772
-ss://YWVzLTI1Ni1nY206YzNiYzgxZWQtMzlhNC00NDc4LTg2MGQtZTYyZGI4M2VhNDBh@74.3.163.117:34386#Canada+eSecureData
-ss://YWVzLTI1Ni1nY206a0RXdlhZWm9UQmNHa0M0@198.57.27.225:8881#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_30
-trojan://06a8765e-ccd0-3cdb-ab8d-c1d92e6b5f54@194.147.16.123:52560?security=tls&allowInsecure=1&type=tcp#GB🇬🇧 | 194.147.16.123-52560 | 94.2ms
-vless://f7d6d2d0-3d74-470e-8706-62fee6bff283@104.26.10.232:443?security=tls&sni=5646742256.goldeston.cfd&alpn=http%2F1.1%2Ch2&type=grpc&serviceName=77313084&encryption=none#US🇺🇸 | 5646742256.goldeston.cfd-443 | 50.21ms
-ss://YWVzLTI1Ni1nY206Rm9PaUdsa0FBOXlQRUdQ@172.99.190.149:7307#US_728
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@203.28.8.28:443?security=tls&sni=c2mk.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mk.ciscocdn1.live-443 | 4.15ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:810#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-810+%7C+12.6ms
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3d1VSOGNPblJxNDVkTDYyRzVvTnZq@192.18.150.179:443#Canada+Oracle
-vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@190.93.244.51:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 2.59ms
-vless://4ef499ca-f784-4fef-8c76-afa530495644@162.159.134.234:2087?security=tls&sni=ShhProxyV2ray.digitalciity.Tech&type=ws&path=%2F&host=ShhProxyV2ray.digitalciity.Tech&encryption=none#US🇺🇸 | ShhProxyV2ray.digitalciity.Tech-2087 | 2.19ms
-vless://c17ee8d1-c7a3-4666-83da-d923ae45c31d@104.31.16.32:443?security=tls&sni=oniyx.fun&type=ws&path=%2Fuorpws&host=oniyx.fun&encryption=none#US🇺🇸 | oniyx.fun-443 | 57.63ms
-trojan://HdsUZmsHQW@148.113.141.99:443?security=tls&type=tcp#CA🇨🇦 | 148.113.141.99-443 | 19.85ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.24.20.239:443?security=tls&sni=c2mt.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mt.ciscocdn1.live-443 | 3.65ms
-ss://b9ad895b-12ac-40fc-a5ac-a5b2a1285001@advailo.com:443/?type=ws&amp;encryption=none&amp;host=3k.pureboy.eu.org&amp;path=%2F%3Fed%3D2048&amp;security=tls&amp;sni=3k.pureboy.eu.org#US%F0%9F%87%BA%F0%9F%87%B8%20
-vless://d360d11e-d426-4583-b55e-524ab1f0afa9@104.26.5.60:2096?security=tls&sni=worker-gentle-waterfall-6de8.tigerhungry4.workers.dev&fp=randomized&type=ws&path=%2F%3Fed%3D2048&host=worker-gentle-waterfall-6de8.tigerhungry4.workers.dev&encryption=none#US🇺🇸 | worker-gentle-waterfall-6de8.tigerhungry4.workers.dev-2096 | 29.21ms
-trojan://4d706727-996f-4427-930d-60f3bd414cf9@104.20.163.250:443?security=tls&sni=c2mk.ciscocdn1.live&allowInsecure=1&type=tcp#US🇺🇸 | c2mk.ciscocdn1.live-443 | 5.48ms
-trojan://your_password@aws-uae-1.f1cflineb.com:443?security=tls&sni=aws-uae-1.f1cflineb.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-uae-1.f1cflineb.com#US🇺🇸 | aws-uae-1.f1cflineb.com-443 | 16.59ms
-ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@172.99.190.87:9101#US_740
-vless://875e0c54-2690-4bfb-a4e5-d44bcf9d2a31@198.41.221.24:2053?encryption=none&security=tls&sni=kyd.cloudns.org&type=ws&host=kyd.cloudns.org&path=telegram%F0%9F%87%A8%F0%9F%87%B3%20%40wangcai_8%20%2F%3Fed%3D2048#US_youtube%40%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB%E5%B8%88_268
-ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.27:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.27-443+%7C+92.92ms
+trojan://pjdnqv@15.181.162.90:443?security=tls&sni=aws-us-nyc-1.f1rocketnode.com&allowInsecure=1&type=tcp#US🇺🇸 | aws-us-nyc-1.f1rocketnode.com-443 | 34.69ms
+trojan://tune7jerky7HAYRICK@45.79.19.196:443?security=tls&sni=ap-northeast-1.openssl3.com&allowInsecure=1&type=tcp#US🇺🇸 | ap-northeast-1.openssl3.com-443 | 93.42ms
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpjWVZZU3BMVk1KaEJCR2s3S0VnZlhW@ca.yangon.club:443#Canada+eSecureData
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo0QmlWVmh4WEIwWHlCRXZiVU9nd2pt@twlatx.dnset.com:8443#Canada+Telus
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3d1VSOGNPblJxNDVkTDYyRzVvTnZq@192.18.150.179:443#Canada+Oracle
+ss://YWVzLTI1Ni1nY206Rm9PaUdsa0FBOXlQRUdQ@172.99.190.149:7307#US_728
+vless://a2dadb95-3f15-4e1c-b517-0b54c336a5fd@104.21.12.150:8443?security=tls&sni=nl57.Vlessx.us&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=nl57.vlessx.us&encryption=none#US🇺🇸 | nl57.Vlessx.us-8443 | 5.31ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiNWY3MTk2NC03NmI3LTQxOWQtYmI5YS03MTJkMGUzMjQyMTE@edge-mars.themars.top:50011#Australia-01
+ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@38.68.135.19:5004#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_155
+ss://YWVzLTI1Ni1nY206UmV4bkJnVTdFVjVBRHhH@198.57.27.225:7002#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_26
+ss://YWVzLTI1Ni1nY206YzNiYzgxZWQtMzlhNC00NDc4LTg2MGQtZTYyZGI4M2VhNDBh@74.3.163.117:34386#Canada+eSecureData
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@146.59.55.84:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+146.59.55.84-443+%7C+102.1ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpQbHNRMnpORkd4aDhwZzc3T1lZdElK@44.192.77.61:20051#Us
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpXNzRYRkFMTEx1dzZtNUlB@series-a1.samanehha.co:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+series-a1.samanehha.co-443+%7C+118.88ms
+vless://a74068d7-7aee-4cc9-a0a8-954df6ceafd0@172.67.204.84:2082?security=&type=ws&path=%2F%3Fed%3D2048Telegram-v2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud-Telegram-%40V2rayNGcloud&host=sg1.vlessx.xyz&encryption=none#US🇺🇸 | sg1.vlessx.xyz-2082 | 1.9ms
+trojan://af6a3685-c423-4579-bfea-784c453d5e23@146.59.3.14:443?security=tls&allowInsecure=1&type=tcp#GB🇬🇧 | 146.59.3.14-443 | 104.34ms
+trojan://af6a3685-c423-4579-bfea-784c453d5e23@t5.teslacdn2.live:443?security=tls&sni=t5.teslacdn2.live&allowInsecure=1&type=tcp#US🇺🇸 | t5.teslacdn2.live-443 | 241.81ms
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.74:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.74-443+%7C+78.28ms
+ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@38.68.135.19:5003#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_408
+trojan://46d69a7e-9002-44a3-99c1-01c412f29726@185.176.24.105:443?security=tls&sni=k9de1.djjc.sbs&allowInsecure=1&type=tcp#US🇺🇸 | k9de1.djjc.sbs-443 | 211.09ms
+vless://0a1d78ed-b293-4e70-a1ca-fefab75167fa@172.67.132.41:80?security=&type=ws&path=%2F%3Fed%3D2048&host=nl42.vlessx.us&encryption=none#US🇺🇸 | nl42.vlessx.us-80 | 20.67ms
+trojan://dbf9bf9c-2c3f-474a-8031-d4c00666a989@fhcamd2.gaox.ml:443?security=tls&type=tcp&headerType=none#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_160
+trojan://a0514d9b-d109-47fd-b173-1e7f83268f21@104.16.183.101:443?security=tls&sni=tws23.kallepache.store&type=tcp#US🇺🇸 | tws23.kallepache.store-443 | 19.77ms
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.47.151:443?security=tls&sni=ada70.fupaj.com&alpn=http%2F1.1&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada70.fupaj.com-443 | 101.83ms
+vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.143:443?type=ws&encryption=none&host=current.ircp.online&path=%2F%3Fed%3D2048&security=tls&sni=current.ircp.online&alpn=http%2F1.1&fp=chrome&packetEncoding=xudp#US🇺🇸 | current.ircp.online-443 | 1.92ms
+trojan://01596265-168b-46a7-bcb7-25662c7a9546@188.114.98.0:443?security=tls&sni=hdfy7c1.foriran2.eu.org&allowInsecure=1&type=grpc&serviceName=fYn1ncaQMA1foaK1hpquM#US🇺🇸 | hdfy7c1.foriran2.eu.org-443 | 279.18ms
+vless://8f07dc3b-8a0f-430f-a0fc-25e07760502c@172.67.197.107:2095?security=&type=ws&path=%2F%3Fed%3D2048&host=nl54.vlessx.us&encryption=none#US🇺🇸 | nl54.vlessx.us-2095 | 1.94ms
+trojan://b291d129-ee55-4801-a9b8-b5316e5c37b7@138.2.113.84:443?security=tls&type=tcp&headerType=none#US15%E2%86%92v2cross.com_1
+trojan://c2b60d6a-a2f5-40ff-b7f9-f7658abcbf26@jgwxn2.gaox.ml:443?security=tls&type=tcp&headerType=none#AU_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_17
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:807#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-807+%7C+27.64ms
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.157.222:443?security=tls&sni=ada36.qvqag.com&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada36.qvqag.com-443 | 39.41ms
+ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@169.197.142.99:9101#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_401
+ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@198.57.27.225:8888#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_19
+ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@172.99.190.87:6679#US_578
+vless://8f07dc3b-8a0f-430f-a0fc-25e07760502c@104.21.12.150:2086?security=&type=ws&path=%2F%3Fed%3D2048%2FTelegram%3A%40https_config_injector&host=nl54.vlessx.us&encryption=none#US🇺🇸 | nl54.vlessx.us-2086 | 1.91ms
+vless://3ab1e793-7cd7-49a1-bb14-b68043888482@104.21.4.8:2096?security=tls&sni=nl25.vlessx.us&fp=randomized&type=ws&path=%2F%3Fed%3D2048&host=nl25.vlessx.us&encryption=none#US🇺🇸 | nl25.vlessx.us-2096 | 29.91ms
+vless://e4e80428-c1e2-44b5-a8ce-7b868d41b49b@47.74.37.50:80?security=&type=ws&path=%2F&host=jp3.rtacg.com&encryption=none#US🇺🇸 | jp3.rtacg.com-80 | 1.99ms
+vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.143:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 35.41ms
+ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@38.121.43.51:2376#US%F0%9F%87%BA%F0%9F%87%B8+%7C+38.121.43.51-2376+%7C+27.61ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTplMFpjTlJtS09aTHZzTEpiUlhuUnBm@35.87.41.80:20051#Us
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@143.244.43.216:110#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+143.244.43.216-110+%7C+15.82ms
+ss://YWVzLTI1Ni1nY206WEtGS2wyclVMaklwNzQ=@198.57.27.225:8008#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_28
+trojan://pjdnqv@aws-us-dallas-1.f1rocketnode.com:443?security=tls&sni=aws-us-dallas-1.f1rocketnode.com&type=tcp#US🇺🇸 | aws-us-dallas-1.f1rocketnode.com-443 | 51.84ms
+trojan://your_password@aws-se-stockholm-1.f1cflinea.com:443?security=tls&sni=aws-se-stockholm-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-se-stockholm-1.f1cflinea.com#US🇺🇸 | aws-se-stockholm-1.f1cflinea.com-443 | 103.91ms
+trojan://00ad4330-8d40-11ee-8d1a-1239d0255272@172.67.204.84:443?security=tls&sni=us1.test3.net&type=ws&path=%2Fhowdy&host=us1.test3.net#US🇺🇸 | us1.test3.net-443 | 10.64ms
+vless://a2dadb95-3f15-4e1c-b517-0b54c336a5fd@104.21.12.150:2082?security=&type=ws&path=%2F%3Fed%3D2048&host=nl57.vlessx.us&encryption=none#US🇺🇸 | nl57.vlessx.us-2082 | 19.58ms
+ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@198.57.27.225:5600#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_21
+vless://d360d11e-d426-4583-b55e-524ab1f0afa9@104.26.5.60:2096?security=tls&sni=worker-gentle-waterfall-6de8.tigerhungry4.workers.dev&fp=randomized&type=ws&path=%2F%3Fed%3D2048&host=worker-gentle-waterfall-6de8.tigerhungry4.workers.dev&encryption=none#US🇺🇸 | worker-gentle-waterfall-6de8.tigerhungry4.workers.dev-2096 | 68.57ms
+trojan://f10d81d8-ad4b-300a-825b-f54f515bd06e@us1.jjzgy.live:443?security=tls&sni=us1.jjzgy.live&allowInsecure=1&type=tcp#AU🇦🇺 | us1.jjzgy.live-443 | 200.04ms
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.148.254:443?security=tls&sni=ada21.npbjn.com&fp=chrome&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada21.npbjn.com-443 | 113.11ms
+ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@169.197.142.99:6697#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_280
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3WFNGbWdDdXdhVEVIUklRTUNmQlZO@twlatx.dnset.com:8443#Canada+Telus
+vless://f71fa550-fe5d-444e-917e-6bdf9c644a24@cdn1.cachexy.cf:80?security=&type=ws&path=%2F&host=hk1.rtacg.com&encryption=none#US🇺🇸 | hk1.rtacg.com-80 | 111.62ms
+vless://9bf9035c-f89c-4abb-ae78-1d0955ccbc86@172.67.199.79:80?security=&type=ws&path=%2F%3Fed%3D2048&host=nl34.vlessx.us&encryption=none#US🇺🇸 | nl34.vlessx.us-80 | 19.09ms
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.34:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.34-443+%7C+75.17ms
+trojan://tune7jerky7HAYRICK@96.126.123.244:443?security=tls&sni=ap-northeast-1.openssl3.com&allowInsecure=1&type=tcp#US🇺🇸 | ap-northeast-1.openssl3.com-443 | 164.88ms
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.26:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.26-443+%7C+76.31ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:808#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-808+%7C+27.7ms
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206bDQrR21zWXVZaFdJMWdqWFBhOHdtSHB6Z2VDb2hzOEgrbmdUNTVGcWQvVT06aWgzVHNraDJCWjBJSU1scWRid1hCU29TUU9BKzFrNFoybGRvMFVJTXpvVT0=@us1.dart-vpn.com:443#US%2BDataCamp+1
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.158.206:443?security=tls&sni=mt1.nabsk.com&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | mt1.nabsk.com-443 | 95.62ms
+ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@169.197.142.99:5004#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_406
+trojan://your_password@3.27.95.146:443?security=tls&sni=aws-aus-sydney-1.f1rocketnode.com&type=tcp#AU🇦🇺 | aws-aus-sydney-1.f1rocketnode.com-443 | 215.54ms
+trojan://d7fd8aaa-4581-4281-80aa-4b63e5e1f157@jgwld2.gaox.ml:443?security=tls&type=tcp&headerType=none#GB_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_54
+vless://a9202ced-3185-489c-8b28-74e9a00d894d@dongtaiwang3.com:443?security=tls&allowInsecure0&flow=&type=ws&fp=chrome&pbk=&sid=&sni=dongtaiwang.dtku47.xyz&serviceName=&path=/eobjws&host=#Canada_vless_0
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada145.lefxb.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada145.lefxb.com-443 | 82.43ms
+trojan://dongtaiwang.com@trojan33.free4444.xyz:443?security=tls&type=tcp&headerType=none#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_135
+vless://64543a64-0d50-434c-8924-5fc6b3022f79@172.67.172.214:80?security=&type=ws&path=%2Fbackup&host=QS8EQM.SPamDEtEcToR.wOrlD&encryption=none#US🇺🇸 | QS8EQM.SPamDEtEcToR.wOrlD-80 | 203.63ms
+trojan://3628ca8d-6371-45df-879c-2d3e5d110b51@24.199.70.112:443?security=tls&allowInsecure=1&type=tcp#US🇺🇸 | 24.199.70.112-443 | 72.27ms
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@5.161.132.6:443?security=tls&sni=ada145.lefxb.com&allowInsecure=1&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada145.lefxb.com-443 | 113.7ms
+trojan://your_password@52.56.183.187:443?security=tls&sni=aws-uk-london-1.f1rocketnode.com&type=tcp#GB🇬🇧 | aws-uk-london-1.f1rocketnode.com-443 | 108.04ms
+vless://4ef499ca-f784-4fef-8c76-afa530495644@162.159.134.234:2087?security=tls&sni=ShhProxyV2ray.digitalciity.Tech&type=ws&path=%2F&host=ShhProxyV2ray.digitalciity.Tech&encryption=none#US🇺🇸 | ShhProxyV2ray.digitalciity.Tech-2087 | 2.18ms
+ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@169.197.142.99:3306#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_159
+vless://eeb1d180-58df-4797-b88f-e94802bcabac@serv3.alpha2.sbs:2083?security=tls&sni=bia2.alpha5.top&fp=chrome&type=grpc&serviceName=%40V2ray_Alpha+%40V2ray_Alpha+%40V2ray_Alpha&encryption=none#US🇺🇸 | bia2.alpha5.top-2083 | 434.83ms
+vless://b8ce0288-e7c4-482a-be24-364f7d724585@104.21.4.8:8880?security=&type=ws&path=%2F%3Fed%3D2048&host=nl20.vlessx.us&encryption=none#US🇺🇸 | nl20.vlessx.us-8880 | 25.29ms
+ss://YWVzLTI1Ni1nY206UENubkg2U1FTbmZvUzI3@169.197.142.99:8090#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_407
+vless://72090163-17a9-4200-893e-215786a48523@104.21.70.25:8080?security=&type=ws&path=%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray%2C%40BetV2ray&host=hk7.vlessx.xyz&encryption=none#US🇺🇸 | hk7.vlessx.xyz-8080 | 28.4ms
+trojan://0ad5e311-7189-4124-ac8f-f828b681f10e@172.67.196.38:443?security=tls&sni=c5mt.cdncisco.org&type=tcp#US🇺🇸 | c5mt.cdncisco.org-443 | 2.17ms
+vless://0773256c-d020-436d-afea-6eee7cb6c872@dongtaiwang2.com:443?security=tls&allowInsecure=0&flow=&type=ws&fp=chrome&pbk=&sid=&sni=xray1.freegradely.xyz&serviceName=&path=/bodhws&host=xray1.freegradely.xyz#Canada_vless_1
+vless://c17ee8d1-c7a3-4666-83da-d923ae45c31d@104.31.16.32:443?security=tls&sni=oniyx.fun&type=ws&path=%2Fuorpws&host=oniyx.fun&encryption=none#US🇺🇸 | oniyx.fun-443 | 467.81ms
+vless://e5daf8cb-6cef-48af-b3c6-8f71cac01479@104.21.4.8:2052?security=&type=ws&path=%2F%3Fed%3D2048&host=nl22.vlessx.us&encryption=none#US🇺🇸 | nl22.vlessx.us-2052 | 30.61ms
+ss://YWVzLTI1Ni1nY206ZzVNZUQ2RnQzQ1dsSklk@198.57.27.225:5004#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_31
+trojan://d2698cf9-c47e-455c-8384-12e642cbba15@89.116.180.179:443?security=tls&sni=p6us4.pqjc.buzz&type=ws&path=%2Fpq%2Fus4&host=p6us4.pqjc.buzz#US🇺🇸 | p6us4.pqjc.buzz-443 | 12.62ms
+trojan://f10d81d8-ad4b-300a-825b-f54f515bd06e@sg2.jjzgy.live:443?security=tls&sni=sg2.jjzgy.live&allowInsecure=1&type=tcp#AU🇦🇺 | sg2.jjzgy.live-443 | 497.64ms
+ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@198.57.27.225:9102#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_22
+ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@38.68.135.19:9102#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_154
+vless://9a237f52-35f4-411f-a544-f5b574324c6b@104.20.163.162:80?security=&type=ws&path=%2F&host=bia-to-channel4.unlimiteddev.shop&encryption=none#US🇺🇸 | bia-to-channel4.unlimiteddev.shop-80 | 2.05ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiNWY3MTk2NC03NmI3LTQxOWQtYmI5YS03MTJkMGUzMjQyMTE@edge-earth.themars.top:50011#Australia-02
+trojan://pjdnqv@aws-us-nyc-1.f1rocketnode.com:443?security=tls&sni=aws-us-nyc-1.f1rocketnode.com&type=tcp#US🇺🇸 | aws-us-nyc-1.f1rocketnode.com-443 | 13.73ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpITmtra2N4UmdDa1BEUTBaMGxuN3d4@ca.yangon.club:443#Canada+eSecureData
+trojan://21c6c7cb-332b-4a0c-9ad7-dff9c3111442@104.21.19.64:443?security=tls&sni=us02web.zoom.us&type=tcp#US🇺🇸 | us02web.zoom.us-443 | 20.19ms
+ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@172.99.190.87:9101#US_740
+trojan://your_password@aws-uae-1.f1cflineb.com:443?security=tls&sni=aws-uae-1.f1cflineb.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-uae-1.f1cflineb.com#US🇺🇸 | aws-uae-1.f1cflineb.com-443 | 46.73ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:809#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-809+%7C+24.55ms
+trojan://211f5876-8c89-4d97-9004-ff16acddd506@51.38.71.175:80?security=tls&type=tcp&headerType=none#GB_51.38.71.175_07012023ede7-1389
+hysteria://172.105.18.102:8443/?peer=ca-hysteria.racevpn.com&upmbps=10&downmbps=50&obfs=xplus&obfsParam=qGDBJ7euzN#Canada%E2%80%A0%F0%9F%87%A8%F0%9F%87%A6
+vless://2014e8ab-f385-40e2-8c59-46b138c4c4dc@185.162.228.3:80?security=&type=ws&path=%2Fbackup&host=cDAvHA.dL-oNlInEdOcTOR.Bio&encryption=none#GB🇬🇧 | cDAvHA.dL-oNlInEdOcTOR.Bio-80 | 252.39ms
+vless://dfa2c9c6-2580-4f30-a1ba-8128df1f0073@172.67.204.84:2052?security=&type=ws&path=%40iCloudYshop+%40iCloudYshop+%40iCloudYshop+%40iCloudYshop+%40iCloudYshop+%40iCloudYshop+%40iCloudYshop+%40iCloudYshop&host=nl44.vlessx.us&encryption=none#US🇺🇸 | nl44.vlessx.us-2052 | 19.12ms
+ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@169.197.142.99:5001#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_402
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206UjFsS0d2TEU5bGxyc3JFOCtsalNjYVRTT1BUWnozTFpHYXZuOU8zWHBoVT06RVhtQVNicHh3b2huOTN4aHQzM21ZcG8vZnltWHlUS3JtM3Y0RERNTFo4RT0=@us2.dart-vpn.com:443#US%2BDataCamp+2
+ss://YWVzLTI1Ni1nY206Rm9PaUdsa0FBOXlQRUdQ@38.68.135.19:7306#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_156
+vless://d342d11e-d424-4583-b36e-524ab1f0afa4@[::ffff:104.18.186.83]:443?security=tls&sni=xxx.donated001.workers.dev&type=ws&path=%2F%40V2VIPCHANNEL%2F%3Fed%3D2048&host=xxx.donated001.workers.dev&encryption=none#US🇺🇸 | xxx.donated001.workers.dev-443 | 60.9ms
+ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@172.99.190.149:443#US_597
+trojan://xxoo@146.19.230.241:443?security=tls&type=tcp&headerType=none#GB_146.19.230.241_070620233b3e-932
+trojan://0cb2cd1f-870b-485c-914a-60aba39eed39@37.48.65.144:443?security=tls&sni=tt6.tjvpn.top&type=tcp#US🇺🇸 | tt6.tjvpn.top-443 | 694.89ms
+vless://fd80f56e-93f3-4c85-b2a8-c77216c509a7@195.85.59.95:2052?security=&type=ws&path=%2Fvls%3Fed%3D2048&host=asia.tunn.free.hr&encryption=none#US🇺🇸 | asia.tunn.free.hr-2052 | 2.35ms
+trojan://20210200-49c6-11ed-a9ef-1239d0255272@172.67.24.177:443?security=tls&sni=kipi.covid19.go.id&allowInsecure=1&type=tcp#US🇺🇸 | kipi.covid19.go.id-443 | 326.38ms
+trojan://xl87654321@199.59.243.225:443?security=tls&sni=stonebreak.online&allowInsecure=1&type=tcp#US🇺🇸 | stonebreak.online-443 | 192.4ms
+ss://YWVzLTI1Ni1nY206a0RXdlhZWm9UQmNHa0M0@198.57.27.225:8881#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_30
+vless://535c22af-c632-434e-9cff-33df14ed8f2a@104.16.29.8:80?security=&type=ws&path=%2F&host=gdaf0Z.PrE-loAD.SiTe&encryption=none#GB🇬🇧 | gdaf0Z.PrE-loAD.SiTe-80 | 89.02ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpYbVBzeURiTlVFaUpabjB0allob0Fa@192.18.150.179:443#Canada+Oracle
+trojan://ZVqSTHcLasKIKGnzjnr8aHRPATiaTj5U@23.106.33.156:443?security=tls&sni=scottie.golfland.club&type=tcp#GB🇬🇧 | scottie.golfland.club-443 | 370.96ms
+ss://YWVzLTI1Ni1nY206UmV4bkJnVTdFVjVBRHhH@198.57.27.225:7001#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_27
+vless://875e0c54-2690-4bfb-a4e5-d44bcf9d2a31@198.41.221.24:2053?encryption=none&security=tls&sni=kyd.cloudns.org&type=ws&host=kyd.cloudns.org&path=telegram%F0%9F%87%A8%F0%9F%87%B3%20%40wangcai_8%20%2F%3Fed%3D2048#US_youtube%40%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB%E5%B8%88_268
+vless://376b9861-2fc6-4647-959c-18185cd9c95a@ip2.nofiltering2.sbs:443?security=tls&sni=lmn59.sbs&type=ws&path=%2Ffflsws&host=lmn59.sbs&encryption=none#US🇺🇸 | lmn59.sbs-443 | 2.1ms
+trojan://your_password@35.183.238.42:443?security=tls&sni=aws-ca-central-1.f1rocketnode.com&allowInsecure=1&type=tcp#CA🇨🇦 | aws-ca-central-1.f1rocketnode.com-443 | 47.11ms
+ss://YWVzLTI1Ni1nY206ZTRGQ1dyZ3BramkzUVk=@169.197.142.99:9102#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_404
+vless://1b6ae0f5-01dc-4b96-bca9-31c672dcf0aa@50.7.85.221:443?security=tls&sni=mohsenfitshr.wibibin259.workers.dev&type=ws&path=%2F%3Fed%3D2048&host=mohsenfitshr.wibibin259.workers.dev&encryption=none#US🇺🇸 | mohsenfitshr.wibibin259.workers.dev-443 | 50.88ms
+vless://65fa5d79-efca-44dd-941e-8aa8014a780f@8.219.97.179:2095?security=&type=ws&path=%2F%3Fed%3D2048&host=sg2.vlessx.xyz&encryption=none#US🇺🇸 | sg2.vlessx.xyz-2095 | 10.47ms
+trojan://your_password@aws-ca-central-1.f1cflinea.com:443?security=tls&sni=aws-ca-central-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-ca-central-1.f1cflinea.com#US🇺🇸 | aws-ca-central-1.f1cflinea.com-443 | 34.85ms
+trojan://your_password@172.67.165.204:443?security=tls&sni=aws-aus-sydney-1.f1cflinea.com&type=ws&path=%2Ff1rocket&host=aws-aus-sydney-1.f1cflinea.com#US🇺🇸 | aws-aus-sydney-1.f1cflinea.com-443 | 82.29ms
+vless://b91131f7-c382-4be8-9e7d-a373a3d23d77@172.67.193.36:443?security=tls&sni=finland.kanal-tel-nufilter.site&fp=chrome&type=grpc&serviceName=Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER&encryption=none#US🇺🇸 | finland.kanal-tel-nufilter.site-443 | 2.17ms
+trojan://0346cf80-8b9b-11ee-ac12-1239d0255272@162.159.138.232:443?security=tls&sni=us1.test3.net&type=ws&path=%2Fhowdy&host=us1.test3.net#US🇺🇸 | us1.test3.net-443 | 73.18ms
+vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@172.66.209.117:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 39.82ms
+trojan://00ad4330-8d40-11ee-8d1a-1239d0255272@104.21.69.44:443?security=tls&sni=us1.test3.net&type=ws&path=%2Fhowdy&host=us1.test3.net#US🇺🇸 | us1.test3.net-443 | 27.64ms
+vless://b3f17d95-32ef-4a73-aa31-329417a6b72c@172.67.155.64:443?security=tls&sni=mast.kanal-tel-nufilter.site&fp=firefox&type=grpc&serviceName=Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER&encryption=none#US🇺🇸 | mast.kanal-tel-nufilter.site-443 | 7.94ms
+trojan://3ad41c7b-b772-3f96-9986-66d1a2b79820cmynw@45.79.73.131:443?security=tls&sni=kaizen-us-14.cmy-dns.com&allowInsecure=1&type=tcp#US🇺🇸 | kaizen-us-14.cmy-dns.com-443 | 321.86ms
+vless://376b9861-2fc6-4647-959c-18185cd9c95a@216.116.134.227:443?security=tls&sni=lmn59.sbs&type=ws&path=%2Ffflsws&host=lmn59.sbs&encryption=none#US🇺🇸 | lmn59.sbs-443 | 1.58ms
+ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@172.99.190.87:8118#US_772
+ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@198.57.27.225:6697#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_29
+vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@104.16.237.74:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 47.52ms
+vless://d342d11e-d424-4583-b36e-524ab1f0afa4@172.67.161.104:8443?security=tls&sni=edgood.king361.cf&type=ws&path=%2F%3Fed%3D2048&host=edgood.king361.cf&encryption=none#US🇺🇸 | edgood.king361.cf-8443 | 438.09ms
+vless://f308fcb0-f47b-47eb-8b08-f88eb834bc66@104.21.69.44:8443?security=tls&sni=de9.vlessx.xyz&fp=randomized&type=ws&path=Telegram-v2rayNGcloud-Telegram-%40v2rayNGcloud-Telegram-%40v2rayNGcloud&host=de9.vlessx.xyz&encryption=none#US🇺🇸 | de9.vlessx.xyz-8443 | 13.56ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo4am9DdHd3c05IdEtNeENibFBkQ2xP@us1.dart-vpn.com:443#US
+vless://6847f901-3938-4083-9fd9-2de96bcb6b9f@104.31.16.98:443?security=tls&sni=hdfy2cdn1.cpionline.co&type=ws&path=%2Fvncf0bfUuZ6QgIre2fcLjqskl&host=hdfy2cdn1.cpionline.co&encryption=none#US🇺🇸 | hdfy2cdn1.cpionline.co-443 | 27.66ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:811#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-811+%7C+15.77ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:800#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-800+%7C+22.83ms
+vless://7b671cd2-233d-406c-88da-1c687727dc52@dongtaiwang3.com:443?security=tls&allowInsecure=0&flow=&type=ws&fp=chrome&pbk=&sid=&sni=fr.freeh1.xyz&serviceName=&path=/kfhaws&host=fr.freeh1.xyz#Canada_vless_0
+ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@38.68.135.19:3389#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_405
+ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@198.57.27.225:8118#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_23
+vless://8a5d06d3-67af-43db-9632-54474883b3eb@170.114.46.79:443?security=tls&sni=test.worse.workers.dev&type=ws&path=%2F%3Fed%3D2048&host=test.worse.workers.dev&encryption=none#US🇺🇸 | test.worse.workers.dev-443 | 54.79ms
+ss://YWVzLTI1Ni1nY206S2l4THZLendqZWtHMDBybQ==@198.57.27.225:5500#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_34
+vless://b91131f7-c382-4be8-9e7d-a373a3d23d77@95.217.188.144:443?security=tls&sni=finland.kanal-tel-nufilter.site&fp=chrome&type=grpc&serviceName=Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER&encryption=none#US🇺🇸 | finland.kanal-tel-nufilter.site-443 | 2.16ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo2Q3U3Y2JSSUVuUnpTUHdGTlZLdnl6@192.18.150.179:443#Canada+Oracle
+ss://YWVzLTI1Ni1nY206VEV6amZBWXEySWp0dW9T@198.57.27.225:6679#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_32
+ss://b9ad895b-12ac-40fc-a5ac-a5b2a1285001@advailo.com:443/?type=ws&amp;encryption=none&amp;host=3k.pureboy.eu.org&amp;path=%2F%3Fed%3D2048&amp;security=tls&amp;sni=3k.pureboy.eu.org#US%F0%9F%87%BA%F0%9F%87%B8%20
+vless://b91131f7-c382-4be8-9e7d-a373a3d23d77@104.21.63.160:443?security=tls&sni=finland.kanal-tel-nufilter.site&fp=chrome&type=grpc&serviceName=Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER&encryption=none#US🇺🇸 | finland.kanal-tel-nufilter.site-443 | 14.97ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpQNEp1SzFMWVlLV0dtemdhRk5qdUI5@192.18.150.179:443#Canada+Oracle
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.25:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.25-443+%7C+74.48ms
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.28:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.28-443+%7C+75.16ms
+vless://cc527979-0c79-4f88-c498-606a9edf8b68@172.67.204.84:2053?security=tls&sni=bye.kanal-tel-nufilter.site&fp=firefox&type=ws&path=%2FTelegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER-Telegram%3A%40NUFiLTER&host=bye.kanal-tel-nufilter.site&encryption=none#US🇺🇸 | bye.kanal-tel-nufilter.site-2053 | 21.16ms
+vless://6e34f2c5-6c71-4010-c292-10d05ef4a9a2@188.114.97.1:443?security=tls&sni=current.iraniancp.fun&alpn=http%2F1.1&fp=chrome&type=ws&path=%2F%3Fed%3D2048&host=current.iraniancp.fun&encryption=none#US🇺🇸 | current.iraniancp.fun-443 | 64.57ms
+vless://acca9938-3695-43df-872a-9c7d2b11f3bd@172.67.193.36:8443?security=tls&sni=felinetest.site&type=ws&path=%2F&host=felinetest.site&encryption=none#US🇺🇸 | felinetest.site-8443 | 14.78ms
+ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@169.197.142.99:8118#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_412
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:806#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-806+%7C+28.86ms
+vless://a61eb3a2-1adb-48cb-ab46-ce225769de16@ada70.fupaj.com:443?security=tls&type=ws&path=users%3Fed%3D2048&encryption=none#US🇺🇸 | ada70.fupaj.com-443 | 164.44ms
+ss://YWVzLTI1Ni1nY206Y2RCSURWNDJEQ3duZklO@51.68.206.229:8118#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+51.68.206.229-8118+%7C+80.32ms
+vless://a6784d39-64c1-4ead-9845-9b1b95753718@104.21.72.166:443?security=tls&sni=joinbede.zedmodeon.lat&alpn=h2&fp=chrome&type=grpc&serviceName=%40ZEDMODEON&encryption=none#US🇺🇸 | joinbede.zedmodeon.lat-443 | 24.57ms
+trojan://your_password@aws-ar-buenosaires-1.f1cflinea.com:443?security=tls&sni=aws-ar-buenosaires-1.f1cflinea.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-ar-buenosaires-1.f1cflinea.com#US🇺🇸 | aws-ar-buenosaires-1.f1cflinea.com-443 | 18.2ms
+vless://161f6b0b-47c3-487e-bffd-90b74fb67539@104.21.48.84:8443?security=tls&sni=cloud.barfak123.eu.org&fp=chrome&type=grpc&serviceName=%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF%40iP_CF&encryption=none#US🇺🇸 | cloud.barfak123.eu.org-8443 | 202.97ms
+trojan://your_password@104.21.7.241:443?security=tls&sni=aws-sg-1.f1cflineb.com&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-sg-1.f1cflineb.com#US🇺🇸 | aws-sg-1.f1cflineb.com-443 | 34.48ms
+ss://YWVzLTI1Ni1nY206S2l4THZLendqZWtHMDBybQ==@38.68.135.19:5500#US_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_491
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@134.195.196.178:803#CA%F0%9F%87%A8%F0%9F%87%A6+%7C+134.195.196.178-803+%7C+30.53ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiNWY3MTk2NC03NmI3LTQxOWQtYmI5YS03MTJkMGUzMjQyMTE@edge-hncm.themars.top:50011#Australia-03
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpyMEcyT1dkRnFxZmN6MzRMWXI5aW56@13.87.75.178:7294#GB_13.87.75.178_070620231df3-821
+ss://YWVzLTI1Ni1jZmI6YXNkS2thc2tKS2Zuc2E=@198.244.231.27:443#GB%F0%9F%87%AC%F0%9F%87%A7+%7C+198.244.231.27-443+%7C+80.13ms
+trojan://mnk8fd@104.21.69.52:443?security=tls&sni=aws-us-oregon-1.f1cflinec.com&alpn=http%2F1.1&fp=chrome&type=ws&path=%2Ff1rocket&host=aws-us-oregon-1.f1cflinec.com#US🇺🇸 | aws-us-oregon-1.f1cflinec.com-443 | 35.72ms
+ss://YWVzLTI1Ni1nY206UENubkg2U1FTbmZvUzI3@172.99.190.149:8090#US_744
+ss://YWVzLTI1Ni1nY206WEtGS2wyclVMaklwNzQ=@198.57.27.225:8009#CA_%E4%BA%8C%E7%88%B7%E7%BF%BB%E5%A2%99%20https%3A%2F%2F1808.ga%20%E8%8A%82%E7%82%B9_20
+trojan://06a8765e-ccd0-3cdb-ab8d-c1d92e6b5f54@194.147.16.123:52560?security=tls&allowInsecure=1&type=tcp#GB🇬🇧 | 194.147.16.123-52560 | 80.1ms
+vless://9a237f52-35f4-411f-a544-f5b574324c6b@104.16.0.163:80?security=&type=ws&path=%2F&host=bia-to-channel4.unlimiteddev.shop&encryption=none#US🇺🇸 | bia-to-channel4.unlimiteddev.shop-80 | 1.93ms
+vless://323bb776-a9eb-4c00-b754-bd17e022dbee@104.27.13.198:80?security=&type=ws&path=%2F&host=bia-to-channel3.unlimiteddev.shop&encryption=none#US🇺🇸 | bia-to-channel3.unlimiteddev.shop-80 | 18.71ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@172.245.218.162:800#US_1040
+trojan://0ad5e311-7189-4124-ac8f-f828b681f10e@104.21.60.120:443?security=tls&sni=c5mt.cdncisco.org&type=tcp#US🇺🇸 | c5mt.cdncisco.org-443 | 136.63ms
