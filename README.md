@@ -3,7 +3,7 @@
 This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
 
 
-### ✅ Automatic Tested Configs : [ Heavy Subscription Link (500 config) ](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) | [ Lite Subscription Link (100 config)](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mix) 
+### ✅ Automatic Tested Configs : [ Heavy Subscription (500 config) ](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) | [ Lite Subscription  (100 config)](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mix) 
 
 ## Protocol-specific :
 
