@@ -3,7 +3,17 @@
 This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
 
 
-### ✅ Tested Configs : [ Heavy Subscription (500 config) ](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) | [ Lite Subscription  (100 config)](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mix) 
+### ✅ Tested Configs : 
+
+<img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/6626abb1-2280-4273-89e0-51086c5f07dd" width="50" height="50">  [HamrahAval](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto)
+
+
+<img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/043634fd-dd50-44ec-9742-656d02e38b96" width="80" height="50"> [Irancell](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mix)
+
+
+
+
+
 
 ## Protocol-specific :
 
