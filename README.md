@@ -39,11 +39,10 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ## Location-specific :
 
-| Country Codes | Subscription Link                                            |  Notes                                                                                                 |
+| Region | Subscription Link                                            |  Notes                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) | This link provides a subscription to servers located in the United States, the United Kingdom, Canada, Australia, Ireland, and New Zealand. It is suitable for users that want to use servers in these areas for specific reasons, such as faster connection speeds or better streaming quality. |
-| `DE`, `FR`, `NL`, `FI`, `IT`, `AL`, `TR`, `SE`   | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) | This link provides a subscription to servers located in Germany, France, the Netherlands, Finland, Italy, Albania, Turkey, and Sweden. It is ideal for users that want to access content from these regions. |
-| `IR`    | [IRAN Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/IRAN) | This link provides a subscription to servers located in Iran. It is tailored for users who are in Iran or those who want to access content from Iran. |
+| Europian  | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) | This link provides a subscription to servers located in Germany, France, the Netherlands, Finland, Italy, Albania, Turkey, and Sweden. It is ideal for users that want to access content from these regions. |
 
 ## Security-specific :
 
