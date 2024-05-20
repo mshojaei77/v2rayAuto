@@ -47,14 +47,6 @@ This script is designed to automatically update V2Ray configuration files from v
   - [v2rayA](https://github.com/v2rayA/v2rayA)
   - [NekoRay](https://github.com/Matsuridayo/nekoray)
 
-
-## Location-specific :
-
-| Region | Subscription Link                                            |  Notes                                                                                                 |
-|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| `US`, `GB`, `CA`, `AU`, `IE`, `NZ`  | [English Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/English) | This link provides a subscription to servers located in the United States, the United Kingdom, Canada, Australia, Ireland, and New Zealand. It is suitable for users that want to use servers in these areas for specific reasons, such as faster connection speeds or better streaming quality. |
-| Europian  | [Europe Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Europe) | This link provides a subscription to servers located in Germany, France, the Netherlands, Finland, Italy, Albania, Turkey, and Sweden. It is ideal for users that want to access content from these regions. |
-
 ## Security-specific :
 
 | Security                    | Subscription Link                                            | Notes                                                                                                 |
@@ -70,12 +62,6 @@ This script is designed to automatically update V2Ray configuration files from v
 | TCP          | [TCP Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/tcp) | This link provides a subscription to servers that use the TCP protocol, which is a reliable and commonly used protocol for internet communication. It is ideal for users who prefer the stability of TCP connections.  |
 | gRPC          | [gRPC Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/grpc) | This link provides a subscription to servers that use the gRPC protocol, which is a high-performance, open-source framework for remote procedure calls (RPCs). It is suitable for users who need to use gRPC for their applications. |
 
-## Ping-specific :
-
-| Security                    | Subscription Link                                            | Notes                                                                                                 |
-|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| High Ping                       | [High Ping Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Highping) | This link provides a subscription to servers with higher ping times, which might be necessary for users with slower internet connections or those who prioritize reliability over speed.  |
-| Medium Ping          | [Medium Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/Midping) | This link provides a subscription to servers with medium ping times, offering a balance between speed and reliability. It is ideal for users with moderate internet speeds.  |
 
 
 ## Oprator-specific (on  Worker)
