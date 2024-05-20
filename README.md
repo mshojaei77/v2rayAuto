@@ -4,20 +4,9 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ### ✅ Tested Configs : 
 
-
-
 # [Mix](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mix) <img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/ce8d713e-0baf-44a0-94cd-2cfa0c4e0001" width="30" height="30"> 
 
-# [HamrahAval](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) <img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/6626abb1-2280-4273-89e0-51086c5f07dd" width="40" height="40"> 
-
- #  [Irancell](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/mtn) <img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/043634fd-dd50-44ec-9742-656d02e38b96" width="60" height="40">
-
-
-
-
-
-
-
+## [HamrahAval](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/auto) <img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/6626abb1-2280-4273-89e0-51086c5f07dd" width="30" height="30"> 
 
 ## Protocol-specific :
 
