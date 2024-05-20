@@ -26,6 +26,28 @@ This script is designed to automatically update V2Ray configuration files from v
 
 ⚠  **Some Subscription links may contain large amounts of Configurations, and may cause errors and overload.**
 
+
+## Clients
+- Windows
+  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
+  - [NekoRay](https://github.com/Matsuridayo/nekoray)
+  - [v2rayN](https://github.com/2dust/v2rayN)
+
+- Android
+  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
+  -  [v2rayNG](https://github.com/2dust/v2rayNG)
+
+- iOS & macOS arm64
+  - [Mango](https://github.com/arror/Mango)
+  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
+- macOS arm64 & x64
+  - [V2rayU](https://github.com/yanue/V2rayU)
+  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
+- Linux
+  - [v2rayA](https://github.com/v2rayA/v2rayA)
+  - [NekoRay](https://github.com/Matsuridayo/nekoray)
+
+
 ## Location-specific :
 
 | Region | Subscription Link                                            |  Notes                                                                                                 |
@@ -81,24 +103,3 @@ sub link | oprator
 
 
 thanks vfarid for [worker projects](https://github.com/vfarid/v2ray-worker-sub)
-
-## GUI Clients
-- Windows
-  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
-  - [NekoRay](https://github.com/Matsuridayo/nekoray)
-  - [v2rayN](https://github.com/2dust/v2rayN)
-
-- Android
-  - [HiddifyNext](https://github.com/hiddify/hiddify-next)
-  -  [v2rayNG](https://github.com/2dust/v2rayNG)
-
-- iOS & macOS arm64
-  - [Mango](https://github.com/arror/Mango)
-  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
-- macOS arm64 & x64
-  - [V2rayU](https://github.com/yanue/V2rayU)
-  - [FoXray](https://apps.apple.com/app/foxray/id6448898396)
-- Linux
-  - [v2rayA](https://github.com/v2rayA/v2rayA)
-  - [NekoRay](https://github.com/Matsuridayo/nekoray)
-
