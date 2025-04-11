@@ -1,6 +1,6 @@
 # V2Ray Auto Configuration Updater
 
-This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
+This script is designed to automatically update V2Ray configuration files from various sources and push as subscription links.
 
 ### Telegram Channels
 | Channel                    | Subscription Link                                            |
