@@ -36,12 +36,23 @@ PROXY_PORT = os.environ.get("PROXY_PORT")
 PROXY_USERNAME = os.environ.get("PROXY_USERNAME")
 PROXY_PASSWORD = os.environ.get("PROXY_PASSWORD")
 
-# Regex to find vless and vmess links (captures the whole link)
-V2RAY_REGEX = r"(vless|vmess)://[^\s\"\'<>)\[\]]+"
+# Regex to find protocol links (captures the whole link)
+V2RAY_REGEX = r"(vless|vmess|trojan|ss|hy2)://[^\s]+"
 
 # Additional simple patterns as backup
 VLESS_PATTERN = "vless://"
 VMESS_PATTERN = "vmess://"
+TROJAN_PATTERN = "trojan://"
+SS_PATTERN = "ss://"
+HY2_PATTERN = "hy2://"
+
+def validate_config_link(link):
+    """Basic validation - just ensure it starts with one of the protocols"""
+    protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
+    for protocol in protocols:
+        if link.startswith(protocol) and len(link) > len(protocol) + 5:  # At least 5 chars more than protocol
+            return True
+    return False
 
 def update_readme(channel_username, channel_url, num_links, output_filename):
     """Update the README.md file with the subscription link"""
@@ -425,26 +436,23 @@ async def main():
 
                         # Method 1: Use regex to find all V2Ray links
                         try:
-                            # Find all matches using the comprehensive regex
-                            # Make sure the regex matches the full vless/vmess link
+                            # Find all matches using the comprehensive regex that ends at whitespace
                             full_matches = re.findall(V2RAY_REGEX, message.message) 
                             for config in full_matches:
-                                # Combine the protocol and the rest of the link if regex captures parts
-                                # Assuming V2RAY_REGEX captures the whole link directly now
-                                full_link = config # If regex captures the whole link
-                                # Example if regex captured ('vless', '://...'): full_link = config[0] + config[1]
-                                if full_link not in found_configs:
-                                    if VERBOSE:
-                                        print(f"Found via regex: {full_link[:30]}...") # Print truncated config
-                                    found_configs.add(full_link)
+                                # Basic validation to ensure it's not just the protocol prefix
+                                if validate_config_link(config):
+                                    if config not in found_configs:
+                                        if VERBOSE:
+                                            print(f"Found via regex: {config[:30]}...") # Print truncated config
+                                        found_configs.add(config)
                         except Exception as e:
-                            # Only log regex errors if verbose, as they can be noisy
+                            # Only log regex errors if verbose
                             if VERBOSE:
                                print(f"Minor error during regex matching in {current_channel_username}: {e}")
 
-                        # Backup Method: Simple String Search (less reliable but catches edge cases)
+                        # Backup Method: Simple String Search with improved link extraction
                         msg_text = message.message
-                        protocols = [VLESS_PATTERN, VMESS_PATTERN]
+                        protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
                         for protocol in protocols:
                             start_index = 0
                             while True:
@@ -452,21 +460,24 @@ async def main():
                                 if start_index == -1:
                                     break # No more occurrences of this protocol
 
-                                # Find the end of the link (delimiters)
-                                end_index = start_index + len(protocol)
-                                while end_index < len(msg_text) and msg_text[end_index] not in " \\t\\n\\r\\\"'<>)[]":
-                                    end_index += 1
-
+                                # Find the end of the link at the first whitespace
+                                end_index = len(msg_text)
+                                for i in range(start_index, len(msg_text)):
+                                    if msg_text[i].isspace():
+                                        end_index = i
+                                        break
+                                
+                                # Extract the complete link up to whitespace
                                 link = msg_text[start_index:end_index]
-
-                                # Basic validation and check for uniqueness
-                                if link.startswith(protocol) and link not in found_configs:
+                                
+                                # Basic validation and add if unique
+                                if validate_config_link(link) and link not in found_configs:
                                     if VERBOSE:
-                                         print(f"Found via backup search: {link[:30]}...")
+                                        print(f"Found via backup search: {link[:30]}...")
                                     found_configs.add(link)
 
-                                # Move start_index past the end of the found link
-                                start_index = end_index
+                                # Move start_index past this link
+                                start_index = end_index + 1
 
                     # Display count of found links periodically in the progress bar
                     if channel_messages_scanned % 100 == 0:

@@ -34,10 +34,21 @@ PROXY_USERNAME = os.environ.get("PROXY_USERNAME")
 PROXY_PASSWORD = os.environ.get("PROXY_PASSWORD")
 
 # Regex patterns
-V2RAY_REGEX = r"(vless|vmess)://[^\s\"\'<>)\[\]]+"
+V2RAY_REGEX = r"(vless|vmess|trojan|ss|hy2)://[^\s]+"
 VLESS_PATTERN = "vless://"
 VMESS_PATTERN = "vmess://"
+TROJAN_PATTERN = "trojan://"
+SS_PATTERN = "ss://"
+HY2_PATTERN = "hy2://"
 PROFILE_TITLE_REGEX = r"#profile-title:\s*\[(.*?)\]"
+
+def validate_config_link(link):
+    """Basic validation - just ensure it starts with one of the protocols"""
+    protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
+    for protocol in protocols:
+        if link.startswith(protocol) and len(link) > len(protocol) + 5:  # At least 5 chars more than protocol
+            return True
+    return False
 
 def update_readme(channel_username, channel_url, num_links, output_filename):
     """Update the README.md file with the subscription link"""
@@ -155,7 +166,9 @@ def read_existing_configs(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             for line in f:
                 line = line.strip()
-                if line.startswith(VLESS_PATTERN) or line.startswith(VMESS_PATTERN):
+                if (line.startswith(VLESS_PATTERN) or line.startswith(VMESS_PATTERN) or 
+                    line.startswith(TROJAN_PATTERN) or line.startswith(SS_PATTERN) or 
+                    line.startswith(HY2_PATTERN)) and validate_config_link(line):
                     configs.add(line)
         return configs
     except Exception as e:
@@ -210,14 +223,15 @@ async def fetch_configs_from_channel(client, channel_name, days=7):
                 try:
                     full_matches = re.findall(V2RAY_REGEX, message.message)
                     for config in full_matches:
-                        configs.add(config)
+                        if validate_config_link(config) and config not in configs:
+                            configs.add(config)
                 except Exception as e:
                     if VERBOSE:
                         print(f"Error during regex matching in {channel_name}: {e}")
                 
-                # Backup method: String search
+                # Backup method: String search with simplified extraction
                 msg_text = message.message
-                protocols = [VLESS_PATTERN, VMESS_PATTERN]
+                protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
                 for protocol in protocols:
                     start_index = 0
                     while True:
@@ -225,17 +239,21 @@ async def fetch_configs_from_channel(client, channel_name, days=7):
                         if start_index == -1:
                             break
                         
-                        # Find the end of the link
-                        end_index = start_index + len(protocol)
-                        while end_index < len(msg_text) and msg_text[end_index] not in " \t\n\r\"'<>)[]":
-                            end_index += 1
+                        # Find the end of the link at the first whitespace
+                        end_index = len(msg_text)
+                        for i in range(start_index, len(msg_text)):
+                            if msg_text[i].isspace():
+                                end_index = i
+                                break
                         
+                        # Extract the complete link up to whitespace
                         link = msg_text[start_index:end_index]
                         
-                        if link.startswith(protocol):
+                        # Basic validation and add if unique
+                        if validate_config_link(link) and link not in configs:
                             configs.add(link)
                         
-                        start_index = end_index
+                        start_index = end_index + 1
         
         progress.close()
         print(f"Found {len(configs)} configs from {channel_name}")
@@ -248,7 +266,7 @@ async def fetch_configs_from_channel(client, channel_name, days=7):
             traceback.print_exc()
         return set()
 
-async def process_subscription_file(client, file_path):
+async def process_subscription_file(client, file_path, days=7):
     """Process a single subscription file"""
     print(f"\nProcessing file: {file_path}")
     
@@ -270,7 +288,7 @@ async def process_subscription_file(client, file_path):
     # Fetch new configs from each channel
     all_new_configs = set()
     for channel in channels:
-        channel_configs = await fetch_configs_from_channel(client, channel)
+        channel_configs = await fetch_configs_from_channel(client, channel, days)
         all_new_configs.update(channel_configs)
     
     # Combine existing and new configs
@@ -316,6 +334,19 @@ async def main():
     api_id_input = API_ID or input("Enter your API ID: ")
     api_hash_input = API_HASH or input("Enter your API Hash: ")
     phone_input = PHONE_NUMBER
+    
+    # Get number of days to fetch
+    days_input = input("Enter the number of days of history to fetch (default: 7): ")
+    try:
+        days = int(days_input) if days_input.strip() else 7
+        if days <= 0:
+            print("Days must be greater than 0. Using default (7).")
+            days = 7
+    except ValueError:
+        print("Invalid input. Using default (7 days).")
+        days = 7
+    
+    print(f"Will fetch messages from the last {days} days.")
     
     # Path to telegram directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -477,7 +508,7 @@ async def main():
         
         # Process each subscription file
         for file_path in subscription_files:
-            await process_subscription_file(client, file_path)
+            await process_subscription_file(client, file_path, days)
         
         print("\nAll subscription files have been processed!")
     
