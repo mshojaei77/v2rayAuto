@@ -1,4 +1,7 @@
-vless
+#profile-title: [UnlimitedDev, appsooner, proxy, kafee, sinavm]
+#profile-update-interval: 7
+#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2546249531
+
 vless://06d56227-1f90-428e-a613-5b253f0e42ff@huffi
 vless://08aa33d0-a8af-460b-807a-39791019015c@77.90.10.16:58666?secu
 vless://1325fc61-3723-4591-90cb-b66d9a079aad@huffi
