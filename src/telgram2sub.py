@@ -54,7 +54,7 @@ def validate_config_link(link):
             return True
     return False
 
-def update_readme(channel_username, channel_url, num_links, output_filename):
+def update_readme(channel_username, channel_url, num_links, output_filename, config_set=None):
     """Update the README.md file with the subscription link"""
     readme_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "README.md")
     
@@ -74,16 +74,34 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
         raw_link = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/refs/heads/main/{rel_path}"
         
         # Check if Telegram Channels section exists
-        telegram_section = "### Telegram Channels"
+        telegram_section = "## Telegram Channels"
         if telegram_section not in content:
-            print("Warning: Telegram Channels section not found in README.md")
+            print(f"Warning: Telegram Channels section not found in README.md. Looking for: '{telegram_section}'")
             return False
         
         # Check if this channel already exists in the table
         channel_entry = f"[{channel_username}]({channel_url})"
         
         # Content for the new row - proper table format with pipes and spacing
-        row_content = f"| {channel_entry} | [vmess_vless_{num_links}]({raw_link}) |"
+        # Define a more descriptive link text based on protocols found
+        found_protocols = []
+        if config_set:
+            if any(link.startswith("vmess://") for link in config_set):
+                found_protocols.append("vmess")
+            if any(link.startswith("vless://") for link in config_set):
+                found_protocols.append("vless")
+            if any(link.startswith("trojan://") for link in config_set):
+                found_protocols.append("trojan")
+            if any(link.startswith("ss://") for link in config_set):
+                found_protocols.append("ss")
+            if any(link.startswith("hy2://") for link in config_set):
+                found_protocols.append("hy2")
+        
+        # Combine protocols in the link text
+        protocols_text = "_".join(found_protocols) if found_protocols else "configs"
+        row_content = f"| {channel_entry} | [{protocols_text}_{num_links}]({raw_link}) |"
+        
+        print(f"DEBUG: Preparing to update README with: {row_content}")
         
         # If the channel already exists in the README, update its row
         lines = content.split("\n")
@@ -97,12 +115,14 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
             # Check if we're in the Telegram Channels section
             if telegram_section in line:
                 in_telegram_section = True
+                print("DEBUG: Found Telegram Channels section")
                 updated_lines.append(line)
                 continue
             
             # If we're in the section and find a line starting with "| Channel", it's the table header
             if in_telegram_section and line.strip().startswith("| Channel"):
                 table_header_found = True
+                print("DEBUG: Found table header row")
                 updated_lines.append(line)
                 continue
             
@@ -110,11 +130,13 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
             if in_telegram_section and table_header_found and not table_separator_found:
                 if line.strip().startswith("|---") or line.strip().startswith("| ---"):
                     table_separator_found = True
+                    print("DEBUG: Found table separator row")
                     updated_lines.append("| ------------------------- | ------------------------------------------------------------ |")
                     continue
                 else:
                     # If header found but no separator, add one robustly
                     table_separator_found = True
+                    print("DEBUG: No separator found, adding one")
                     updated_lines.append("| ------------------------- | ------------------------------------------------------------ |")
                     # Continue processing the current line after adding the separator
                     # Fall through to the next block to check if this line is the target channel
@@ -123,6 +145,7 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
             if in_telegram_section and table_header_found and table_separator_found:
                 # If we find a line with our channel entry, replace it
                 if channel_entry in line and line.strip().startswith("|"):
+                    print(f"DEBUG: Found and replacing existing channel: {line}")
                     updated_lines.append(row_content)
                     channel_found = True
                     continue
@@ -131,6 +154,7 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
                     # If we haven't found and replaced our channel yet, add it before exiting the section
                     if not channel_found:
                         # Insert the new row just before the line that breaks the table format
+                        print(f"DEBUG: Adding new channel before leaving table: {row_content}")
                         updated_lines.append(row_content)
                         channel_found = True
                     updated_lines.append(line)
@@ -143,6 +167,7 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
         # If we went through all lines and the table was at the end of the file, and we haven't added the channel yet
         if in_telegram_section and table_header_found and table_separator_found and not channel_found:
             # Add the row at the end of the list (effectively at the end of the file/section)
+            print(f"DEBUG: Adding new channel at end of file: {row_content}")
             updated_lines.append(row_content)
         
         # Write the updated content back to the README
@@ -557,7 +582,7 @@ async def main():
                     readme_channel_name = base_filename 
                     channel_url = f"https://t.me/{readme_channel_name}"
                     print(f"Attempting to update README for the single channel: {readme_channel_name}...")
-                    update_readme(readme_channel_name, channel_url, len(found_configs), readme_output_path)
+                    update_readme(readme_channel_name, channel_url, len(found_configs), readme_output_path, found_configs)
                 else: # Multiple input channels
                     # Use a descriptive name including the successfully processed channels
                     # Sort the list of successful channels for consistent naming
@@ -565,9 +590,9 @@ async def main():
                     readme_channel_name = f"Combined: {processed_channel_list}"
                     print(f"Attempting to update README for combined channels ({base_filename})...")
                     # Pass empty string for URL as it doesn't point to a single channel
-                    update_readme(readme_channel_name, "", len(found_configs), readme_output_path)
+                    update_readme(readme_channel_name, "", len(found_configs), readme_output_path, found_configs)
             else:
-                print("Skipping README update because GITHUB_USERNAME or REPO_NAME is not set.")
+                print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
     except telethon.errors.RPCError as rpc_error:
         print(f"Telegram RPC Error: {rpc_error}")
         if "FLOOD_WAIT" in str(rpc_error):
