@@ -510,7 +510,26 @@ async def main():
             print(f"Saving configurations to {output_filename}...")
             # Sort the list before writing
             sorted_configs = sorted(list(found_configs))
+            
+            # Format the channel names for profile title
+            channel_names = []
+            for channel in successful_channels_processed:
+                if channel:
+                    channel_names.append(channel)
+            
+            profile_title = f"[{', '.join(channel_names)}]"
+            current_time = int(datetime.now().timestamp())
+            future_time = current_time + (365 * 10 * 24 * 60 * 60)  # 10 years in future
+            
+            # Write the file with metadata comments
             with open(output_filename, 'w', encoding='utf-8') as f:
+                # Add comments with metadata at beginning of file
+                f.write(f"#profile-title: {profile_title}\n")
+                f.write("#profile-update-interval: 7\n")
+                f.write(f"#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire={future_time}\n")
+                f.write("\n")  # Empty line after metadata
+                
+                # Write all configs
                 for config in tqdm(sorted_configs, desc="Writing to file", unit="link"):
                     f.write(config + '\n')
 
