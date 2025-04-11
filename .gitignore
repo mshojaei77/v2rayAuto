@@ -4,9 +4,8 @@
 # Telethon session files
 *.session
 *.session-journal
-
-# Output directory
-/telegram/
+*.session_string
+*.string
 
 # Python specific
 __pycache__/
