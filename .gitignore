@@ -1,0 +1,14 @@
+# Environment variables
+.env
+
+# Telethon session files
+*.session
+*.session-journal
+
+# Output directory
+/telegram/
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class 
