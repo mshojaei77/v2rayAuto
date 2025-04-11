@@ -2,8 +2,11 @@
 
 This script is designed to automatically update V2Ray configuration files from various subscription links and push the changes to a GitHub repository.
 
-### Tested Configs : 
-## [Auto Tested](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/subs/auto) <img src="https://github.com/mshojaei77/v2rayAuto/assets/76538971/ce8d713e-0baf-44a0-94cd-2cfa0c4e0001" width="30" height="30"> 
+### Telegram Channels
+| Channel                    | Subscription Link                                            |
+| -------------------------- | ------------------------------------------------------------ |
+| [An0nymousTeam](https://t.me/An0nymousTeam) | [vmess_vless_795](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/telegram/An0nymousTeam) |
+| [Spdnetpro](https://t.me/Spdnetpro) | [vmess_vless_351](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/telegram/Spdnetpro) |
 
 # Protocol-specific :
 
@@ -43,21 +46,3 @@ This script is designed to automatically update V2Ray configuration files from v
 - Linux
   - [v2rayA](https://github.com/v2rayA/v2rayA)
   - [NekoRay](https://github.com/Matsuridayo/nekoray)
-
-## Security-specific :
-
-| Security                    | Subscription Link                                            | Notes                                                                                                 |
-|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Reality                       | [Reality Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/subs/reality) | This link provides a subscription to servers that prioritize security and privacy, with a focus on real-world privacy measures. It is suitable for users who are particularly concerned about their online anonymity and privacy.  |
-| TLS          | [TLS Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/subs/tls) |  This link provides a subscription to servers that use TLS (Transport Layer Security) for secure communication. It is ideal for users who want to ensure that their data is encrypted during transmission. |
-
-## Type-specific :
-
-| Security                    | Subscription Link                                            | Notes                                                                                                 |
-|-----------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| WebSocket                    | [WebSocket Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/subs/ws) |  This link provides a subscription to servers that use the WebSocket protocol, which is often used for bypassing web filtering and censorship. It is suitable for users who require WebSocket support. |
-| TCP          | [TCP Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/subs/tcp) | This link provides a subscription to servers that use the TCP protocol, which is a reliable and commonly used protocol for internet communication. It is ideal for users who prefer the stability of TCP connections.  |
-| gRPC          | [gRPC Configuration](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/main/subs/grpc) | This link provides a subscription to servers that use the gRPC protocol, which is a high-performance, open-source framework for remote procedure calls (RPCs). It is suitable for users who need to use gRPC for their applications. |
-
-
-
