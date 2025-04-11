@@ -5,8 +5,9 @@ This script is designed to automatically update V2Ray configuration files from v
 ## Telegram Channels
 | Channel                    | Subscription Link                                            |
 | ------------------------- | ------------------------------------------------------------ |
-| [Combined: An0nymousTeam, Outlinev2rayNG, meli_proxyy]() | [vmess_vless_297](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/An0nymousTeam_Outlinev2rayNG_meli_proxyy) |
+| [Combined: An0nymousTeam, Outlinev2rayNG]() | [vmess_vless_297](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/An0nymousTeam_Outlinev2rayNG_meli_proxyy) |
 | [Combined: UnlimitedDev, appsooner, proxy_kafee, sinavm]() | [vmess_vless_118](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/UnlimitedDev_appsooner_proxy_kafee_sinavm) |
+| [meli_proxyy](https://t.me/meli_proxyy) | [vmess_vless_trojan_ss_283](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram\meli_proxyy) |
 
 ## Clients (Apps to use the subscription links)
 - Windows
