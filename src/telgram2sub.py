@@ -69,6 +69,7 @@ def update_readme(channel_username, channel_url, num_links, output_filename, con
         
         # Get the relative path for the raw link (convert backslashes to forward slashes for GitHub)
         rel_path = os.path.relpath(output_filename, os.path.dirname(readme_path)).replace('\\\\', '/')
+        rel_path = rel_path.replace('\\', '/') # Ensure all backslashes are converted to forward slashes
         
         # Create the raw GitHub link
         raw_link = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/refs/heads/main/{rel_path}"
@@ -79,8 +80,13 @@ def update_readme(channel_username, channel_url, num_links, output_filename, con
             print(f"Warning: Telegram Channels section not found in README.md. Looking for: '{telegram_section}'")
             return False
         
-        # Check if this channel already exists in the table
-        channel_entry = f"[{channel_username}]({channel_url})"
+        # Handle channel_entry differently based on whether it already has links
+        # If channel_username contains markdown links [name](url), use it directly
+        if "[" in channel_username and "](http" in channel_username:
+            channel_entry = channel_username  # Already formatted with links
+        else:
+            # Otherwise create a link if URL is provided
+            channel_entry = f"[{channel_username}]({channel_url})" if channel_url else channel_username
         
         # Content for the new row - proper table format with pipes and spacing
         # Define a more descriptive link text based on protocols found
@@ -585,12 +591,18 @@ async def main():
                     update_readme(readme_channel_name, channel_url, len(found_configs), readme_output_path, found_configs)
                 else: # Multiple input channels
                     # Use a descriptive name including the successfully processed channels
-                    # Sort the list of successful channels for consistent naming
-                    processed_channel_list = ", ".join(sorted(successful_channels_processed))
-                    readme_channel_name = f"Combined: {processed_channel_list}"
-                    print(f"Attempting to update README for combined channels ({base_filename})...")
-                    # Pass empty string for URL as it doesn't point to a single channel
-                    update_readme(readme_channel_name, "", len(found_configs), readme_output_path, found_configs)
+                    # Create individual channel links instead of using "Combined:"
+                    channel_links = []
+                    for channel in sorted(successful_channels_processed):
+                        if channel:
+                            # Create a proper markdown link for each channel
+                            channel_links.append(f"[{channel}](https://t.me/{channel})")
+                    
+                    # Join the channel links with commas
+                    channel_entry = ", ".join(channel_links)
+                    print(f"Attempting to update README for channels: {', '.join(successful_channels_processed)}...")
+                    # Pass channel_entry directly instead of using "Combined:" prefix
+                    update_readme(channel_entry, "", len(found_configs), readme_output_path, found_configs)
             else:
                 print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
     except telethon.errors.RPCError as rpc_error:
