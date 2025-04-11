@@ -60,7 +60,7 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
         rel_path = os.path.relpath(output_filename, os.path.dirname(readme_path)).replace('\\\\', '/')
         
         # Create the raw GitHub link
-        raw_link = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/main/{rel_path}"
+        raw_link = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/refs/heads/main/{rel_path}"
         
         # Check if Telegram Channels section exists
         telegram_section = "### Telegram Channels"
