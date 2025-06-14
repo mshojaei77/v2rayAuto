@@ -1,0 +1,321 @@
+{
+  "log": {
+    "level": "warn",
+    "output": "box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-remote",
+        "address": "udp://1.1.1.1",
+        "address_resolver": "dns-direct"
+      },
+      {
+        "tag": "dns-trick-direct",
+        "address": "https://sky.rethinkdns.com/",
+        "detour": "direct-fragment"
+      },
+      {
+        "tag": "dns-direct",
+        "address": "1.1.1.1",
+        "address_resolver": "dns-local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-local",
+        "address": "local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "domain": [
+          "node10.upperboundnode.click",
+          "node10.iamservernode.site",
+          "node7.thegreatnode.xyz",
+          "www.speedtest.net",
+          "node11.starnode.online",
+          "node10.thehighnode.online",
+          "node11.upperboundnode.click"
+        ],
+        "server": "dns-direct"
+      }
+    ],
+    "final": "dns-remote",
+    "static_ips": {
+      "sky.rethinkdns.com": [
+        "104.17.147.22",
+        "104.17.148.22",
+        "172.67.214.246",
+        "104.21.83.62",
+        "2606:4700:3030::6815:533e",
+        "2606:4700:3030::ac43:d6f6"
+      ]
+    },
+    "independent_cache": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/28",
+      "auto_route": true,
+      "endpoint_independent_nat": true,
+      "stack": "mixed",
+      "sniff": true,
+      "sniff_override_destination": true
+    },
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 12334,
+      "sniff": true,
+      "sniff_override_destination": true
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "127.0.0.1",
+      "listen_port": 16450
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "[VIP][🇬🇧][S5][C2][VIP]",
+        "[VIP][🇬🇧][S5][C1][VIP]",
+        "[VIP][🇩🇪][S9][C1][VIP]",
+        "[VIP][🇩🇪][S8][C2][VIP]",
+        "[VIP][🇩🇪][S9][C2][VIP]",
+        "[VIP][🇬🇧][S7][C1][VIP]",
+        "[VIP][🇪🇪][S8][C2][VIP]",
+        "[VIP][🇺🇸][S19][C1][VIP]",
+        "[🇹🇷][Game-Server]",
+        "[VIP][🇬🇧][اضطراری]",
+        "[VIP][🇩🇪][اضطراری]"
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "[VIP][🇬🇧][S5][C2][VIP]",
+        "[VIP][🇬🇧][S5][C1][VIP]",
+        "[VIP][🇩🇪][S9][C1][VIP]",
+        "[VIP][🇩🇪][S8][C2][VIP]",
+        "[VIP][🇩🇪][S9][C2][VIP]",
+        "[VIP][🇬🇧][S7][C1][VIP]",
+        "[VIP][🇪🇪][S8][C2][VIP]",
+        "[VIP][🇺🇸][S19][C1][VIP]",
+        "[🇹🇷][Game-Server]",
+        "[VIP][🇬🇧][اضطراری]",
+        "[VIP][🇩🇪][اضطراری]"
+      ],
+      "url": "http://connectivitycheck.gstatic.com/generate_204",
+      "interval": "10m0s",
+      "tolerance": 1,
+      "idle_timeout": "30m0s"
+    },
+    {
+      "type": "trojan",
+      "tag": "[VIP][🇬🇧][S5][C2][VIP]",
+      "server": "node11.starnode.online",
+      "server_port": 8080,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node5.servernode.store"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "[VIP][🇬🇧][S5][C1][VIP]",
+      "server": "node11.starnode.online",
+      "server_port": 8880,
+      "uuid": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/graphql"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "[VIP][🇩🇪][S9][C1][VIP]",
+      "server": "node10.thehighnode.online",
+      "server_port": 80,
+      "uuid": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/graphql"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[VIP][🇩🇪][S8][C2][VIP]",
+      "server": "node11.upperboundnode.click",
+      "server_port": 443,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node9.servernode.store"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[VIP][🇩🇪][S9][C2][VIP]",
+      "server": "node10.upperboundnode.click",
+      "server_port": 443,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node9.servernode.store"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[VIP][🇬🇧][S7][C1][VIP]",
+      "server": "node10.iamservernode.site",
+      "server_port": 6000,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node1.servernode.store"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[VIP][🇪🇪][S8][C2][VIP]",
+      "server": "node7.thegreatnode.xyz",
+      "server_port": 5002,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node3.servernode.store"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[VIP][🇺🇸][S19][C1][VIP]",
+      "server": "node10.upperboundnode.click",
+      "server_port": 2053,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node19.servernode.store"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[🇹🇷][Game-Server]",
+      "server": "node7.thegreatnode.xyz",
+      "server_port": 8443,
+      "password": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "tls": {
+        "enabled": true,
+        "server_name": "node7.servernode.store"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "[VIP][🇬🇧][اضطراری]",
+      "server": "www.speedtest.net",
+      "server_port": 80,
+      "uuid": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/graphql",
+        "headers": {
+          "Host": "node5.hostednode.ip-ddns.com"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "[VIP][🇩🇪][اضطراری]",
+      "server": "www.speedtest.net",
+      "server_port": 80,
+      "uuid": "605dd149-77f8-4848-b567-c4e3c399d10a",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/graphql",
+        "headers": {
+          "Host": "node9.hostednode.ip-ddns.com"
+        }
+      }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-fragment",
+      "tls_fragment": {
+        "enabled": true,
+        "size": "10-30",
+        "sleep": "2-8"
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "inbound": "dns-in",
+        "outbound": "dns-out"
+      },
+      {
+        "port": 53,
+        "outbound": "dns-out"
+      },
+      {
+        "process_name": [
+          "Hiddify",
+          "Hiddify.exe",
+          "HiddifyCli",
+          "HiddifyCli.exe"
+        ],
+        "outbound": "bypass"
+      }
+    ],
+    "final": "select",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "clash.db"
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:16756",
+      "secret": "vqMYTlF3peFWOjlQ"
+    }
+  }
+}
