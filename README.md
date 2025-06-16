@@ -10,6 +10,7 @@ This script is designed to automatically update V2Ray configuration files from v
 | [An0nymousTeam](https://t.me/An0nymousTeam), [Outlinev2rayNG](https://t.me/Outlinev2rayNG), [redfree8](https://t.me/redfree8) | [vless_trojan_ss_104](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/An0nymousTeam_Outlinev2rayNG_redfree8) |
 | [UnlimitedDev](https://t.me/UnlimitedDev), [appsooner](https://t.me/appsooner), [proxy_kafee](https://t.me/proxy_kafee), [sinavm](https://t.me/sinavm) | [vmess_vless_trojan_ss_104](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/UnlimitedDev_appsooner_proxy_kafee_sinavm) |
 | [Artemisvpn1](https://t.me/Artemisvpn1), [Porteqal3](https://t.me/Porteqal3), [V2ray_Collector](https://t.me/V2ray_Collector), [VIProxys](https://t.me/VIProxys), [prrofile_purple](https://t.me/prrofile_purple) | [vmess_vless_trojan_ss_hy2_824](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/Artemisvpn1_Porteqal3_V2ray_Collector_VIProxys_prrofile_purple) |
+| [Fr33C0nfig](https://t.me/Fr33C0nfig), [Ln2ray](https://t.me/Ln2ray), [lyravpn](https://t.me/lyravpn), [v2ray_free0](https://t.me/v2ray_free0), [vlesskeys](https://t.me/vlesskeys) | [vless_ss_279](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/Fr33C0nfig_Ln2ray_lyravpn_v2ray_free0_vlesskeys) |
 
 ## Clients (Apps to use the subscription links)
 
