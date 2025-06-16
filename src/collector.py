@@ -129,10 +129,13 @@ subscription_links = [
     "https://raw.githubusercontent.com/Airuop/archive/6aefdedc2cde21ff91bd14105393cda477c6ae21/donated/2312/231218_0311M.txt",
     "https://raw.githubusercontent.com/Airuop/archive/a3a7ed0bcf661d1d503b0005812df1fdc7c6f4b0/donated/2310/231018_2211M.txt",
 ]
-import urllib.parse
 import requests
 from github import Github
 from collections import OrderedDict
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def push_to_github(file_path, content, repo_name, branch_name, github_token):
     g = Github(github_token)
@@ -144,21 +147,6 @@ def push_to_github(file_path, content, repo_name, branch_name, github_token):
     except:
         repo.create_file(file_path, "Create config file", content, branch=branch_name)
 
-def find_country_code(link):
-    try:
-        parsed_link = urllib.parse.urlparse(link)
-        fragment = parsed_link.fragment
-
-        if fragment:
-            decoded_fragment = urllib.parse.unquote(fragment)
-            country_code = decoded_fragment.split('%'or'#')[-1][:2]
-            return country_code.upper()
-
-    except Exception as e:
-        print(f"Error: {e}")
-
-    return None
-
 def extract_v2ray_configs(subscription_link):
     response = requests.get(subscription_link).text
     config_links = set(response.split("\n"))
@@ -166,37 +154,22 @@ def extract_v2ray_configs(subscription_link):
 
 def generate_file_content(subscription_links):
     file_content = OrderedDict((config_type, set()) for config_type in ["vmess", "ss", "vless", "tuic", "hysteria", "hy2","trojan", "socks5", "ssr"])
-    country_mappings = OrderedDict({
-        "English": {"US", "GB", "CA", "AU", "IE", "NZ"},
-        "Europe": {"DE", "FR", "NL", "FI", "IT", "AL", "TR"},
-        "IRAN": {"IR","RELAY",},
-    })
 
     for subscription_link in set(subscription_links):
         config_links = extract_v2ray_configs(subscription_link)
         for config_link in config_links:
             if config_link:
                 prefix = config_link.split("://")[0]
-                country_code = find_country_code(config_link)
-
                 if prefix in file_content:
                     file_content[prefix].add(config_link)
-
-                for country_key, country_codes in country_mappings.items():
-                    if country_code in country_codes:
-                        # Ensure the country_key is present in file_content
-                        if country_key not in file_content:
-                            file_content[country_key] = set()
-                        file_content[country_key].add(config_link)
-
     return file_content
 
 
-github_token = ""  # Replace with your GitHub token
+github_token = os.getenv("GITHUB_TOKEN")
 raw_file_content = generate_file_content(subscription_links)
 
 for config_type, content_set in raw_file_content.items():
-    file_path = config_type
+    file_path = f"subs/{config_type}"
     repo_name = 'v2rayAuto'
     branch_name = 'main'
     content = "\n".join(content_set)
