@@ -1,6 +1,6 @@
 #profile-title: [CyberNigga2, hormozvpn, Prooofsor, VoxSafe]
 #profile-update-interval: 7
-#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2066108219
+#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2066192967
 
 ss://0706a762-3fd5-4205-b5b9-42f746a3119f@104.26.14.85:8080?encryption=none&security=none&sni=WQ.R5Kt41PbPO.zuLAIR.orG.&type=ws&host=WQ.R5Kt41PbPO.zuLAIR.orG.&path=%2F%3Fed%3D2048#https%3A%2F%2Ft.me%2FVoxSafe
 ss://08052317-7036-4906-b7da-19934f8fe6e6@s1.donyayedigitali.pics:2323?security=reality&encryption=none&pbk=YWfCdTnr4FAOMYTY2dLrMtQUokyxOGpPhYEEszPj20E&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=journalofbigdata.springeropen.com#https%3A%2F%2Ft.me%2FVoxSafe
@@ -12,6 +12,7 @@ ss://0e973d4f-fb2d-4d68-8b86-cd53dc6e7525@vi-38322.webnama.com.tr:1535?security=
 ss://1364334f-7361-4ebc-86a1-ac06e918631f@ir.bestirspeed.top:8002?security=none&encryption=none&host=divarcdn.com&headerType=http&type=tcp#https://t.me/VoxSafe
 ss://1364334f-7361-4ebc-86a1-ac06e918631f@ir4.bestirspeed.top:2095?security=none&encryption=none&host=cafebazaar.ir&headerType=http&type=tcp#https://t.me/VoxSafe
 ss://13c23c50-65f9-4819-a51f-bfb7158ff88c@753aj2lz9z.the-hot-and-dry-desert-of-my-body.top:5252?security=none&encryption=none&headerType=http&type=tcp#https://t.me/VoxSafe
+ss://1405d701-6636-4126-9726-1ec9de77bacf@aeae.vegaskala.com:2020?security=none&encryption=none&host=igap.net&headerType=http&fp=chrome&type=tcp#https%3A%2F%2Ft.me%2FVoxSafe
 ss://141853f1-17ac-4018-a0cc-518ed9f26684@151.101.3.8:80?mode=auto&path=%2F&security=none&encryption=none&host=seyyedmt2.ir&type=xhttp#https%3A%2F%2Ft.me%2FVoxSafe
 ss://19cf51d7-7ec9-4cd4-a36d-90d3a760954d@193.151.132.16:8543?security=none&encryption=none&headerType=none&type=tcp#%40voxsafe
 ss://1d828176-751a-2700-6a53-08129bd4db2b@z4.magicnetwork.info:443?security=none&encryption=none&host=divarcdn.com&headerType=http&type=tcp#https%3A%2F%2Ft.me%2FVoxSafe
@@ -131,6 +132,7 @@ vless://0e973d4f-fb2d-4d68-8b86-cd53dc6e7525@vi-38322.webnama.com.tr:1535?securi
 vless://1364334f-7361-4ebc-86a1-ac06e918631f@ir.bestirspeed.top:8002?security=none&encryption=none&host=divarcdn.com&headerType=http&type=tcp#https://t.me/VoxSafe
 vless://1364334f-7361-4ebc-86a1-ac06e918631f@ir4.bestirspeed.top:2095?security=none&encryption=none&host=cafebazaar.ir&headerType=http&type=tcp#https://t.me/VoxSafe
 vless://13c23c50-65f9-4819-a51f-bfb7158ff88c@753aj2lz9z.the-hot-and-dry-desert-of-my-body.top:5252?security=none&encryption=none&headerType=http&type=tcp#https://t.me/VoxSafe
+vless://1405d701-6636-4126-9726-1ec9de77bacf@aeae.vegaskala.com:2020?security=none&encryption=none&host=igap.net&headerType=http&fp=chrome&type=tcp#https%3A%2F%2Ft.me%2FVoxSafe
 vless://141853f1-17ac-4018-a0cc-518ed9f26684@151.101.3.8:80?mode=auto&path=%2F&security=none&encryption=none&host=seyyedmt2.ir&type=xhttp#https%3A%2F%2Ft.me%2FVoxSafe
 vless://19cf51d7-7ec9-4cd4-a36d-90d3a760954d@193.151.132.16:8543?security=none&encryption=none&headerType=none&type=tcp#%40voxsafe
 vless://1d828176-751a-2700-6a53-08129bd4db2b@z4.magicnetwork.info:443?security=none&encryption=none&host=divarcdn.com&headerType=http&type=tcp#https%3A%2F%2Ft.me%2FVoxSafe
