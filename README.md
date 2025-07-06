@@ -14,6 +14,7 @@ This script is designed to automatically update V2Ray configuration files from v
 | [V2RayRootFree](https://t.me/V2RayRootFree), [VIVA_Proxy](https://t.me/VIVA_Proxy), [VPN_SOLVE](https://t.me/VPN_SOLVE), [vlesskeys](https://t.me/vlesskeys)                                                   | [vmess_vless_trojan_ss_366](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/V2RayRootFree_VIVA_Proxy_VPN_SOLVE_vlesskeys)                       |
 | [CyberNigga2](https://t.me/CyberNigga2), [Prooofsor](https://t.me/Prooofsor), [VoxSafe](https://t.me/VoxSafe), [hormozvpn](https://t.me/hormozvpn) | [vmess_vless_ss_194](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/CyberNigga2_Prooofsor_VoxSafe_hormozvpn) |
 | [FREECONFIGSPLUS](https://t.me/FREECONFIGSPLUS), [Spotify_Porteghali](https://t.me/Spotify_Porteghali), [anty_filter](https://t.me/anty_filter), [proxylabra](https://t.me/proxylabra) | [vmess_vless_trojan_ss_472](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/FREECONFIGSPLUS_Spotify_Porteghali_anty_filter_proxylabra) |
+| [FireVPNTeam1](https://t.me/FireVPNTeam1), [NamiraNet](https://t.me/NamiraNet), [gift_bazi_chanel](https://t.me/gift_bazi_chanel), [hajmvpn](https://t.me/hajmvpn) | [vmess_vless_trojan_ss_1106](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/FireVPNTeam1_NamiraNet_gift_bazi_chanel_hajmvpn) |
 
 ## Clients (Apps to use the subscription links)
 
