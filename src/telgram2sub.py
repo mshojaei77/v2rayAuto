@@ -46,6 +46,83 @@ TROJAN_PATTERN = "trojan://"
 SS_PATTERN = "ss://"
 HY2_PATTERN = "hy2://"
 
+# List of popular telegram channels for V2Ray configs
+POPULAR_CHANNELS = [
+    "meli_proxyy",
+    "An0nymousTeam",
+    "Outlinev2rayNG", 
+    "redfree8",
+    "UnlimitedDev",
+    "appsooner",
+    "proxy_kafee",
+    "sinavm",
+    "Artemisvpn1",
+    "Porteqal3",
+    "V2ray_Collector",
+    "VIProxys",
+    "prrofile_purple",
+    "Fr33C0nfig",
+    "Ln2ray",
+    "lyravpn",
+    "v2ray_free0",
+    "vlesskeys",
+    "V2RayRootFree",
+    "VIVA_Proxy",
+    "VPN_SOLVE",
+    "CyberNigga2",
+    "Prooofsor",
+    "VoxSafe",
+    "hormozvpn",
+    "FREECONFIGSPLUS",
+    "Spotify_Porteghali",
+    "anty_filter",
+    "proxylabra",
+    "FireVPNTeam1",
+    "NamiraNet",
+    "gift_bazi_chanel",
+    "hajmvpn",
+    "Go_vpns",
+    "Rayan_Config",
+    "joinnasnet",
+    "V2raybazi",
+    "unlocked_worlld",
+    "AzadNet",
+    "godot404",
+    "free_intnet",
+    "mahsa_net",
+    "NorthXRAY",
+    "VPN_KING_V2RAY",
+    "ghalagyann",
+    "allworldcfg",
+    "V2SayFree",
+    "DarkVPNpro",
+    "Khosrow_vpn",
+    "Fserverd_vpn",
+    "HerofVPN",
+    "neteiran",
+    "xsvpn_ch",
+    "vpnjey",
+    "safeNet4All",
+    "Lx3vpn",
+    "GetBreakNet",
+    "V2rayAG",
+    "powercodes",
+    "V2ray_tci",
+    "BESTIIVPN",
+    "habsiop",
+    "thunder_speed",
+    "Freedom_Guard_Net",
+    "FreeVPNHomes",
+    "ElmmiumChannel",
+    "Apk_Bad",
+    "orange_vpns",
+    "NoForcedHeaven",
+    "golestan_vpn",
+    "v2raygame",
+    "oxnet_ir",
+    "maxvpnxx"
+]
+
 def validate_config_link(link):
     """Basic validation - just ensure it starts with one of the protocols"""
     protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
@@ -54,7 +131,31 @@ def validate_config_link(link):
             return True
     return False
 
-def update_readme(channel_username, channel_url, num_links, output_filename, config_set=None):
+def split_configs_into_chunks(configs, chunk_size=500):
+    """Split configs into chunks of specified size"""
+    configs_list = list(configs)
+    chunks = []
+    for i in range(0, len(configs_list), chunk_size):
+        chunks.append(configs_list[i:i + chunk_size])
+    return chunks
+
+def save_config_file(filename, configs, profile_title):
+    """Save configs to a file with metadata"""
+    current_time = int(datetime.now().timestamp())
+    future_time = current_time + (365 * 10 * 24 * 60 * 60)  # 10 years in future
+    
+    with open(filename, 'w', encoding='utf-8') as f:
+        # Add comments with metadata at beginning of file
+        f.write(f"#profile-title: {profile_title}\n")
+        f.write("#profile-update-interval: 7\n")
+        f.write(f"#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire={future_time}\n")
+        f.write("\n")  # Empty line after metadata
+        
+        # Write all configs
+        for config in tqdm(configs, desc="Writing configs", unit="link", leave=False):
+            f.write(config + '\n')
+
+def update_readme(channel_username, channel_url, num_links, output_filename, config_set=None, contributing_channels=None):
     """Update the README.md file with the subscription link"""
     readme_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "README.md")
     
@@ -105,7 +206,22 @@ def update_readme(channel_username, channel_url, num_links, output_filename, con
         
         # Combine protocols in the link text
         protocols_text = "_".join(found_protocols) if found_protocols else "configs"
-        row_content = f"| {channel_entry} | [{protocols_text}_{num_links}]({raw_link}) |"
+        
+        # Add contributing channels info if available
+        channels_info = ""
+        if contributing_channels and len(contributing_channels) > 1:
+            # Show first few channels and total count if many channels
+            if len(contributing_channels) <= 5:
+                channels_info = f" <br/>*From: {', '.join(contributing_channels)}*"
+            else:
+                first_channels = ', '.join(contributing_channels[:3])
+                channels_info = f" <br/>*From: {first_channels} +{len(contributing_channels)-3} more*"
+        elif contributing_channels and len(contributing_channels) == 1:
+            # For single channel, don't add redundant info if channel_entry already shows it
+            if contributing_channels[0] not in str(channel_entry):
+                channels_info = f" <br/>*From: {contributing_channels[0]}*"
+        
+        row_content = f"| {channel_entry} | [{protocols_text}_{num_links}]({raw_link}){channels_info} |"
         
         print(f"DEBUG: Preparing to update README with: {row_content}")
         
@@ -197,11 +313,20 @@ async def main():
     api_hash_input = API_HASH or input("Enter your API Hash: ")
     phone_input = PHONE_NUMBER # Can be None if using a bot token
 
-    # Get channel link/username with default value
-    channels_input_str = input(f"Enter Telegram channel links/usernames (comma-separated, e.g., @channel1, t.me/channel2). Press Enter for default '{DEFAULT_CHANNEL}': ") or DEFAULT_CHANNEL
+    # Ask user if they want to use popular channels
+    use_popular = input("Do you want to use all popular channels? (y/n). Press Enter for 'n': ").lower().strip()
     
-    # Split the input string by commas and strip whitespace
-    channel_identifiers = [ch.strip() for ch in channels_input_str.split(',') if ch.strip()]
+    if use_popular == 'y' or use_popular == 'yes':
+        print(f"Using {len(POPULAR_CHANNELS)} popular channels...")
+        channel_identifiers = POPULAR_CHANNELS.copy()
+        use_popular_channels = True
+    else:
+        # Get channel link/username with default value
+        channels_input_str = input(f"Enter Telegram channel links/usernames (comma-separated, e.g., @channel1, t.me/channel2). Press Enter for default '{DEFAULT_CHANNEL}': ") or DEFAULT_CHANNEL
+        
+        # Split the input string by commas and strip whitespace
+        channel_identifiers = [ch.strip() for ch in channels_input_str.split(',') if ch.strip()]
+        use_popular_channels = False
     
     if not channel_identifiers:
         print("Error: No valid channel identifiers provided.")
@@ -224,27 +349,45 @@ async def main():
                 break
         except ValueError:
             print("Invalid input. Please enter a number.")
+    
+    # --- Ask for chunking option ---
+    use_chunking = False
+    if use_popular_channels:
+        # Always use chunking for popular channels
+        use_chunking = True
+        print("Auto-chunking enabled for popular channels (max 500 configs per file).")
+    else:
+        # Ask user if they want to use chunking for custom channels
+        chunking_input = input("Do you want to split configs into multiple files? (y/n). Press Enter for 'n': ").lower().strip()
+        if chunking_input == 'y' or chunking_input == 'yes':
+            use_chunking = True
+            print("Chunking enabled (max 500 configs per file).")
+        else:
+            print("All configs will be saved to a single file.")
 
     # --- Determine output filename based on input identifiers ---
-    normalized_usernames = []
-    for identifier in channel_identifiers:
-        username = identifier # Default if no specific format found
-        if "t.me/" in identifier:
-            username = identifier.split("t.me/")[-1].split("/")[0]
-        elif identifier.startswith('@'):
-            username = identifier[1:]
-        normalized_usernames.append(username)
-
-    if len(normalized_usernames) == 1:
-        base_filename = normalized_usernames[0]
+    if use_popular_channels:
+        base_filename = "popular_channels"
     else:
-        # Sort and join for multiple channels
-        base_filename = "_".join(sorted(normalized_usernames))
-        # Optional: Add prefix or limit length if filename becomes too long
-        # base_filename = "combined_" + base_filename # Example prefix
-        # if len(base_filename) > 100: # Example length limit
-        #     import hashlib
-        #     base_filename = hashlib.md5(base_filename.encode()).hexdigest()
+        normalized_usernames = []
+        for identifier in channel_identifiers:
+            username = identifier # Default if no specific format found
+            if "t.me/" in identifier:
+                username = identifier.split("t.me/")[-1].split("/")[0]
+            elif identifier.startswith('@'):
+                username = identifier[1:]
+            normalized_usernames.append(username)
+
+        if len(normalized_usernames) == 1:
+            base_filename = normalized_usernames[0]
+        else:
+            # Sort and join for multiple channels
+            base_filename = "_".join(sorted(normalized_usernames))
+            # Optional: Add prefix or limit length if filename becomes too long
+            # base_filename = "combined_" + base_filename # Example prefix
+            # if len(base_filename) > 100: # Example length limit
+            #     import hashlib
+            #     base_filename = hashlib.md5(base_filename.encode()).hexdigest()
 
     # --- Prepare output directory and file path ---
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -537,7 +680,7 @@ async def main():
                 print(f"Skipping channel {current_channel_username} due to error.")
                 continue # Skip to the next channel identifier
 
-        # --- Save combined configs to file (using the pre-calculated filename) ---
+        # --- Save combined configs to file(s) (using the pre-calculated filename) ---
         print(f"\nTotal messages scanned across all channels: {total_messages_scanned_all_channels}")
         
         if not successful_channels_processed:
@@ -548,9 +691,7 @@ async def main():
         else: # Found configs and at least one channel was successful
             print(f"Found {len(found_configs)} unique V2Ray configurations in total from: {'/'.join(successful_channels_processed)}.")
 
-            # Use tqdm for the file write operation
-            print(f"Saving configurations to {output_filename}...")
-            # Sort the list before writing
+            # Sort the list before processing
             sorted_configs = sorted(list(found_configs))
             
             # Format the channel names for profile title
@@ -559,52 +700,79 @@ async def main():
                 if channel:
                     channel_names.append(channel)
             
-            profile_title = f"[{', '.join(channel_names)}]"
-            current_time = int(datetime.now().timestamp())
-            future_time = current_time + (365 * 10 * 24 * 60 * 60)  # 10 years in future
-            
-            # Write the file with metadata comments
-            with open(output_filename, 'w', encoding='utf-8') as f:
-                # Add comments with metadata at beginning of file
-                f.write(f"#profile-title: {profile_title}\n")
-                f.write("#profile-update-interval: 7\n")
-                f.write(f"#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire={future_time}\n")
-                f.write("\n")  # Empty line after metadata
-                
-                # Write all configs
-                for config in tqdm(sorted_configs, desc="Writing to file", unit="link"):
-                    f.write(config + '\n')
-
-            print(f"Saved configurations to '{output_filename}'")
-
-            # --- Update the README --- 
-            # Use the base_filename determined earlier for the path
-            readme_output_path = os.path.join(OUTPUT_DIR, base_filename).replace('\\', '/') 
-
-            if GITHUB_USERNAME and REPO_NAME:
-                if len(channel_identifiers) == 1:
-                    # Use the single original (normalized) username for the README entry
-                    # Ensure base_filename reflects the single channel processed
-                    readme_channel_name = base_filename 
-                    channel_url = f"https://t.me/{readme_channel_name}"
-                    print(f"Attempting to update README for the single channel: {readme_channel_name}...")
-                    update_readme(readme_channel_name, channel_url, len(found_configs), readme_output_path, found_configs)
-                else: # Multiple input channels
-                    # Use a descriptive name including the successfully processed channels
-                    # Create individual channel links instead of using "Combined:"
-                    channel_links = []
-                    for channel in sorted(successful_channels_processed):
-                        if channel:
-                            # Create a proper markdown link for each channel
-                            channel_links.append(f"[{channel}](https://t.me/{channel})")
-                    
-                    # Join the channel links with commas
-                    channel_entry = ", ".join(channel_links)
-                    print(f"Attempting to update README for channels: {', '.join(successful_channels_processed)}...")
-                    # Pass channel_entry directly instead of using "Combined:" prefix
-                    update_readme(channel_entry, "", len(found_configs), readme_output_path, found_configs)
+            # Split configs into chunks if chunking is enabled
+            if use_chunking:
+                config_chunks = split_configs_into_chunks(sorted_configs, 500)
             else:
-                print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
+                config_chunks = [sorted_configs]  # Single chunk containing all configs
+            
+            if len(config_chunks) == 1:
+                # Single file case
+                profile_title = f"[{', '.join(channel_names)}]"
+                print(f"Saving {len(sorted_configs)} configurations to {output_filename}...")
+                save_config_file(output_filename, config_chunks[0], profile_title)
+                print(f"Saved configurations to '{output_filename}'")
+                
+                                 # Update README for single file
+                readme_output_path = os.path.join(OUTPUT_DIR, base_filename).replace('\\', '/')
+                if GITHUB_USERNAME and REPO_NAME:
+                    if use_popular_channels:
+                        channel_entry = "Popular Channels"
+                        update_readme(channel_entry, "", len(found_configs), readme_output_path, found_configs, successful_channels_processed)
+                    elif len(channel_identifiers) == 1:
+                        readme_channel_name = base_filename 
+                        channel_url = f"https://t.me/{readme_channel_name}"
+                        print(f"Attempting to update README for the single channel: {readme_channel_name}...")
+                        update_readme(readme_channel_name, channel_url, len(found_configs), readme_output_path, found_configs, successful_channels_processed)
+                    else:
+                        # Multiple input channels
+                        channel_links = []
+                        for channel in sorted(successful_channels_processed):
+                            if channel:
+                                channel_links.append(f"[{channel}](https://t.me/{channel})")
+                        channel_entry = ", ".join(channel_links)
+                        print(f"Attempting to update README for channels: {', '.join(successful_channels_processed)}...")
+                        update_readme(channel_entry, "", len(found_configs), readme_output_path, found_configs, successful_channels_processed)
+                else:
+                    print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
+            else:
+                # Multiple files case
+                print(f"Splitting {len(sorted_configs)} configurations into {len(config_chunks)} files (max 500 configs each)...")
+                saved_files = []
+                
+                for i, chunk in enumerate(config_chunks, 1):
+                    chunk_filename = f"{output_filename}_{i}"
+                    profile_title = f"[{', '.join(channel_names)}] - Part {i}/{len(config_chunks)}"
+                    
+                    print(f"Saving part {i}/{len(config_chunks)} with {len(chunk)} configurations to {chunk_filename}...")
+                    save_config_file(chunk_filename, chunk, profile_title)
+                    saved_files.append(chunk_filename)
+                
+                print(f"Saved {len(config_chunks)} files: {[os.path.basename(f) for f in saved_files]}")
+                
+                                 # Update README for multiple files
+                if GITHUB_USERNAME and REPO_NAME:
+                    for i, saved_file in enumerate(saved_files, 1):
+                        readme_output_path = os.path.join(OUTPUT_DIR, f"{base_filename}_{i}").replace('\\', '/')
+                        chunk_size = len(config_chunks[i-1])
+                        
+                        if use_popular_channels:
+                            channel_entry = f"Popular Channels - Part {i}/{len(config_chunks)}"
+                            update_readme(channel_entry, "", chunk_size, readme_output_path, config_chunks[i-1], successful_channels_processed)
+                        else:
+                            if len(channel_identifiers) == 1:
+                                readme_channel_name = f"{base_filename} - Part {i}/{len(config_chunks)}"
+                                channel_url = f"https://t.me/{base_filename}"
+                                update_readme(readme_channel_name, channel_url, chunk_size, readme_output_path, config_chunks[i-1], successful_channels_processed)
+                            else:
+                                channel_links = []
+                                for channel in sorted(successful_channels_processed):
+                                    if channel:
+                                        channel_links.append(f"[{channel}](https://t.me/{channel})")
+                                channel_entry = f"{', '.join(channel_links)} - Part {i}/{len(config_chunks)}"
+                                update_readme(channel_entry, "", chunk_size, readme_output_path, config_chunks[i-1], successful_channels_processed)
+                else:
+                    print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
     except telethon.errors.RPCError as rpc_error:
         print(f"Telegram RPC Error: {rpc_error}")
         if "FLOOD_WAIT" in str(rpc_error):
