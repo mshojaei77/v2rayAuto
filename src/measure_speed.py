@@ -23,6 +23,8 @@ CORE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bin")
 INPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "telegram")
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "telegram_verified")
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "speed_test.log")
+PROCESSED_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "processed_configs.txt")
+PROCESSED_FILES_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "processed_files.txt")
 
 LATENCY_TEST_URL = "http://www.google.com/generate_204"
 SPEED_TEST_URL = "http://speedtest.tele2.net/1MB.zip"
@@ -40,7 +42,8 @@ def setup_logging():
         return logger
 
     # File Handler - Detailed logs (DEBUG level) including failures and reasons
-    file_handler = logging.FileHandler(LOG_FILE, mode='w', encoding='utf-8')
+    # Use mode='a' (append) to preserve history for resume functionality
+    file_handler = logging.FileHandler(LOG_FILE, mode='a', encoding='utf-8')
     file_handler.setLevel(logging.DEBUG)
     file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
     file_handler.setFormatter(file_formatter)
@@ -48,6 +51,11 @@ def setup_logging():
     # Note: Console output is handled explicitly via print/tqdm to avoid interference with progress bars
     
     logger.addHandler(file_handler)
+    
+    # Add separator for new run
+    logger.info("-" * 50)
+    logger.info(f"NEW RUN STARTED AT {datetime.now()}")
+    logger.info("-" * 50)
     
     return logger
 
@@ -233,7 +241,7 @@ class ConfigConverter:
             if "@" not in body:
                 try:
                     body += "=" * ((4 - len(body) % 4) % 4)
-                    decoded = base64.urlsafe_b64decode(body).decode('utf-8')
+                    decoded = base64.urlsafe_b64decode(body).decode('utf-8', errors='ignore')
                     method_pass, host_port = decoded.rsplit("@", 1)
                     method, password = method_pass.split(":", 1)
                     host, port = host_port.rsplit(":", 1)
@@ -245,7 +253,7 @@ class ConfigConverter:
                 user_info_b64, host_port = body.split("@", 1)
                 try:
                     user_info_b64 += "=" * ((4 - len(user_info_b64) % 4) % 4)
-                    user_info = base64.urlsafe_b64decode(user_info_b64).decode('utf-8')
+                    user_info = base64.urlsafe_b64decode(user_info_b64).decode('utf-8', errors='ignore')
                     method, password = user_info.split(":", 1)
                 except Exception as e:
                     logger.debug(f"Error parsing SS link (user_info decode): {e}")
@@ -263,12 +271,69 @@ class ConfigConverter:
             return None
 
     @staticmethod
+    def parse_hy2(link):
+        try:
+            if not link.startswith("hy2://"): return None
+            # hy2://user@host:port?params#tag
+            from urllib.parse import urlparse, parse_qs
+            
+            # Handle potential encoding issues in the link itself if needed, but usually it's standard URL
+            parsed = urlparse(link)
+            if not parsed.hostname or not parsed.port:
+                return None
+            
+            auth = parsed.username
+            if not auth:
+                # Sometimes auth is in the netloc before @ but urlparse handles it usually
+                pass
+                
+            params = parse_qs(parsed.query)
+            
+            # Extract params
+            sni = params.get("sni", [""])[0]
+            insecure = params.get("insecure", ["0"])[0] == "1"
+            obfs = params.get("obfs", [""])[0]
+            obfs_password = params.get("obfs-password", [""])[0]
+            
+            # Construct Xray config
+            outbound = {
+                "protocol": "hysteria2",
+                "settings": {
+                    "servers": [{
+                        "address": parsed.hostname,
+                        "port": parsed.port,
+                        "auth": auth,
+                    }]
+                },
+                "streamSettings": {
+                    "network": "udp",
+                    "security": "tls",
+                    "tlsSettings": {
+                        "serverName": sni,
+                        "allowInsecure": insecure
+                    }
+                }
+            }
+            
+            if obfs == "salamander":
+                outbound["settings"]["servers"][0]["obfs"] = {
+                    "type": "salamander",
+                    "password": obfs_password
+                }
+                
+            return outbound
+        except Exception as e:
+            logger.debug(f"Error parsing Hysteria2 link: {e} | Link: {link[:50]}...")
+            return None
+
+    @staticmethod
     def link_to_outbound(link):
         link = link.strip()
         if link.startswith("vmess://"): return ConfigConverter.parse_vmess(link)
         elif link.startswith("vless://"): return ConfigConverter.parse_vless(link)
         elif link.startswith("trojan://"): return ConfigConverter.parse_trojan(link)
         elif link.startswith("ss://"): return ConfigConverter.parse_ss(link)
+        elif link.startswith("hy2://") or link.startswith("hysteria2://"): return ConfigConverter.parse_hy2(link.replace("hysteria2://", "hy2://"))
         logger.debug(f"Unsupported protocol or invalid link format: {link[:50]}...")
         return None
 
@@ -383,6 +448,95 @@ class SpeedTester:
             
         return result
 
+def import_history_from_log(seen_configs):
+    """
+    Parse the existing log file to find configs that were already tested
+    but might not be in the processed_configs.txt file (e.g. from runs before resume feature).
+    """
+    if not os.path.exists(LOG_FILE):
+        return
+
+    print("Checking log file for previously tested configs...")
+    new_found = []
+    
+    try:
+        with open(LOG_FILE, 'r', encoding='utf-8', errors='ignore') as f:
+            for line in f:
+                config = None
+                # Check for PASS logs: "... - PASS | speed | latency | config"
+                if " - PASS | " in line:
+                    parts = line.split(" | ")
+                    if len(parts) >= 4:
+                        config = parts[-1].strip()
+                # Check for FAIL logs: "... - FAIL | config"
+                elif " - FAIL | " in line:
+                    parts = line.split(" | ")
+                    if len(parts) >= 2:
+                        config = parts[-1].strip()
+                
+                if config and config not in seen_configs:
+                    seen_configs.add(config)
+                    new_found.append(config)
+        
+        if new_found:
+            print(f"  Imported {len(new_found)} configs from history log.")
+            logger.info(f"Imported {len(new_found)} configs from history log.")
+            
+            # Append to processed file so we don't have to parse log next time
+            try:
+                with open(PROCESSED_FILE, 'a', encoding='utf-8') as pf:
+                    for c in new_found:
+                        pf.write(c + "\n")
+            except Exception as e:
+                logger.error(f"Failed to save imported configs to resume file: {e}")
+        else:
+            print("  No new configs found in log history.")
+            
+    except Exception as e:
+        logger.error(f"Failed to import from log file: {e}")
+
+def import_history_from_verified(seen_configs):
+    """
+    Recover previously verified (passed) configs from the output directory.
+    This helps recover state if the log file was deleted or truncated.
+    """
+    if not os.path.exists(OUTPUT_DIR):
+        return
+
+    print("Checking verified output files for previously passed configs...")
+    new_found = []
+    
+    try:
+        files = [f for f in os.listdir(OUTPUT_DIR) if os.path.isfile(os.path.join(OUTPUT_DIR, f))]
+        for filename in files:
+            filepath = os.path.join(OUTPUT_DIR, filename)
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        config = line.strip()
+                        if config and not config.startswith("#") and config not in seen_configs:
+                            seen_configs.add(config)
+                            new_found.append(config)
+            except Exception as e:
+                logger.error(f"Failed to read verified file {filename}: {e}")
+
+        if new_found:
+            print(f"  Imported {len(new_found)} passed configs from verified output.")
+            logger.info(f"Imported {len(new_found)} passed configs from verified output.")
+            
+            # Append to processed file
+            try:
+                with open(PROCESSED_FILE, 'a', encoding='utf-8') as pf:
+                    for c in new_found:
+                        pf.write(c + "\n")
+            except Exception as e:
+                logger.error(f"Failed to save verified configs to resume file: {e}")
+        else:
+            print("  No new passed configs found in verified output.")
+            
+    except Exception as e:
+        logger.error(f"Failed to import from verified directory: {e}")
+
 def main():
     if not os.path.exists(INPUT_DIR):
         print(f"Error: Input directory not found: {INPUT_DIR}")
@@ -404,8 +558,51 @@ def main():
     print(f"Input: {INPUT_DIR}")
     print(f"Output: {OUTPUT_DIR}")
     print(f"Log File: {LOG_FILE}")
+    print(f"Resume File: {PROCESSED_FILE}")
     
+    seen_configs = set()
+    
+    # Load previously processed configs for resume capability
+    if os.path.exists(PROCESSED_FILE):
+        try:
+            with open(PROCESSED_FILE, 'r', encoding='utf-8') as f:
+                for line in f:
+                    stripped = line.strip()
+                    if stripped:
+                        seen_configs.add(stripped)
+            print(f"Loaded {len(seen_configs)} previously processed configs from resume file.")
+            logger.info(f"Loaded {len(seen_configs)} previously processed configs from resume file.")
+        except Exception as e:
+            logger.error(f"Failed to load resume file: {e}")
+            
+    # Import history from log file (migration/backfill)
+    import_history_from_log(seen_configs)
+    
+    # Import history from verified output (recovery of passed configs)
+    import_history_from_verified(seen_configs)
+    
+    # Load list of fully processed files to skip them
+    processed_files = set()
+    if os.path.exists(PROCESSED_FILES_LOG):
+        try:
+            with open(PROCESSED_FILES_LOG, 'r', encoding='utf-8') as f:
+                processed_files = {line.strip() for line in f if line.strip()}
+            print(f"Loaded {len(processed_files)} fully processed files.")
+        except Exception as e:
+            logger.error(f"Failed to load processed files log: {e}")
+            
+    # Open resume file for appending new processed configs
+    try:
+        resume_file = open(PROCESSED_FILE, 'a', encoding='utf-8')
+    except Exception as e:
+        logger.error(f"Failed to open resume file for writing: {e}")
+        resume_file = None
+
     for filename in files:
+        if filename in processed_files:
+            print(f"\nSkipping {filename} (already fully processed).")
+            continue
+            
         filepath = os.path.join(INPUT_DIR, filename)
         out_filepath = os.path.join(OUTPUT_DIR, filename)
         
@@ -421,10 +618,22 @@ def main():
             continue
         
         # Parse configs and preserve headers
-        configs = [line.strip() for line in lines if line.strip() and not line.strip().startswith("#")]
+        raw_configs = [line.strip() for line in lines if line.strip() and not line.strip().startswith("#")]
         headers = [line.strip() for line in lines if line.strip() and line.strip().startswith("#")]
         
-        print(f"  Found {len(configs)} configs.")
+        # Deduplicate
+        configs = []
+        duplicates_count = 0
+        for config in raw_configs:
+            if config not in seen_configs:
+                configs.append(config)
+                seen_configs.add(config)
+            else:
+                duplicates_count += 1
+        
+        print(f"  Found {len(raw_configs)} configs ({len(configs)} new, {duplicates_count} duplicates/processed).")
+        if duplicates_count > 0:
+            logger.info(f"Removed {duplicates_count} duplicates/processed from {filename}")
         
         valid_results = []
         
@@ -434,6 +643,14 @@ def main():
             
             for config in pbar:
                 res = tester.test_config(config)
+                
+                # Mark as processed immediately to support resume
+                if resume_file:
+                    try:
+                        resume_file.write(config + "\n")
+                        resume_file.flush()
+                    except Exception as e:
+                        logger.error(f"Failed to write to resume file: {e}")
                 
                 if res:
                     # Format output
@@ -482,6 +699,13 @@ def main():
             msg = f"No working configs for {filename}, skipping save."
             print(f"  {msg}")
             logger.info(msg)
+            
+        # Mark file as fully processed
+        try:
+            with open(PROCESSED_FILES_LOG, 'a', encoding='utf-8') as f:
+                f.write(filename + "\n")
+        except Exception as e:
+            logger.error(f"Failed to mark file {filename} as processed: {e}")
 
     # Final Report
     if min_speed == float('inf'): min_speed = 0.0
@@ -498,6 +722,9 @@ def main():
     print(f"Detailed logs saved to:  {LOG_FILE}")
     print("="*50)
     
+    if resume_file:
+        resume_file.close()
+        
     logger.info("VERIFICATION SUMMARY COMPLETED")
 
 if __name__ == "__main__":
