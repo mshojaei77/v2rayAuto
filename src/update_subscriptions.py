@@ -2,6 +2,8 @@ import re
 import os
 import asyncio
 import sys
+import tempfile
+import platform
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 from tqdm import tqdm
@@ -41,6 +43,66 @@ TROJAN_PATTERN = "trojan://"
 SS_PATTERN = "ss://"
 HY2_PATTERN = "hy2://"
 PROFILE_TITLE_REGEX = r"#profile-title:\s*\[(.*?)\]"
+PROFILE_TITLE_PLAIN_REGEX = r"#profile-title:\s*Telegram Channels:\s*(.*)"
+
+# V2Ray configuration patterns
+V2RAY_PATTERNS = [
+    re.compile(r'vmess://[A-Za-z0-9+/=]+'),
+    re.compile(r'vless://[^\s]+'),
+    re.compile(r'trojan://[^\s]+'),
+    re.compile(r'ss://[A-Za-z0-9+/=]+@[^\s]+'),
+    re.compile(r'hy2://[^\s]+')
+]
+
+def secure_path_validation(file_path: str, base_directory: str) -> str:
+    """Validate and sanitize file paths to prevent directory traversal attacks."""
+    try:
+        # Convert to absolute paths
+        abs_file_path = os.path.abspath(file_path)
+        abs_base_dir = os.path.abspath(base_directory)
+        
+        # Check if the file path is within the base directory
+        if not abs_file_path.startswith(abs_base_dir):
+            raise ValueError(f"Path traversal detected: {file_path}")
+        
+        return abs_file_path
+    except Exception as e:
+        raise ValueError(f"Invalid file path: {file_path} - {e}")
+
+def secure_file_write(file_path: str, content: str) -> None:
+    """Securely write content to a file with atomic operations."""
+    try:
+        # Create temporary file in the same directory
+        temp_dir = os.path.dirname(file_path)
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', 
+                                       dir=temp_dir, delete=False) as temp_file:
+            temp_file.write(content)
+            temp_file_path = temp_file.name
+        
+        # Atomic move operation
+        if platform.system() == "Windows":
+            # On Windows, remove target file first if it exists
+            if os.path.exists(file_path):
+                os.remove(file_path)
+        
+        os.rename(temp_file_path, file_path)
+        
+    except Exception as e:
+        # Clean up temporary file if it exists
+        if 'temp_file_path' in locals() and os.path.exists(temp_file_path):
+            try:
+                os.remove(temp_file_path)
+            except:
+                pass
+        raise ValueError(f"Failed to write file securely: {file_path} - {e}")
+
+def secure_file_read(file_path: str) -> str:
+    """Securely read content from a file."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return f.read()
+    except Exception as e:
+        raise ValueError(f"Failed to read file securely: {file_path} - {e}")
 
 def validate_config_link(link):
     """Basic validation - just ensure it starts with one of the protocols"""
@@ -59,9 +121,9 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
         return False
     
     try:
-        # Read the current README content
-        with open(readme_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        # Validate and read the current README content securely
+        readme_path = secure_path_validation(readme_path, os.path.dirname(readme_path))
+        content = secure_file_read(readme_path)
         
         # Get the relative path for the raw link
         rel_path = os.path.relpath(output_filename, os.path.dirname(readme_path)).replace('\\', '/')
@@ -70,10 +132,13 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
         raw_link = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/refs/heads/main/{rel_path}"
         
         # Check if Telegram Channels section exists
-        telegram_section = "### Telegram Channels"
+        telegram_section = "## Telegram Channels"
         if telegram_section not in content:
-            print("Warning: Telegram Channels section not found in README.md")
-            return False
+            # Fallback to ### if ## not found
+            telegram_section = "### Telegram Channels"
+            if telegram_section not in content:
+                print("Warning: Telegram Channels section not found in README.md")
+                return False
         
         # Check if this channel already exists in the table
         channel_entry = f"[{channel_username}]({channel_url})"
@@ -127,9 +192,9 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
         if in_telegram_section and table_header_found and table_separator_found and not channel_found:
             updated_lines.append(row_content)
         
-        # Write the updated content back to the README
-        with open(readme_path, 'w', encoding='utf-8') as f:
-            f.write("\n".join(updated_lines))
+        # Write the updated content back to the README securely
+        updated_content = "\n".join(updated_lines)
+        secure_file_write(readme_path, updated_content)
         
         print(f"Updated README.md with subscription link for {channel_username}")
         return True
@@ -141,19 +206,45 @@ def update_readme(channel_username, channel_url, num_links, output_filename):
             traceback.print_exc()
         return False
 
+def is_chunked_file(file_path):
+    """Check if this file is part of a chunked set by looking for 'Part X/Y' in profile title"""
+    try:
+        # Validate path and read securely
+        validated_path = secure_path_validation(file_path, os.path.dirname(file_path))
+        content = secure_file_read(validated_path)
+        first_line = content.split('\n')[0].strip() if content else ""
+        # Check if the profile title contains "Part X/Y" pattern
+        if re.search(r'Part\s+\d+/\d+', first_line):
+            return True
+        return False
+    except Exception as e:
+        print(f"Error checking if {file_path} is chunked: {e}")
+        return False
+
 def extract_channels_from_profile_title(file_path):
     """Extract channel names from profile-title in the file"""
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        # Validate path and read securely
+        validated_path = secure_path_validation(file_path, os.path.dirname(file_path))
+        content = secure_file_read(validated_path)
         
         # Find profile-title line
+        # Try bracket format [channel1, channel2]
         match = re.search(PROFILE_TITLE_REGEX, content)
         if match:
             channels_str = match.group(1)
             # Split by commas and clean up
             channels = [ch.strip() for ch in channels_str.split(',')]
             return channels
+            
+        # Try plain format "Telegram Channels: channel_name"
+        match = re.search(PROFILE_TITLE_PLAIN_REGEX, content)
+        if match:
+            channels_str = match.group(1)
+            # Split by commas and clean up (just in case multiple are listed)
+            channels = [ch.strip() for ch in channels_str.split(',')]
+            return channels
+            
         return []
     except Exception as e:
         print(f"Error extracting channels from {file_path}: {e}")
@@ -163,13 +254,16 @@ def read_existing_configs(file_path):
     """Read existing V2Ray configs from a file"""
     configs = set()
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if (line.startswith(VLESS_PATTERN) or line.startswith(VMESS_PATTERN) or 
-                    line.startswith(TROJAN_PATTERN) or line.startswith(SS_PATTERN) or 
-                    line.startswith(HY2_PATTERN)) and validate_config_link(line):
-                    configs.add(line)
+        # Validate path and read securely
+        validated_path = secure_path_validation(file_path, os.path.dirname(file_path))
+        content = secure_file_read(validated_path)
+        
+        for line in content.split('\n'):
+            line = line.strip()
+            if (line.startswith(VLESS_PATTERN) or line.startswith(VMESS_PATTERN) or 
+                line.startswith(TROJAN_PATTERN) or line.startswith(SS_PATTERN) or 
+                line.startswith(HY2_PATTERN)) and validate_config_link(line):
+                configs.add(line)
         return configs
     except Exception as e:
         print(f"Error reading configs from {file_path}: {e}")
@@ -179,12 +273,15 @@ def get_metadata_from_file(file_path):
     """Extract metadata from subscription file"""
     metadata = []
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                if line.startswith('#') or not line.strip():
-                    metadata.append(line.rstrip('\n'))
-                else:
-                    break
+        # Validate path and read securely
+        validated_path = secure_path_validation(file_path, os.path.dirname(file_path))
+        content = secure_file_read(validated_path)
+        
+        for line in content.split('\n'):
+            if line.startswith('#') or not line.strip():
+                metadata.append(line.rstrip('\n'))
+            else:
+                break
         return metadata
     except Exception as e:
         print(f"Error extracting metadata from {file_path}: {e}")
@@ -270,6 +367,12 @@ async def process_subscription_file(client, file_path, days=7):
     """Process a single subscription file"""
     print(f"\nProcessing file: {file_path}")
     
+    # Check if this is a chunked file (part of a multi-file set)
+    if is_chunked_file(file_path):
+        print(f"Skipping {file_path} - this is a chunked file that should not be updated individually")
+        print("Chunked files are managed by telgram2sub.py and should not be updated by this script")
+        return
+    
     # Extract channel names from profile-title
     channels = extract_channels_from_profile_title(file_path)
     if not channels:
@@ -308,16 +411,21 @@ async def process_subscription_file(client, file_path, days=7):
             else:
                 updated_metadata.append(line)
         
-        # Write updated file
-        with open(file_path, 'w', encoding='utf-8') as f:
-            # Write metadata
-            for line in updated_metadata:
-                f.write(line + '\n')
-            
-            # Write all configs
-            sorted_configs = sorted(list(combined_configs))
-            for config in sorted_configs:
-                f.write(config + '\n')
+        # Write updated file securely
+        content_lines = []
+        # Add metadata
+        for line in updated_metadata:
+            content_lines.append(line)
+        
+        # Add all configs
+        sorted_configs = sorted(list(combined_configs))
+        for config in sorted_configs:
+            content_lines.append(config)
+        
+        # Validate path and write securely
+        validated_path = secure_path_validation(file_path, os.path.dirname(file_path))
+        content = '\n'.join(content_lines)
+        secure_file_write(validated_path, content)
         
         # Update README if only one channel
         if len(channels) == 1:
@@ -539,4 +647,4 @@ if __name__ == '__main__':
         print(f"Fatal error in script execution: {e}")
         import traceback
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
