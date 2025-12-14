@@ -4,6 +4,7 @@
 # venv
 .venv
 venv/
+src/bin/
 
 # Telethon session files
 *.session
