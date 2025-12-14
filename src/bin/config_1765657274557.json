@@ -1,0 +1,1 @@
+{"log": {"loglevel": "none"}, "inbounds": [{"port": 10808, "protocol": "http", "settings": {"timeout": 0}}], "outbounds": [{"protocol": "shadowsocks", "settings": {"servers": [{"address": "45.87.175.154", "port": 8080, "method": "chacha20-ietf-poly1305", "password": "4a2rfixophdjffa8KVA4Aa", "level": 0}]}, "streamSettings": {"network": "tcp"}}]}

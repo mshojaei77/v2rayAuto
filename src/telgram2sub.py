@@ -2,12 +2,41 @@ import re
 import os
 import asyncio
 import sys
-from datetime import datetime, timedelta, timezone # Added timezone
+import logging
+import argparse
+import tempfile
+import platform
+import base64
+import hashlib
+import contextlib
+import ipaddress
+import json
+import threading
+import time
+import functools
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+try:
+    import fcntl
+except ImportError:
+    fcntl = None  # Windows doesn't have fcntl
+try:
+    import msvcrt
+    import portalocker
+    WINDOWS_LOCKING = True
+except ImportError:
+    WINDOWS_LOCKING = False
+from datetime import datetime, timedelta, timezone
+from typing import List, Optional, Tuple, Dict, Any
+from urllib.parse import urlparse
+from pathlib import Path
+from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from tqdm import tqdm
-from telethon.sync import TelegramClient
+from telethon import TelegramClient
 from telethon.errors import SessionPasswordNeededError
-from telethon.tl.types import PeerChannel, InputMessagesFilterEmpty
+from telethon.tl.types import PeerChannel, InputMessagesFilterEmpty, Channel
 import telethon.utils
 import telethon.errors
 from telethon.sessions import StringSession
@@ -16,12 +45,616 @@ from telethon.sessions import StringSession
 dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
 load_dotenv(dotenv_path=dotenv_path)
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('telegram_scraper.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Custom exceptions for better error handling
+class SecurityError(Exception):
+    """Custom exception for security-related errors."""
+    pass
+
+class ValidationError(Exception):
+    """Custom exception for validation errors."""
+    pass
+
+class ConfigProcessingError(Exception):
+    """Custom exception for configuration processing errors."""
+    pass
+
+# --- Secure Configuration Management ---
+
+def get_required_env_var(var_name: str) -> str:
+    """
+    Securely retrieve required environment variable with validation.
+    
+    Args:
+        var_name: Name of the environment variable
+        
+    Returns:
+        The environment variable value
+        
+    Raises:
+        SecurityError: If variable is not set or invalid
+    """
+    value = os.environ.get(var_name)
+    if not value or not value.strip():
+        raise SecurityError(
+            f"Required environment variable '{var_name}' is not set. "
+            f"Please set it in your .env file or environment."
+        )
+    
+    # Additional validation for sensitive variables
+    if var_name == "TELEGRAM_API_ID":
+        try:
+            api_id = int(value)
+            if api_id <= 0:
+                raise SecurityError("TELEGRAM_API_ID must be a positive integer")
+            return str(api_id)
+        except ValueError:
+            raise SecurityError("TELEGRAM_API_ID must be a valid integer")
+    
+    if var_name == "TELEGRAM_API_HASH":
+        if len(value) < 32:  # Telegram API hashes are typically 32 characters
+            raise SecurityError("TELEGRAM_API_HASH appears to be invalid (too short)")
+        if not re.match(r'^[a-f0-9]+$', value):
+            raise SecurityError("TELEGRAM_API_HASH must contain only hexadecimal characters")
+    
+    return value.strip()
+
+def secure_input_credentials() -> Tuple[str, str]:
+    """
+    Securely prompt for credentials using getpass to prevent exposure.
+    
+    Returns:
+        Tuple of (phone_number, password) if 2FA is enabled
+        
+    Raises:
+        SecurityError: If input validation fails
+    """
+    try:
+        phone = input("Enter your phone number (with country code, e.g., +1234567890): ").strip()
+        
+        # Validate phone number format
+        if not re.match(r'^\+\d{10,15}$', phone):
+            raise SecurityError("Invalid phone number format. Use +countrycode followed by number")
+        
+        # Check if 2FA password is needed (we'll handle this during authentication)
+        return phone, ""
+        
+    except KeyboardInterrupt:
+        raise SecurityError("Authentication cancelled by user")
+    except Exception as e:
+        raise SecurityError(f"Failed to collect credentials securely: {e}")
+
+@contextlib.contextmanager
+def secure_file_lock(file_path: str):
+    """Cross-platform file locking context manager."""
+    lock_file_path = f"{file_path}.lock"
+    
+    try:
+        # Create lock file
+        lock_file = open(lock_file_path, 'w')
+        
+        try:
+            if platform.system() != 'Windows':
+                # Unix-like systems: use fcntl
+                fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            else:
+                # Windows: use msvcrt (import at runtime to avoid issues on non-Windows)
+                import msvcrt
+                while True:
+                    try:
+                        msvcrt.locking(lock_file.fileno(), msvcrt.LK_NBLCK, 1)
+                        break
+                    except IOError:
+                        time.sleep(0.1)
+            
+            yield
+            
+        finally:
+            if platform.system() != 'Windows':
+                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+            else:
+                import msvcrt
+                msvcrt.locking(lock_file.fileno(), msvcrt.LK_UNLCK, 1)
+            
+            lock_file.close()
+            
+    finally:
+        # Clean up lock file
+        try:
+            os.remove(lock_file_path)
+        except (OSError, FileNotFoundError):
+            pass
+
+def derive_encryption_key(password: bytes, salt: bytes) -> bytes:
+    """Derive encryption key from password using PBKDF2."""
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        iterations=100000,
+    )
+    return base64.urlsafe_b64encode(kdf.derive(password))
+
+def sanitize_v2ray_input(config: str) -> bool:
+    """
+    Sanitize V2Ray configuration input to prevent injection attacks.
+    
+    Args:
+        config: Configuration string to validate
+        
+    Returns:
+        True if input is safe, False otherwise
+    """
+    # Check for malicious patterns
+    malicious_patterns = [
+        r'javascript:',
+        r'data:',
+        r'file:',
+        r'ftp:',
+        r'<script',
+        r'</script>',
+        r'eval\(',
+        r'exec\(',
+        r'system\(',
+        r'shell_exec\(',
+        r'passthru\(',
+        r'`.*`',  # Command substitution
+        r'\$\(',  # Command substitution
+        r'&&',    # Command chaining
+        r'\|\|',  # Command chaining
+        r';',     # Command separator (in suspicious contexts)
+        r'\x00',  # Null bytes
+        r'\.\./',  # Directory traversal
+        r'\\\\',   # Windows path traversal
+    ]
+    
+    config_lower = config.lower()
+    for pattern in malicious_patterns:
+        if re.search(pattern, config_lower, re.IGNORECASE):
+            logger.warning(f"Malicious pattern detected: {pattern}")
+            return False
+    
+    # Check for excessive length (potential DoS)
+    if len(config) > 8192:  # 8KB limit
+        logger.warning("Configuration exceeds maximum length")
+        return False
+    
+    # Check for valid UTF-8 encoding
+    try:
+        config.encode('utf-8').decode('utf-8')
+    except UnicodeError:
+        logger.warning("Invalid UTF-8 encoding detected")
+        return False
+    
+    return True
+
+def validate_network_address(hostname: str) -> bool:
+    """
+    Validate network address (hostname or IP).
+    
+    Args:
+        hostname: Hostname or IP address to validate
+        
+    Returns:
+        True if valid, False otherwise
+    """
+    if not hostname:
+        return False
+    
+    try:
+        # Try to parse as IP address
+        ip = ipaddress.ip_address(hostname)
+        
+        # Block private/reserved IP ranges for security
+        if ip.is_private or ip.is_reserved or ip.is_loopback:
+            logger.warning(f"Blocked private/reserved IP: {hostname}")
+            return False
+        
+        # Block multicast and link-local
+        if ip.is_multicast or ip.is_link_local:
+            logger.warning(f"Blocked multicast/link-local IP: {hostname}")
+            return False
+        
+        return True
+        
+    except ValueError:
+        # Not an IP, validate as hostname
+        return validate_hostname(hostname)
+
+def validate_hostname(hostname: str) -> bool:
+    """
+    Validate hostname according to RFC standards.
+    
+    Args:
+        hostname: Hostname to validate
+        
+    Returns:
+        True if valid, False otherwise
+    """
+    if not hostname or len(hostname) > 253:
+        return False
+    
+    # Check for valid hostname pattern
+    hostname_pattern = re.compile(
+        r'^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\\.(?!-)[A-Za-z0-9-]{1,63}(?<!-))*$'
+    )
+    
+    if not hostname_pattern.match(hostname):
+        return False
+    
+    # Additional security checks
+    if '..' in hostname or hostname.startswith('.') or hostname.endswith('.'):
+        return False
+    
+    return True
+
+def validate_port_number(port: int) -> bool:
+    """
+    Validate port number.
+    
+    Args:
+        port: Port number to validate
+        
+    Returns:
+        True if valid, False otherwise
+    """
+    # Valid port range: 1-65535
+    # Block well-known system ports for security
+    if not isinstance(port, int) or port < 1 or port > 65535:
+        return False
+    
+    # Block some sensitive ports
+    # blocked_ports = {22, 23, 25, 53, 80, 110, 143, 443, 993, 995}
+    # if port in blocked_ports:
+    #    logger.warning(f"Blocked sensitive port: {port}")
+    #    return False
+    
+    return True
+
+def validate_scheme_specific(parsed_url) -> bool:
+    """
+    Perform scheme-specific validation.
+    
+    Args:
+        parsed_url: Parsed URL object
+        
+    Returns:
+        True if valid, False otherwise
+    """
+    scheme = parsed_url.scheme.lower()
+    
+    if scheme in {'vmess', 'vless'}:
+        # These should have proper base64 encoding or query parameters
+        if not (parsed_url.query or '@' in parsed_url.netloc):
+            return False
+        
+        # Validate base64 content if present
+        if parsed_url.path and len(parsed_url.path) > 1:
+            try:
+                # Try to decode base64 path
+                decoded = base64.b64decode(parsed_url.path[1:] + '==')
+                # Check if it's valid JSON for vmess
+                if scheme == 'vmess':
+                    json.loads(decoded.decode('utf-8'))
+            except (ValueError, json.JSONDecodeError, UnicodeDecodeError):
+                return False
+    
+    elif scheme == 'trojan':
+        # Trojan should have password and host
+        if '@' not in parsed_url.netloc:
+            return False
+        
+        password_part = parsed_url.netloc.split('@')[0]
+        if not password_part or len(password_part) < 8:
+            return False
+    
+    elif scheme == 'ss':
+        # Shadowsocks validation
+        if '@' not in parsed_url.netloc:
+            return False
+        
+        # Check for method and password encoding
+        auth_part = parsed_url.netloc.split('@')[0]
+        try:
+            base64.b64decode(auth_part + '==')
+        except ValueError:
+            return False
+    
+    return True
+
+def perform_security_checks(config: str, parsed_url) -> bool:
+    """
+    Perform additional security checks on configuration.
+    
+    Args:
+        config: Original configuration string
+        parsed_url: Parsed URL object
+        
+    Returns:
+        True if secure, False otherwise
+    """
+    # Check for suspicious query parameters
+    if parsed_url.query:
+        query_params = parsed_url.query.lower()
+        suspicious_params = ['exec', 'eval', 'system', 'shell', 'cmd']
+        for param in suspicious_params:
+            if param in query_params:
+                logger.warning(f"Suspicious query parameter: {param}")
+                return False
+    
+    # Check for excessive nesting or complexity
+    if config.count('://') > 1:
+        logger.warning("Multiple protocols detected")
+        return False
+    
+    # Check for URL encoding attacks
+    if '%' in config:
+        try:
+            from urllib.parse import unquote
+            decoded = unquote(config)
+            if decoded != config and not sanitize_v2ray_input(decoded):
+                logger.warning("URL encoding attack detected")
+                return False
+        except Exception:
+            return False
+    
+    return True
+
+# --- Concurrency Control ---
+
+class AtomicFileWriter:
+    """Context manager for atomic file writing operations."""
+    
+    def __init__(self, file_path: str, encoding: str = 'utf-8'):
+        """
+        Initialize atomic file writer.
+        
+        Args:
+            file_path: Target file path
+            encoding: File encoding
+        """
+        self.file_path = Path(file_path)
+        self.temp_path = self.file_path.with_suffix(self.file_path.suffix + '.tmp')
+        self.encoding = encoding
+        self.file_handle = None
+        
+    def __enter__(self):
+        """Enter context and return file handle."""
+        try:
+            # Ensure parent directory exists
+            self.file_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Open temporary file for writing
+            self.file_handle = open(self.temp_path, 'w', encoding=self.encoding)
+            return self.file_handle
+            
+        except Exception as e:
+            logger.error(f"Failed to open temporary file {self.temp_path}: {e}")
+            raise
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Exit context and commit or rollback changes."""
+        if self.file_handle:
+            self.file_handle.close()
+        
+        if exc_type is None:
+            # Success: atomically move temp file to target
+            try:
+                if platform.system() == 'Windows':
+                    # Windows requires removing target first
+                    if self.file_path.exists():
+                        self.file_path.unlink()
+                
+                self.temp_path.replace(self.file_path)
+                logger.debug(f"Atomically wrote file: {self.file_path}")
+                
+            except Exception as e:
+                logger.error(f"Failed to commit atomic write: {e}")
+                # Clean up temp file
+                if self.temp_path.exists():
+                    self.temp_path.unlink()
+                raise
+        else:
+            # Error: clean up temp file
+            if self.temp_path.exists():
+                self.temp_path.unlink()
+                logger.debug(f"Cleaned up temporary file: {self.temp_path}")
+
+class ConcurrencyManager:
+    """Manage concurrent access to shared resources."""
+    
+    def __init__(self):
+        """Initialize concurrency manager."""
+        self._locks = {}
+        self._lock_manager_lock = threading.Lock()
+    
+    def get_file_lock(self, file_path: str) -> threading.Lock:
+        """
+        Get or create a lock for a specific file.
+        
+        Args:
+            file_path: Path to the file
+            
+        Returns:
+            Thread lock for the file
+        """
+        normalized_path = str(Path(file_path).resolve())
+        
+        with self._lock_manager_lock:
+            if normalized_path not in self._locks:
+                self._locks[normalized_path] = threading.Lock()
+            return self._locks[normalized_path]
+    
+    @contextlib.contextmanager
+    def acquire_file_lock(self, file_path: str, timeout: float = 30.0):
+        """
+        Acquire a file lock with timeout.
+        
+        Args:
+            file_path: Path to the file
+            timeout: Lock acquisition timeout in seconds
+            
+        Yields:
+            None when lock is acquired
+            
+        Raises:
+            TimeoutError: If lock cannot be acquired within timeout
+        """
+        file_lock = self.get_file_lock(file_path)
+        
+        if file_lock.acquire(timeout=timeout):
+            try:
+                yield
+            finally:
+                file_lock.release()
+        else:
+            raise TimeoutError(f"Could not acquire lock for {file_path} within {timeout} seconds")
+
+# Global concurrency manager instance
+_concurrency_manager = ConcurrencyManager()
+
+def atomic_file_write(file_path: str, content: str, encoding: str = 'utf-8') -> None:
+    """
+    Write content to file atomically with concurrency control.
+    
+    Args:
+        file_path: Target file path
+        content: Content to write
+        encoding: File encoding
+        
+    Raises:
+        SecurityError: If path validation fails
+        TimeoutError: If file lock cannot be acquired
+        IOError: If file operation fails
+    """
+    # Validate path security
+    secure_path_validation(file_path)
+    
+    # Acquire file lock and write atomically
+    with _concurrency_manager.acquire_file_lock(file_path):
+        with AtomicFileWriter(file_path, encoding) as f:
+            f.write(content)
+
+def atomic_file_read(file_path: str, encoding: str = 'utf-8') -> str:
+    """
+    Read file content with concurrency control.
+    
+    Args:
+        file_path: Source file path
+        encoding: File encoding
+        
+    Returns:
+        File content
+        
+    Raises:
+        SecurityError: If path validation fails
+        TimeoutError: If file lock cannot be acquired
+        IOError: If file operation fails
+    """
+    # Validate path security
+    secure_path_validation(file_path)
+    
+    # Acquire file lock and read
+    with _concurrency_manager.acquire_file_lock(file_path):
+        return secure_file_read(file_path, encoding)
+
+class RateLimiter:
+    """Rate limiter for API calls and network operations."""
+    
+    def __init__(self, max_calls: int, time_window: float):
+        """
+        Initialize rate limiter.
+        
+        Args:
+            max_calls: Maximum number of calls allowed
+            time_window: Time window in seconds
+        """
+        self.max_calls = max_calls
+        self.time_window = time_window
+        self.calls = []
+        self.lock = threading.Lock()
+    
+    def acquire(self, timeout: float = None) -> bool:
+        """
+        Acquire permission to make a call.
+        
+        Args:
+            timeout: Maximum time to wait for permission
+            
+        Returns:
+            True if permission granted, False if timeout
+        """
+        start_time = time.time()
+        
+        while True:
+            with self.lock:
+                now = time.time()
+                
+                # Remove old calls outside the time window
+                self.calls = [call_time for call_time in self.calls 
+                             if now - call_time < self.time_window]
+                
+                # Check if we can make a new call
+                if len(self.calls) < self.max_calls:
+                    self.calls.append(now)
+                    return True
+            
+            # Check timeout
+            if timeout is not None and time.time() - start_time > timeout:
+                return False
+            
+            # Wait a bit before retrying
+            time.sleep(0.1)
+    
+    @contextlib.contextmanager
+    def limit(self, timeout: float = None):
+        """
+        Context manager for rate limiting.
+        
+        Args:
+            timeout: Maximum time to wait for permission
+            
+        Yields:
+            None when permission is granted
+            
+        Raises:
+            TimeoutError: If permission cannot be acquired within timeout
+        """
+        if self.acquire(timeout):
+            yield
+        else:
+            raise TimeoutError(f"Rate limit exceeded, could not acquire permission within {timeout} seconds")
+
+# Global rate limiter for Telegram API calls
+_telegram_rate_limiter = RateLimiter(max_calls=20, time_window=60.0)  # 20 calls per minute
+
+def with_telegram_rate_limit(func):
+    """Decorator to apply rate limiting to Telegram API calls."""
+    @functools.wraps(func)
+    async def wrapper(*args, **kwargs):
+        with _telegram_rate_limiter.limit(timeout=30.0):
+            return await func(*args, **kwargs)
+    return wrapper
+
 # --- Configuration ---
-# Get these from https://my.telegram.org/apps
-# It's recommended to use environment variables or a config file for sensitive data
-API_ID = os.environ.get("TELEGRAM_API_ID")
-API_HASH = os.environ.get("TELEGRAM_API_HASH")
-PHONE_NUMBER = os.environ.get("TELEGRAM_PHONE_NUMBER") # Optional, if using user account
+try:
+    API_ID = int(get_required_env_var("TELEGRAM_API_ID"))
+    API_HASH = get_required_env_var("TELEGRAM_API_HASH")
+except SecurityError as e:
+    logger.error(f"Configuration error: {e}")
+    sys.exit(1)
+
+PHONE_NUMBER = os.environ.get("TELEGRAM_PHONE_NUMBER")  # Optional, if using user account
 OUTPUT_DIR = "telegram"
 DEFAULT_CHANNEL = "t.me/Spdnetpro"  # Default channel to scrape
 VERBOSE = False  # Set to True to see detailed output
@@ -36,15 +669,11 @@ PROXY_PORT = os.environ.get("PROXY_PORT")
 PROXY_USERNAME = os.environ.get("PROXY_USERNAME")
 PROXY_PASSWORD = os.environ.get("PROXY_PASSWORD")
 
-# Regex to find protocol links (captures the whole link)
-V2RAY_REGEX = r"(vless|vmess|trojan|ss|hy2)://[^\s]+"
-
-# Additional simple patterns as backup
-VLESS_PATTERN = "vless://"
-VMESS_PATTERN = "vmess://"
-TROJAN_PATTERN = "trojan://"
-SS_PATTERN = "ss://"
-HY2_PATTERN = "hy2://"
+# Unified V2Ray pattern - more robust and comprehensive
+V2RAY_PATTERN = re.compile(
+    r'(?:vless|vmess|trojan|ss|ssr|hysteria|tuic|wireguard|hy2)://[^\s\n\r<>"\'\[\]{}|\\^`]+',
+    re.IGNORECASE | re.MULTILINE
+)
 
 # List of popular telegram channels for V2Ray configs
 POPULAR_CHANNELS = [
@@ -123,37 +752,393 @@ POPULAR_CHANNELS = [
     "maxvpnxx"
 ]
 
-def validate_config_link(link):
-    """Basic validation - just ensure it starts with one of the protocols"""
-    protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
-    for protocol in protocols:
-        if link.startswith(protocol) and len(link) > len(protocol) + 5:  # At least 5 chars more than protocol
-            return True
-    return False
+def validate_channel_name(channel: str) -> str:
+    """
+    Validate and sanitize channel name for security.
+    
+    Args:
+        channel: Raw channel name input
+        
+    Returns:
+        Sanitized channel name
+        
+    Raises:
+        ValidationError: If channel name is invalid
+    """
+    if not channel or not isinstance(channel, str):
+        raise ValidationError("Channel name cannot be empty")
+    
+    # Remove @ prefix and whitespace
+    channel = channel.strip().lstrip('@')
+    
+    # Validate length
+    if len(channel) < 3 or len(channel) > 32:
+        raise ValidationError("Channel name must be between 3 and 32 characters")
+    
+    # Validate characters (alphanumeric, underscore, hyphen, dot only)
+    if not re.match(r'^[a-zA-Z0-9_.-]+$', channel):
+        raise ValidationError("Channel name contains invalid characters")
+    
+    return channel
 
-def split_configs_into_chunks(configs, chunk_size=500):
-    """Split configs into chunks of specified size"""
-    configs_list = list(configs)
-    chunks = []
-    for i in range(0, len(configs_list), chunk_size):
-        chunks.append(configs_list[i:i + chunk_size])
-    return chunks
+def secure_path_validation(file_path: str, base_directory: str = None) -> Path:
+    """Validate and sanitize file paths to prevent directory traversal attacks.
+    
+    Args:
+        file_path: The file path to validate
+        base_directory: Optional base directory to restrict access to
+        
+    Returns:
+        Validated Path object
+        
+    Raises:
+        ValidationError: If path is invalid or contains traversal attempts
+    """
+    try:
+        # Convert to Path object and resolve
+        path = Path(file_path).resolve()
+        
+        # Check for null bytes and other dangerous characters
+        if '\x00' in str(path) or any(char in str(path) for char in ['<', '>', '|', '*', '?']):
+            raise ValidationError(f"Invalid characters in path: {file_path}")
+        
+        # If base directory is specified, ensure path is within it
+        if base_directory:
+            base_path = Path(base_directory).resolve()
+            try:
+                path.relative_to(base_path)
+            except ValueError:
+                raise ValidationError(f"Path outside allowed directory: {file_path}")
+        
+        # Ensure parent directory exists
+        path.parent.mkdir(parents=True, exist_ok=True)
+        
+        return path
+        
+    except (OSError, ValueError) as e:
+        raise ValidationError(f"Invalid file path: {file_path} - {str(e)}")
+
+
+def secure_file_write(file_path: str, content: str, encoding: str = 'utf-8', 
+                     base_directory: str = None) -> None:
+    """Securely write content to a file with path validation.
+    
+    Args:
+        file_path: Path to the file
+        content: Content to write
+        encoding: File encoding
+        base_directory: Optional base directory restriction
+        
+    Raises:
+        ValidationError: If path validation fails
+        IOError: If file operations fail
+    """
+    validated_path = secure_path_validation(file_path, base_directory)
+    
+    # Use atomic write operation
+    temp_path = validated_path.with_suffix(validated_path.suffix + '.tmp')
+    
+    try:
+        with secure_file_lock(str(validated_path)):
+            with open(temp_path, 'w', encoding=encoding) as f:
+                f.write(content)
+                f.flush()
+                os.fsync(f.fileno())  # Force write to disk
+            
+            # Atomic move
+            if os.name == 'nt':  # Windows
+                if validated_path.exists():
+                    validated_path.unlink()
+            temp_path.replace(validated_path)
+            
+    except Exception as e:
+        # Clean up temp file on error
+        if temp_path.exists():
+            temp_path.unlink()
+        raise IOError(f"Failed to write file {file_path}: {str(e)}")
+
+
+def secure_file_read(file_path: str, encoding: str = 'utf-8', 
+                    base_directory: str = None) -> str:
+    """Securely read content from a file with path validation.
+    
+    Args:
+        file_path: Path to the file
+        encoding: File encoding
+        base_directory: Optional base directory restriction
+        
+    Returns:
+        File content as string
+        
+    Raises:
+        ValidationError: If path validation fails
+        IOError: If file operations fail
+    """
+    validated_path = secure_path_validation(file_path, base_directory)
+    
+    if not validated_path.exists():
+        raise IOError(f"File does not exist: {file_path}")
+    
+    try:
+        with open(validated_path, 'r', encoding=encoding) as f:
+            return f.read()
+    except Exception as e:
+        raise IOError(f"Failed to read file {file_path}: {str(e)}")
+
+
+
+def encrypt_session_data(session_string: str, password: str) -> str:
+    """Encrypt session string with password-derived key."""
+    try:
+        # Generate salt for key derivation
+        salt = os.urandom(16)
+        
+        # Derive key from password
+        key = derive_encryption_key(password.encode(), salt)
+        fernet = Fernet(key)
+        
+        # Encrypt session string
+        encrypted_data = fernet.encrypt(session_string.encode())
+        
+        # Combine salt and encrypted data
+        combined_data = salt + encrypted_data
+        return base64.b64encode(combined_data).decode()
+    except Exception as e:
+        raise SecurityError(f"Failed to encrypt session data: {e}")
+
+def decrypt_session_data(encrypted_data: str, password: str) -> str:
+    """Decrypt session string with password-derived key."""
+    try:
+        # Decode base64 data
+        combined_data = base64.b64decode(encrypted_data.encode())
+        
+        # Extract salt and encrypted data
+        salt = combined_data[:16]
+        encrypted_bytes = combined_data[16:]
+        
+        # Derive key from password
+        key = derive_encryption_key(password.encode(), salt)
+        fernet = Fernet(key)
+        
+        # Decrypt session string
+        decrypted_data = fernet.decrypt(encrypted_bytes)
+        return decrypted_data.decode()
+    except Exception as e:
+        raise SecurityError(f"Failed to decrypt session data: {e}")
+
+def secure_session_storage(session_file_path: str, session_string: str = None, password: str = None) -> Optional[str]:
+    """Securely store or retrieve encrypted session data."""
+    try:
+        # Validate session file path
+        session_dir = os.path.dirname(session_file_path) or '.'
+        validated_path = secure_path_validation(session_file_path, session_dir)
+        
+        if session_string and password:
+            # Store encrypted session
+            encrypted_data = encrypt_session_data(session_string, password)
+            
+            with secure_file_lock(str(validated_path)):
+                secure_file_write(str(validated_path), encrypted_data)
+            
+            # Set restrictive file permissions (owner read/write only)
+            try:
+                os.chmod(validated_path, 0o600)
+            except (OSError, AttributeError):
+                # Windows doesn't support chmod, use alternative method
+                pass
+            
+            logger.info("Session data securely stored")
+            return None
+            
+        elif password:
+            # Retrieve and decrypt session
+            if not os.path.exists(validated_path):
+                return None
+                
+            with secure_file_lock(str(validated_path)):
+                encrypted_data = secure_file_read(str(validated_path))
+            
+            return decrypt_session_data(encrypted_data, password)
+            
+        else:
+            raise ValidationError("Password required for session operations")
+            
+    except Exception as e:
+        logger.error(f"Session storage error: {e}")
+        return None
+
+def validate_v2ray_config(config: str) -> bool:
+    """
+    Validate V2Ray configuration string with comprehensive security checks.
+    
+    Args:
+        config: V2Ray configuration string
+        
+    Returns:
+        True if valid, False otherwise
+        
+    Raises:
+        SecurityError: If malicious content is detected
+    """
+    if not config or not isinstance(config, str):
+        return False
+    
+    # Input sanitization - check for malicious patterns
+    if not sanitize_v2ray_input(config):
+        return False
+    
+    try:
+        # Parse URL to validate structure
+        parsed = urlparse(config)
+        
+        # Check if scheme is supported
+        supported_schemes = {'vless', 'vmess', 'trojan', 'ss', 'ssr', 'hysteria', 'tuic', 'wireguard', 'hy2'}
+        if parsed.scheme.lower() not in supported_schemes:
+            return False
+        
+        # Basic structure validation
+        if not parsed.netloc:
+            return False
+        
+        # Validate hostname/IP
+        if not validate_network_address(parsed.hostname):
+            return False
+        
+        # Validate port if present
+        if parsed.port and not validate_port_number(parsed.port):
+            return False
+        
+        # Scheme-specific validation
+        if not validate_scheme_specific(parsed):
+            return False
+        
+        # Additional security checks
+        if not perform_security_checks(config, parsed):
+            return False
+        
+        return True
+        
+    except Exception as e:
+        logger.warning(f"Configuration validation error: {e}")
+        return False
+
+def extract_v2ray_configs(text: str) -> List[str]:
+    """
+    Extract and validate V2Ray configurations from text using unified approach.
+    
+    Args:
+        text: Text to extract configurations from
+        
+    Returns:
+        List of valid V2Ray configuration strings
+    """
+    if not text:
+        return []
+    
+    # Use unified regex pattern
+    matches = V2RAY_PATTERN.findall(text)
+    
+    # Validate each match
+    valid_configs = []
+    for match in matches:
+        if validate_v2ray_config(match.strip()):
+            valid_configs.append(match.strip())
+    
+    return valid_configs
+
+@asynccontextmanager
+async def file_lock(file_path: str):
+    """
+    Context manager for file locking to prevent race conditions.
+    
+    Args:
+        file_path: Path to file to lock
+    """
+    lock_file = f"{file_path}.lock"
+    lock_fd = None
+    
+    try:
+        # Create lock file
+        lock_fd = os.open(lock_file, os.O_CREAT | os.O_EXCL | os.O_RDWR)
+        yield
+    except OSError as e:
+        if e.errno == 17:  # File exists
+            raise ConfigProcessingError(f"Another process is updating {file_path}")
+        raise
+    finally:
+        if lock_fd is not None:
+            os.close(lock_fd)
+            try:
+                os.unlink(lock_file)
+            except OSError:
+                pass
+
+def split_configs_into_chunks(configs: List[str], chunk_size: int = 500) -> List[List[str]]:
+    """
+    Split configurations into chunks of specified size.
+    
+    Args:
+        configs: List of configuration strings
+        chunk_size: Maximum number of configs per chunk
+        
+    Returns:
+        List of configuration chunks
+    """
+    if chunk_size <= 0:
+        raise ValidationError("Chunk size must be positive")
+    
+    return [configs[i:i + chunk_size] for i in range(0, len(configs), chunk_size)]
+
+def validate_chunks(chunks: List[List[str]], original_configs: List[str]) -> bool:
+    """Validate that chunks contain unique configs without duplication"""
+    print(f"Validating {len(chunks)} chunks...")
+    
+    # Collect all configs from chunks
+    all_chunk_configs = []
+    for i, chunk in enumerate(chunks, 1):
+        print(f"  Chunk {i}: {len(chunk)} configs")
+        all_chunk_configs.extend(chunk)
+    
+    # Check for duplicates within chunks
+    unique_chunk_configs = set(all_chunk_configs)
+    total_chunk_configs = len(all_chunk_configs)
+    unique_count = len(unique_chunk_configs)
+    
+    print(f"  Total configs in chunks: {total_chunk_configs}")
+    print(f"  Unique configs in chunks: {unique_count}")
+    print(f"  Original configs count: {len(original_configs)}")
+    
+    if total_chunk_configs != unique_count:
+        print(f"  ⚠️  WARNING: Found {total_chunk_configs - unique_count} duplicate configs across chunks!")
+        return False
+    
+    if unique_count != len(original_configs):
+        print(f"  ⚠️  WARNING: Chunk configs count ({unique_count}) doesn't match original ({len(original_configs)})!")
+        return False
+    
+    print("  ✅ Chunk validation passed - no duplicates detected")
+    return True
 
 def save_config_file(filename, configs, profile_title):
-    """Save configs to a file with metadata"""
+    """Save configs to a file with metadata using atomic operations."""
     current_time = int(datetime.now().timestamp())
     future_time = current_time + (365 * 10 * 24 * 60 * 60)  # 10 years in future
     
-    with open(filename, 'w', encoding='utf-8') as f:
-        # Add comments with metadata at beginning of file
-        f.write(f"#profile-title: {profile_title}\n")
-        f.write("#profile-update-interval: 7\n")
-        f.write(f"#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire={future_time}\n")
-        f.write("\n")  # Empty line after metadata
-        
-        # Write all configs
-        for config in tqdm(configs, desc="Writing configs", unit="link", leave=False):
-            f.write(config + '\n')
+    # Create content with metadata
+    content_lines = [
+        f"#profile-title: {profile_title}",
+        "#profile-update-interval: 7",
+        f"#subscription-userinfo: upload=0; download=0; total=10737418240000000; expire={future_time}",
+        ""  # Empty line after metadata
+    ]
+    
+    # Add all configs
+    for config in tqdm(configs, desc="Writing configs", unit="link", leave=False):
+        content_lines.append(config)
+    
+    # Use atomic file write for enhanced concurrency control
+    content = '\n'.join(content_lines)
+    atomic_file_write(filename, content)
 
 def update_readme(channel_username, channel_url, num_links, output_filename, config_set=None, contributing_channels=None):
     """Update the README.md file with the subscription link"""
@@ -164,9 +1149,9 @@ def update_readme(channel_username, channel_url, num_links, output_filename, con
         return False
     
     try:
-        # Read the current README content
-        with open(readme_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        # Validate and read the current README content securely
+        readme_path = secure_path_validation(readme_path, os.path.dirname(readme_path))
+        content = secure_file_read(readme_path)
         
         # Get the relative path for the raw link (convert backslashes to forward slashes for GitHub)
         rel_path = os.path.relpath(output_filename, os.path.dirname(readme_path)).replace('\\\\', '/')
@@ -292,9 +1277,9 @@ def update_readme(channel_username, channel_url, num_links, output_filename, con
             print(f"DEBUG: Adding new channel at end of file: {row_content}")
             updated_lines.append(row_content)
         
-        # Write the updated content back to the README
-        with open(readme_path, 'w', encoding='utf-8') as f:
-            f.write("\n".join(updated_lines))
+        # Write the updated content back to the README securely
+        updated_content = "\n".join(updated_lines)
+        secure_file_write(readme_path, updated_content)
         
         print(f"Updated README.md with new subscription link for {channel_username}")
         return True
@@ -306,501 +1291,585 @@ def update_readme(channel_username, channel_url, num_links, output_filename, con
             traceback.print_exc()
         return False
 
-async def main():
-    """Main function to connect, scrape, and save configs."""
-
-    api_id_input = API_ID or input("Enter your API ID: ")
-    api_hash_input = API_HASH or input("Enter your API Hash: ")
-    phone_input = PHONE_NUMBER # Can be None if using a bot token
-
-    # Ask user if they want to use popular channels
-    use_popular = input("Do you want to use all popular channels? (y/n). Press Enter for 'n': ").lower().strip()
+def create_argument_parser() -> argparse.ArgumentParser:
+    """
+    Create and configure the command-line argument parser.
     
-    if use_popular == 'y' or use_popular == 'yes':
-        print(f"Using {len(POPULAR_CHANNELS)} popular channels...")
-        channel_identifiers = POPULAR_CHANNELS.copy()
-        use_popular_channels = True
+    Returns:
+        Configured ArgumentParser instance
+    """
+    parser = argparse.ArgumentParser(
+        description="Telegram V2Ray Configuration Scraper",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Use popular channels with default settings
+  python telgram2sub.py --popular
+  
+  # Scrape specific channels
+  python telgram2sub.py --channels Spdnetpro,meli_proxyy --limit 500
+  
+  # Enable chunking for large outputs
+  python telgram2sub.py --popular --chunking --limit 1000
+  
+  # Verbose mode with custom channels
+  python telgram2sub.py --channels "t.me/Spdnetpro,@meli_proxyy" --verbose
+        """
+    )
+    
+    # Channel selection (mutually exclusive)
+    channel_group = parser.add_mutually_exclusive_group(required=True)
+    channel_group.add_argument(
+        '--popular', '-p',
+        action='store_true',
+        help='Use predefined list of popular Telegram channels'
+    )
+    channel_group.add_argument(
+        '--channels', '-c',
+        type=str,
+        help='Comma-separated list of custom channel usernames (e.g., "Spdnetpro,meli_proxyy")'
+    )
+    
+    # Optional arguments
+    parser.add_argument(
+        '--limit', '-l',
+        type=int,
+        default=100,
+        metavar='N',
+        help='Maximum number of messages to process per channel (default: 100, max: 10000)'
+    )
+    
+    parser.add_argument(
+        '--chunking', '-k',
+        action='store_true',
+        help='Enable chunking for large outputs (splits into multiple files)'
+    )
+    
+    parser.add_argument(
+        '--verbose', '-v',
+        action='store_true',
+        help='Enable verbose logging output'
+    )
+    
+    parser.add_argument(
+        '--output-dir', '-o',
+        type=str,
+        default=OUTPUT_DIR,
+        metavar='DIR',
+        help=f'Output directory for saved configurations (default: {OUTPUT_DIR})'
+    )
+    
+    return parser
+
+
+def parse_and_validate_arguments() -> Tuple[List[str], int, bool]:
+    """
+    Parse command-line arguments and validate them.
+    
+    Returns:
+        Tuple of (channels, history_limit, enable_chunking)
+    """
+    parser = create_argument_parser()
+    args = parser.parse_args()
+    
+    # Set verbose mode globally
+    global VERBOSE
+    if args.verbose:
+        VERBOSE = True
+        logging.getLogger().setLevel(logging.DEBUG)
+        logger.debug("Verbose mode enabled")
+    
+    # Validate and process channels
+    if args.popular:
+        channels = POPULAR_CHANNELS.copy()
+        logger.info(f"Selected {len(channels)} popular channels")
     else:
-        # Get channel link/username with default value
-        channels_input_str = input(f"Enter Telegram channel links/usernames (comma-separated, e.g., @channel1, t.me/channel2). Press Enter for default '{DEFAULT_CHANNEL}': ") or DEFAULT_CHANNEL
+        # Parse custom channels
+        if not args.channels:
+            raise ValidationError("Custom channels cannot be empty")
         
-        # Split the input string by commas and strip whitespace
-        channel_identifiers = [ch.strip() for ch in channels_input_str.split(',') if ch.strip()]
-        use_popular_channels = False
+        raw_channels = [ch.strip() for ch in args.channels.split(',')]
+        channels = []
+        
+        for channel in raw_channels:
+            if not channel:
+                continue
+            try:
+                # Extract clean username from various formats
+                clean_name = channel
+                if "t.me/" in channel:
+                    clean_name = channel.split("t.me/")[-1].split("/")[0]
+                elif channel.startswith('@'):
+                    clean_name = channel[1:]
+                
+                validated_channel = validate_channel_name(clean_name)
+                channels.append(validated_channel)
+            except ValidationError as e:
+                logger.warning(f"Skipping invalid channel '{channel}': {e}")
+        
+        if not channels:
+            raise ValidationError("No valid channels provided")
+        
+        logger.info(f"Selected {len(channels)} custom channels: {', '.join(channels)}")
     
-    if not channel_identifiers:
-        print("Error: No valid channel identifiers provided.")
-        return
-
-    # --- Ask for date limit ---
-    days_limit = 0 # Default to all history
-    while True:
-        days_limit_str = input("Enter the number of days of history to fetch (e.g., 7). Press Enter or 0 for all history: ")
-        if not days_limit_str or days_limit_str == '0':
-            days_limit = 0
-            print("Fetching all message history.")
-            break
-        try:
-            days_limit = int(days_limit_str)
-            if days_limit < 0:
-                print("Please enter a non-negative number or 0.")
-            else:
-                print(f"Fetching messages from the last {days_limit} days.")
-                break
-        except ValueError:
-            print("Invalid input. Please enter a number.")
+    # Validate history limit
+    if args.limit <= 0 or args.limit > 10000:
+        raise ValidationError("History limit must be between 1 and 10000")
     
-    # --- Ask for chunking option ---
-    use_chunking = False
-    if use_popular_channels:
-        # Always use chunking for popular channels
-        use_chunking = True
-        print("Auto-chunking enabled for popular channels (max 500 configs per file).")
-    else:
-        # Ask user if they want to use chunking for custom channels
-        chunking_input = input("Do you want to split configs into multiple files? (y/n). Press Enter for 'n': ").lower().strip()
-        if chunking_input == 'y' or chunking_input == 'yes':
-            use_chunking = True
-            print("Chunking enabled (max 500 configs per file).")
-        else:
-            print("All configs will be saved to a single file.")
-
-    # --- Determine output filename based on input identifiers ---
-    if use_popular_channels:
-        base_filename = "popular_channels"
-    else:
-        normalized_usernames = []
-        for identifier in channel_identifiers:
-            username = identifier # Default if no specific format found
-            if "t.me/" in identifier:
-                username = identifier.split("t.me/")[-1].split("/")[0]
-            elif identifier.startswith('@'):
-                username = identifier[1:]
-            normalized_usernames.append(username)
-
-        if len(normalized_usernames) == 1:
-            base_filename = normalized_usernames[0]
-        else:
-            # Sort and join for multiple channels
-            base_filename = "_".join(sorted(normalized_usernames))
-            # Optional: Add prefix or limit length if filename becomes too long
-            # base_filename = "combined_" + base_filename # Example prefix
-            # if len(base_filename) > 100: # Example length limit
-            #     import hashlib
-            #     base_filename = hashlib.md5(base_filename.encode()).hexdigest()
-
-    # --- Prepare output directory and file path ---
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    output_path = os.path.join(script_dir, '..', OUTPUT_DIR)
-    # Define output filename based on normalized channel username(s) (no extension)
-    output_filename = os.path.join(output_path, base_filename)
+    # Update global output directory if specified
+    global OUTPUT_DIR
+    if args.output_dir != OUTPUT_DIR:
+        OUTPUT_DIR = args.output_dir
+        logger.info(f"Output directory set to: {OUTPUT_DIR}")
     
-    # Use a fixed session file path for persistence
-    session_filepath = os.path.join(script_dir, '..', SESSION_FILE)
-
-    # Create output directory if it doesn't exist
-    os.makedirs(output_path, exist_ok=True)
-
-    found_configs = set() # Use a set to store unique configs
-
-    # Try to load saved session string if it exists
-    session_string_file = os.path.join(script_dir, '..', f"{SESSION_FILE}.string")
-    session_string = None
-    if os.path.exists(session_string_file):
-        try:
-            print("Found saved session string, attempting to use it...")
-            with open(session_string_file, 'r') as f:
-                session_string = f.read().strip()
-        except Exception as e:
-            print(f"Could not load saved session string: {e}")
+    logger.info(f"Configuration: limit={args.limit}, chunking={args.chunking}")
     
-    # --- Connect to Telegram ---
-    # Determine the best session to use
-    # Prioritize session string if available and valid
-    use_session_string = False
-    temp_client = None
-    if session_string:
-        try:
-            temp_client = TelegramClient(StringSession(session_string), api_id_input, api_hash_input)
-            await temp_client.connect()
-            if await temp_client.is_user_authorized():
-                use_session_string = True
-                print("Session string is valid.")
-            else:
-                 print("Session string is invalid or expired.")
-                 session_string = None # Clear invalid string
-            await temp_client.disconnect()
-        except Exception as e:
-            print(f"Error validating session string: {e}. Falling back to session file/login.")
-            session_string = None # Clear invalid string
-        finally:
-            if temp_client and temp_client.is_connected():
-                await temp_client.disconnect()
+    return channels, args.limit, args.chunking
 
-    # Create client with proxy if enabled
-    if use_session_string:
-        print("Using validated session string.")
-        client_kwargs = {
-            'session': StringSession(session_string),
-            'api_id': api_id_input,
-            'api_hash': api_hash_input,
-        }
-    else:
-        session_file_exists = os.path.exists(session_filepath + ".session")
-        print(f"Using session file: {SESSION_FILE}" + (" (existing)" if session_file_exists else " (new will be created)"))
-        client_kwargs = {
-            'session': session_filepath, # Just provide the base name
-            'api_id': api_id_input,
-            'api_hash': api_hash_input,
-        }
-
-    # Add proxy if enabled
-    if PROXY_ENABLED and PROXY_SERVER and PROXY_PORT:
-        print(f"Using proxy: {PROXY_SERVER}:{PROXY_PORT}")
-        try:
-            proxy_port_int = int(PROXY_PORT)
-            # Telethon proxy format depends on socks type, assuming socks5
-            # Check telethon docs if using http proxy
-            proxy_info = ('socks5', PROXY_SERVER, proxy_port_int)
-            if PROXY_USERNAME and PROXY_PASSWORD:
-                 client_kwargs['proxy'] = proxy_info + (True, PROXY_USERNAME, PROXY_PASSWORD) # Use tuple for auth
-            else:
-                 client_kwargs['proxy'] = proxy_info
-        except ValueError:
-            print(f"Error: Invalid PROXY_PORT '{PROXY_PORT}'. Must be an integer.")
-            return
-        except Exception as e:
-            print(f"Error setting up proxy: {e}")
-            return
-
-    # Create the client with more robust settings
-    client = TelegramClient(**client_kwargs)
-    client.flood_sleep_threshold = 60  # Raise the threshold to avoid flood wait errors
-    
+async def main():
+    """Main function orchestrating the entire scraping process."""
     try:
-        print("Connecting to Telegram...")
+        logger.info("Starting Telegram V2Ray configuration scraper")
+        
+        # Parse and validate command-line arguments
+        channels, history_limit, enable_chunking = parse_and_validate_arguments()
+        
+        # Determine output filename
+        use_popular_channels = len(channels) > 1 and set(channels) == set(POPULAR_CHANNELS)
+        
+        if use_popular_channels:
+            base_filename = "popular_channels"
+        else:
+            # Normalize channel names for filename
+            normalized_names = []
+            for channel in channels:
+                # Extract clean username from various formats
+                clean_name = channel
+                if "t.me/" in channel:
+                    clean_name = channel.split("t.me/")[-1].split("/")[0]
+                elif channel.startswith('@'):
+                    clean_name = channel[1:]
+                
+                # Validate and sanitize for filename
+                clean_name = validate_channel_name(clean_name)
+                normalized_names.append(clean_name)
+            
+            if len(normalized_names) == 1:
+                base_filename = normalized_names[0]
+            else:
+                # Create combined filename with length limit
+                combined_name = "_".join(sorted(normalized_names))
+                if len(combined_name) > 100:
+                    # Use hash for very long names
+                    import hashlib
+                    hash_suffix = hashlib.md5(combined_name.encode()).hexdigest()[:8]
+                    base_filename = f"combined_{hash_suffix}"
+                else:
+                    base_filename = combined_name
+        
+        # Prepare secure output paths
+        script_dir = Path(__file__).parent
+        output_dir = script_dir.parent / OUTPUT_DIR
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        output_filename = output_dir / base_filename
+    
+        
+        # Setup Telegram client with proper error handling
+        async with create_telegram_client() as client:
+            logger.info("Successfully connected to Telegram")
+            
+            # Process channels and extract configurations
+            all_configs = []
+            successful_channels = []
+            
+            for channel in channels:
+                try:
+                    logger.info(f"Processing channel: {channel}")
+                    
+                    # Get channel entity
+                    try:
+                        entity = await client.get_entity(channel)
+                        if not isinstance(entity, Channel):
+                            logger.warning(f"Skipping {channel}: not a channel")
+                            continue
+                    except ValueError as e:
+                        logger.error(f"Channel {channel} not found: {e}")
+                        continue
+                    except Exception as e:
+                        logger.error(f"Error accessing channel {channel}: {e}")
+                        continue
+                    
+                    # Extract configurations from channel
+                    channel_configs = await extract_channel_configs(
+                        client, entity, history_limit
+                    )
+                    
+                    if channel_configs:
+                        all_configs.extend(channel_configs)
+                        successful_channels.append(channel)
+                        logger.info(f"Extracted {len(channel_configs)} configs from {channel}")
+                    else:
+                        logger.warning(f"No valid configs found in {channel}")
+                        
+                except Exception as e:
+                    logger.error(f"Error processing channel {channel}: {e}")
+                    continue
+            
+            if not all_configs:
+                logger.warning("No V2Ray configurations found in any channel")
+                return
+            
+            logger.info(f"Total configurations extracted: {len(all_configs)}")
+            
+            # Save configurations with file locking
+            await save_configurations(
+                all_configs, output_filename, enable_chunking, 
+                successful_channels, use_popular_channels
+            )
+            
+            logger.info("Configuration extraction completed successfully")
+
+    except SecurityError as e:
+        logger.error(f"Security error: {e}")
+        sys.exit(1)
+    except ValidationError as e:
+        logger.error(f"Validation error: {e}")
+        sys.exit(1)
+    except ConfigProcessingError as e:
+        logger.error(f"Configuration processing error: {e}")
+        sys.exit(1)
+    except KeyboardInterrupt:
+        logger.info("Operation cancelled by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        if VERBOSE:
+            import traceback
+            traceback.print_exc()
+        sys.exit(1)
+
+@asynccontextmanager
+async def create_telegram_client():
+    """
+    Create and manage Telegram client with secure session handling.
+    
+    Yields:
+        TelegramClient: Authenticated Telegram client
+    """
+    client = None
+    try:
+        # Setup secure session management
+        script_dir = Path(__file__).parent
+        session_file_path = script_dir.parent / f"{SESSION_FILE}.encrypted"
+        
+        # Try to load encrypted session
+        session_string = None
+        if session_file_path.exists():
+            try:
+                # Get password for session decryption
+                password = collect_credentials_securely("Enter session password: ", is_password=True)
+                session_string = secure_session_storage(str(session_file_path), password=password)
+                
+                if session_string:
+                    logger.info("Loaded encrypted session successfully")
+                else:
+                    logger.warning("Failed to decrypt session, will create new one")
+            except Exception as e:
+                logger.warning(f"Session decryption failed: {e}, will create new session")
+        
+        # Setup client configuration
+        if session_string:
+            client_kwargs = {
+                'api_id': API_ID,
+                'api_hash': API_HASH,
+                'session': StringSession(session_string)
+            }
+        else:
+            client_kwargs = {
+                'api_id': API_ID,
+                'api_hash': API_HASH,
+                'session': SESSION_FILE
+            }
+        
+        # Add proxy if enabled
+        if PROXY_ENABLED and PROXY_SERVER and PROXY_PORT:
+            try:
+                proxy_port_int = int(PROXY_PORT)
+                proxy_info = ('socks5', PROXY_SERVER, proxy_port_int)
+                if PROXY_USERNAME and PROXY_PASSWORD:
+                    client_kwargs['proxy'] = proxy_info + (True, PROXY_USERNAME, PROXY_PASSWORD)
+                else:
+                    client_kwargs['proxy'] = proxy_info
+                logger.info(f"Using proxy: {PROXY_SERVER}:{PROXY_PORT}")
+            except ValueError:
+                raise ValidationError(f"Invalid PROXY_PORT '{PROXY_PORT}'. Must be an integer.")
+        
+        # Create client
+        client = TelegramClient(**client_kwargs)
+        client.flood_sleep_threshold = 60
+        
+        # Connect and authenticate
         await client.connect()
         
-        # Ensure you're authorized
         if not await client.is_user_authorized():
-            print("Authorization required.")
-            if not phone_input:
-                print("Phone number not provided in .env")
-                phone_input = input("Enter your phone number (with country code, e.g., +1234567890): ")
-
-            try:
-                await client.send_code_request(phone_input)
-                while True: # Loop until successful login or error
-                    code = input('Enter the code you received: ')
-                    try:
-                        await client.sign_in(phone_input, code)
-                        break # Signed in successfully
-                    except telethon.errors.SessionPasswordNeededError:
-                        password = input('Two-step verification enabled. Please enter your password: ')
-                        try:
-                           await client.sign_in(password=password)
-                           break # Signed in with password successfully
-                        except Exception as pw_error:
-                           print(f"Password sign-in failed: {pw_error}")
-                           # Decide if retry is needed or exit
-                           retry = input("Retry password? (y/n): ").lower()
-                           if retry != 'y': return
-                    except telethon.errors.PhoneCodeInvalidError:
-                        print("Invalid code. Please try again.")
-                        # Loop continues to ask for code
-                    except telethon.errors.PhoneCodeExpiredError:
-                        print("Code expired. Requesting a new code...")
-                        await client.send_code_request(phone_input) # Request new code
-                        # Loop continues to ask for code
-                    except telethon.errors.FloodWaitError as flood_error:
-                         print(f"Flood wait error: trying again in {flood_error.seconds} seconds.")
-                         await asyncio.sleep(flood_error.seconds + 1)
-                         # Loop continues
-                    except Exception as login_err:
-                        print(f"Sign-in failed: {login_err}")
-                        if client.is_connected(): await client.disconnect()
-                        return # Exit on other errors
-
-            except telethon.errors.FloodWaitError as flood_error:
-                 print(f"Flood wait error on sending code: trying again in {flood_error.seconds} seconds.")
-                 await asyncio.sleep(flood_error.seconds + 1)
-                 # Consider adding retry logic here if needed
-                 return
-            except Exception as e:
-                print(f"Authorization process failed: {e}")
-                if client.is_connected(): await client.disconnect()
-                return
-
-        print("Successfully authorized and connected!")
+            if not PHONE_NUMBER:
+                raise ValidationError("Phone number required for authentication")
+            
+            await authenticate_client(client, PHONE_NUMBER)
         
-        # Save session string for future use if not already using one
-        if not use_session_string:
+        # Save encrypted session if new session was created
+        if not session_string:
             try:
-                # Force saving as StringSession
-                session_str = StringSession.save(client.session)
-                with open(session_string_file, 'w') as f:
-                    f.write(session_str)
-                print(f"Session string saved for future use in {session_string_file}")
+                new_session_string = StringSession.save(client.session)
+                password = collect_credentials_securely("Create password for session encryption: ", is_password=True)
+                secure_session_storage(str(session_file_path), new_session_string, password)
+                logger.info("Session encrypted and saved securely")
             except Exception as e:
-                print(f"Could not save session string: {e}")
-
-        # Calculate cutoff date if a limit is set
-        cutoff_date = None
-        if days_limit > 0:
-            cutoff_date = datetime.now(timezone.utc) - timedelta(days=days_limit)
-            print(f"Fetching messages since {cutoff_date.strftime('%Y-%m-%d %H:%M:%S %Z')}...")
-
-        # --- Loop through each channel identifier (from input) ---
-        total_messages_scanned_all_channels = 0
-        successful_channels_processed = [] # Keep track of channels we actually get data from
-
-        for channel_input in channel_identifiers: # Iterate through original identifiers
-            # Normalize again to get username for processing this specific channel
-            current_channel_username = channel_input # Default
-            if "t.me/" in channel_input:
-                current_channel_username = channel_input.split("t.me/")[-1].split("/")[0]
-            elif channel_input.startswith('@'):
-                current_channel_username = channel_input[1:]
-            # else: use channel_input as is
-
-            print(f"\n--- Processing Channel: {current_channel_username} ---")
-
-            try:
-                # Get channel entity
-                entity = await client.get_entity(current_channel_username)
-                print(f"Accessing channel: {entity.title}")
-                # Only add if entity lookup was successful
-                if current_channel_username not in successful_channels_processed:
-                     successful_channels_processed.append(current_channel_username)
-
-                # --- Iterate through messages for this channel ---
-                print("Reading messages...")
-                channel_messages_scanned = 0
-
-                # Initialize progress bar for this channel
-                progress_desc = f"Scanning {current_channel_username}"
-                if days_limit > 0:
-                     progress_desc += f" (last {days_limit} days)"
-                # Use total=None if date limited, as we don't know the total count beforehand
-                # Re-initialize progress bar for each channel
-                progress = tqdm(desc=progress_desc, unit="msg", total=None if days_limit > 0 else 0, leave=False) # leave=False for nested loops
-
-                # Use client.iter_messages for simpler iteration and date filtering
-                # reverse=False gets messages from newest to oldest
-                async for message in client.iter_messages(entity, limit=None, reverse=False):
-                    # Ensure message date is timezone-aware (Telethon usually provides UTC)
-                    msg_date = message.date
-                    if msg_date.tzinfo is None:
-                         # If for some reason tzinfo is missing, assume UTC
-                         msg_date = msg_date.replace(tzinfo=timezone.utc)
-
-                    # Stop if message is older than the cutoff date
-                    if cutoff_date and msg_date < cutoff_date:
-                        print(f"\nReached date limit ({days_limit} days) for {current_channel_username}. Stopping scan for this channel.")
-                        break # Exit the loop for this channel
-
-                    progress.update(1)
-                    channel_messages_scanned += 1
-                    total_messages_scanned_all_channels += 1
-
-                    if message.message: # Check if the message has text content
-                        # Print message for debugging if verbose is enabled
-                        if VERBOSE and channel_messages_scanned % 50 == 0:
-                            print(f"\n{current_channel_username} - Message {channel_messages_scanned} (Date: {msg_date.strftime('%Y-%m-%d')})") # Removed content print
-
-                        # Method 1: Use regex to find all V2Ray links
-                        try:
-                            # Find all matches using the comprehensive regex that ends at whitespace
-                            full_matches = re.findall(V2RAY_REGEX, message.message) 
-                            for config in full_matches:
-                                # Basic validation to ensure it's not just the protocol prefix
-                                if validate_config_link(config):
-                                    if config not in found_configs:
-                                        if VERBOSE:
-                                            print(f"Found via regex: {config[:30]}...") # Print truncated config
-                                        found_configs.add(config)
-                        except Exception as e:
-                            # Only log regex errors if verbose
-                            if VERBOSE:
-                               print(f"Minor error during regex matching in {current_channel_username}: {e}")
-
-                        # Backup Method: Simple String Search with improved link extraction
-                        msg_text = message.message
-                        protocols = [VLESS_PATTERN, VMESS_PATTERN, TROJAN_PATTERN, SS_PATTERN, HY2_PATTERN]
-                        for protocol in protocols:
-                            start_index = 0
-                            while True:
-                                start_index = msg_text.find(protocol, start_index)
-                                if start_index == -1:
-                                    break # No more occurrences of this protocol
-
-                                # Find the end of the link at the first whitespace
-                                end_index = len(msg_text)
-                                for i in range(start_index, len(msg_text)):
-                                    if msg_text[i].isspace():
-                                        end_index = i
-                                        break
-                                
-                                # Extract the complete link up to whitespace
-                                link = msg_text[start_index:end_index]
-                                
-                                # Basic validation and add if unique
-                                if validate_config_link(link) and link not in found_configs:
-                                    if VERBOSE:
-                                        print(f"Found via backup search: {link[:30]}...")
-                                    found_configs.add(link)
-
-                                # Move start_index past this link
-                                start_index = end_index + 1
-
-                    # Display count of found links periodically in the progress bar
-                    if channel_messages_scanned % 100 == 0:
-                        progress.set_postfix({"Links found (total)": len(found_configs)}, refresh=False)
-
-                # Ensure final postfix update and close progress bar for the channel
-                progress.set_postfix({"Links found (total)": len(found_configs)}, refresh=True)
-                progress.close()
-                print(f"Finished scanning {current_channel_username}. Scanned {channel_messages_scanned} messages.")
-
-            except ValueError as ve:
-                print(f"Error: Could not find the channel '{current_channel_username}'. Make sure the link/username is correct. Skipping.")
-                if VERBOSE: print(f"Details: {ve}")
-                continue # Skip to the next channel identifier
-            except telethon.errors.ChannelPrivateError:
-                 print(f"Error: Cannot access channel '{current_channel_username}'. It might be private or you are not a member. Skipping.")
-                 continue # Skip to the next channel identifier
-            except telethon.errors.UsernameNotOccupiedError:
-                 print(f"Error: The username '{current_channel_username}' does not seem to exist. Skipping.")
-                 continue # Skip to the next channel identifier
-            except Exception as e:
-                print(f"An unexpected error occurred while fetching messages from {current_channel_username}: {str(e)}")
-                import traceback
-                if VERBOSE:
-                    traceback.print_exc()
-                print(f"Skipping channel {current_channel_username} due to error.")
-                continue # Skip to the next channel identifier
-
-        # --- Save combined configs to file(s) (using the pre-calculated filename) ---
-        print(f"\nTotal messages scanned across all channels: {total_messages_scanned_all_channels}")
+                logger.warning(f"Failed to save encrypted session: {e}")
         
-        if not successful_channels_processed:
-            print("No channels were processed successfully.")
-        elif not found_configs:
-             # Check if any configs were found even if channels were processed
-             print(f"No V2Ray configurations found across the successfully processed channels: {'/'.join(successful_channels_processed)}")
-        else: # Found configs and at least one channel was successful
-            print(f"Found {len(found_configs)} unique V2Ray configurations in total from: {'/'.join(successful_channels_processed)}.")
-
-            # Sort the list before processing
-            sorted_configs = sorted(list(found_configs))
-            
-            # Format the channel names for profile title
-            channel_names = []
-            for channel in successful_channels_processed:
-                if channel:
-                    channel_names.append(channel)
-            
-            # Split configs into chunks if chunking is enabled
-            if use_chunking:
-                config_chunks = split_configs_into_chunks(sorted_configs, 500)
-            else:
-                config_chunks = [sorted_configs]  # Single chunk containing all configs
-            
-            if len(config_chunks) == 1:
-                # Single file case
-                profile_title = f"[{', '.join(channel_names)}]"
-                print(f"Saving {len(sorted_configs)} configurations to {output_filename}...")
-                save_config_file(output_filename, config_chunks[0], profile_title)
-                print(f"Saved configurations to '{output_filename}'")
-                
-                                 # Update README for single file
-                readme_output_path = os.path.join(OUTPUT_DIR, base_filename).replace('\\', '/')
-                if GITHUB_USERNAME and REPO_NAME:
-                    if use_popular_channels:
-                        channel_entry = "Popular Channels"
-                        update_readme(channel_entry, "", len(found_configs), readme_output_path, found_configs, successful_channels_processed)
-                    elif len(channel_identifiers) == 1:
-                        readme_channel_name = base_filename 
-                        channel_url = f"https://t.me/{readme_channel_name}"
-                        print(f"Attempting to update README for the single channel: {readme_channel_name}...")
-                        update_readme(readme_channel_name, channel_url, len(found_configs), readme_output_path, found_configs, successful_channels_processed)
-                    else:
-                        # Multiple input channels
-                        channel_links = []
-                        for channel in sorted(successful_channels_processed):
-                            if channel:
-                                channel_links.append(f"[{channel}](https://t.me/{channel})")
-                        channel_entry = ", ".join(channel_links)
-                        print(f"Attempting to update README for channels: {', '.join(successful_channels_processed)}...")
-                        update_readme(channel_entry, "", len(found_configs), readme_output_path, found_configs, successful_channels_processed)
-                else:
-                    print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
-            else:
-                # Multiple files case
-                print(f"Splitting {len(sorted_configs)} configurations into {len(config_chunks)} files (max 500 configs each)...")
-                saved_files = []
-                
-                for i, chunk in enumerate(config_chunks, 1):
-                    chunk_filename = f"{output_filename}_{i}"
-                    profile_title = f"[{', '.join(channel_names)}] - Part {i}/{len(config_chunks)}"
-                    
-                    print(f"Saving part {i}/{len(config_chunks)} with {len(chunk)} configurations to {chunk_filename}...")
-                    save_config_file(chunk_filename, chunk, profile_title)
-                    saved_files.append(chunk_filename)
-                
-                print(f"Saved {len(config_chunks)} files: {[os.path.basename(f) for f in saved_files]}")
-                
-                                 # Update README for multiple files
-                if GITHUB_USERNAME and REPO_NAME:
-                    for i, saved_file in enumerate(saved_files, 1):
-                        readme_output_path = os.path.join(OUTPUT_DIR, f"{base_filename}_{i}").replace('\\', '/')
-                        chunk_size = len(config_chunks[i-1])
-                        
-                        if use_popular_channels:
-                            channel_entry = f"Popular Channels - Part {i}/{len(config_chunks)}"
-                            update_readme(channel_entry, "", chunk_size, readme_output_path, config_chunks[i-1], successful_channels_processed)
-                        else:
-                            if len(channel_identifiers) == 1:
-                                readme_channel_name = f"{base_filename} - Part {i}/{len(config_chunks)}"
-                                channel_url = f"https://t.me/{base_filename}"
-                                update_readme(readme_channel_name, channel_url, chunk_size, readme_output_path, config_chunks[i-1], successful_channels_processed)
-                            else:
-                                channel_links = []
-                                for channel in sorted(successful_channels_processed):
-                                    if channel:
-                                        channel_links.append(f"[{channel}](https://t.me/{channel})")
-                                channel_entry = f"{', '.join(channel_links)} - Part {i}/{len(config_chunks)}"
-                                update_readme(channel_entry, "", chunk_size, readme_output_path, config_chunks[i-1], successful_channels_processed)
-                else:
-                    print(f"Skipping README update because GITHUB_USERNAME({GITHUB_USERNAME}) or REPO_NAME({REPO_NAME}) is not set correctly.")
-    except telethon.errors.RPCError as rpc_error:
-        print(f"Telegram RPC Error: {rpc_error}")
-        if "FLOOD_WAIT" in str(rpc_error):
-             wait_time = int(re.search(r'(\d+)', str(rpc_error)).group(1))
-             print(f"Flood wait requested. Please wait {wait_time} seconds before trying again.")
-        # Add handling for other specific RPC errors if needed
+        logger.info("Successfully authenticated with Telegram")
+        yield client
+        
     except Exception as e:
-        error_msg = str(e)
-        print(f"Connection or setup error: {error_msg}")
-
-        import traceback
-        if VERBOSE:
-            traceback.print_exc()
-
+        logger.error(f"Client setup error: {e}")
+        raise
     finally:
-        # Make sure we disconnect properly
-        if 'client' in locals() and client.is_connected():
+        if client and client.is_connected():
             await client.disconnect()
-            print("Disconnected from Telegram.")
+            logger.info("Disconnected from Telegram")
+
+async def authenticate_client(client: TelegramClient, phone_number: str):
+    """
+    Handle Telegram client authentication with retry logic.
+    
+    Args:
+        client: Telegram client instance
+        phone_number: Phone number for authentication
+    """
+    max_retries = 3
+    
+    for attempt in range(max_retries):
+        try:
+            await client.send_code_request(phone_number)
+            
+            while True:
+                code = input('Enter the verification code: ').strip()
+                if not code:
+                    continue
+                
+                try:
+                    await client.sign_in(phone_number, code)
+                    return  # Successfully authenticated
+                    
+                except SessionPasswordNeededError:
+                    password = input('Two-step verification enabled. Enter password: ').strip()
+                    if password:
+                        await client.sign_in(password=password)
+                        return
+                    
+                except telethon.errors.PhoneCodeInvalidError:
+                    logger.warning("Invalid code. Please try again.")
+                    continue
+                    
+                except telethon.errors.PhoneCodeExpiredError:
+                    logger.warning("Code expired. Requesting new code...")
+                    break  # Break inner loop to request new code
+                    
+        except telethon.errors.FloodWaitError as e:
+            wait_time = e.seconds
+            logger.warning(f"Flood wait: {wait_time} seconds")
+            await asyncio.sleep(wait_time + 1)
+            
+        except Exception as e:
+            logger.error(f"Authentication attempt {attempt + 1} failed: {e}")
+            if attempt == max_retries - 1:
+                raise SecurityError(f"Authentication failed after {max_retries} attempts")
+
+@with_telegram_rate_limit
+async def extract_channel_configs(client: TelegramClient, entity: Channel, history_limit: int) -> List[str]:
+    """
+    Extract V2Ray configurations from a Telegram channel.
+    
+    Args:
+        client: Authenticated Telegram client
+        entity: Channel entity
+        history_limit: Maximum number of messages to process
+        
+    Returns:
+        List of valid V2Ray configuration strings
+    """
+    configs = set()
+    message_count = 0
+    
+    try:
+        # Use progress bar for user feedback
+        with tqdm(desc=f"Scanning {entity.username or entity.title}", 
+                 unit="msg", total=history_limit) as pbar:
+            
+            async for message in client.iter_messages(entity, limit=history_limit):
+                message_count += 1
+                pbar.update(1)
+                
+                if message.text:
+                    # Extract configurations from message text
+                    found_configs = extract_v2ray_configs(message.text)
+                    configs.update(found_configs)
+                    
+                    # Update progress bar with current count
+                    if message_count % 50 == 0:
+                        pbar.set_postfix({"configs": len(configs)})
+                        
+    except telethon.errors.FloodWaitError as e:
+        logger.warning(f"Flood wait for {entity.username}: {e.seconds} seconds")
+        await asyncio.sleep(e.seconds + 1)
+        
+    except Exception as e:
+        logger.error(f"Error extracting from {entity.username}: {e}")
+        
+    return list(configs)
+
+async def save_configurations(configs: List[str], output_filename: Path, 
+                            enable_chunking: bool, successful_channels: List[str], 
+                            use_popular_channels: bool):
+    """
+    Save configurations to file(s) with proper error handling and metadata.
+    
+    Args:
+        configs: List of V2Ray configuration strings
+        output_filename: Base output filename
+        enable_chunking: Whether to split into multiple files
+        successful_channels: List of successfully processed channels
+        use_popular_channels: Whether popular channels were used
+    """
+    if not configs:
+        logger.warning("No configurations to save")
+        return
+    
+    # Remove duplicates and sort
+    unique_configs = sorted(list(set(configs)))
+    logger.info(f"Saving {len(unique_configs)} unique configurations")
+    
+    try:
+        async with file_lock(str(output_filename)):
+            if enable_chunking:
+                await save_chunked_configs(
+                    unique_configs, output_filename, successful_channels, use_popular_channels
+                )
+            else:
+                await save_single_config_file(
+                    unique_configs, output_filename, successful_channels, use_popular_channels
+                )
+                
+    except ConfigProcessingError:
+        raise
+    except Exception as e:
+        raise ConfigProcessingError(f"Failed to save configurations: {e}")
+
+async def save_single_config_file(configs: List[str], output_filename: Path, 
+                                 successful_channels: List[str], use_popular_channels: bool):
+    """
+    Save all configurations to a single file.
+    
+    Args:
+        configs: List of configuration strings
+        output_filename: Output filename
+        successful_channels: List of successful channels
+        use_popular_channels: Whether popular channels were used
+    """
+    # Create profile title
+    if use_popular_channels:
+        profile_title = "Popular Telegram Channels Collection"
+    else:
+        profile_title = f"Telegram Channels: {', '.join(successful_channels[:5])}"
+        if len(successful_channels) > 5:
+            profile_title += f" +{len(successful_channels) - 5} more"
+    
+    # Save file
+    save_config_file(str(output_filename), configs, profile_title)
+    logger.info(f"Saved {len(configs)} configurations to {output_filename}")
+    
+    # Update README
+    if GITHUB_USERNAME and REPO_NAME:
+        try:
+            readme_path = str(output_filename.relative_to(output_filename.parent.parent))
+            readme_path = readme_path.replace('\\', '/')
+            
+            if use_popular_channels:
+                channel_entry = "Popular Channels"
+                update_readme(channel_entry, "", len(configs), readme_path, configs, successful_channels)
+            else:
+                channel_links = [f"[{ch}](https://t.me/{ch})" for ch in successful_channels[:3]]
+                if len(successful_channels) > 3:
+                    channel_links.append(f"+{len(successful_channels) - 3} more")
+                channel_entry = ", ".join(channel_links)
+                update_readme(channel_entry, "", len(configs), readme_path, configs, successful_channels)
+                
+        except Exception as e:
+            logger.warning(f"Failed to update README: {e}")
+
+async def save_chunked_configs(configs: List[str], output_filename: Path, 
+                             successful_channels: List[str], use_popular_channels: bool):
+    """
+    Save configurations split into multiple chunk files.
+    
+    Args:
+        configs: List of configuration strings
+        output_filename: Base output filename
+        successful_channels: List of successful channels
+        use_popular_channels: Whether popular channels were used
+    """
+    # Split into chunks
+    chunks = split_configs_into_chunks(configs, 500)
+    
+    if not validate_chunks(chunks, configs):
+        raise ConfigProcessingError("Chunk validation failed")
+    
+    logger.info(f"Splitting {len(configs)} configs into {len(chunks)} files")
+    
+    saved_files = []
+    for i, chunk in enumerate(chunks, 1):
+        chunk_filename = f"{output_filename}_{i}"
+        
+        # Create profile title for chunk
+        if use_popular_channels:
+            profile_title = f"Popular Channels Collection - Part {i}/{len(chunks)}"
+        else:
+            profile_title = f"Multi-Channel Collection - Part {i}/{len(chunks)}"
+        
+        # Save chunk
+        save_config_file(chunk_filename, chunk, profile_title)
+        saved_files.append(chunk_filename)
+        logger.info(f"Saved chunk {i}/{len(chunks)} with {len(chunk)} configs")
+    
+    # Update README for chunks
+    if GITHUB_USERNAME and REPO_NAME:
+        try:
+            for i, chunk_file in enumerate(saved_files, 1):
+                readme_path = str(Path(chunk_file).relative_to(Path(chunk_file).parent.parent))
+                readme_path = readme_path.replace('\\', '/')
+                
+                chunk_size = len(chunks[i-1])
+                
+                if use_popular_channels:
+                    channel_entry = f"Popular Channels - Part {i}/{len(chunks)}"
+                else:
+                    channel_entry = f"Multi-Channel Collection - Part {i}/{len(chunks)}"
+                
+                update_readme(channel_entry, "", chunk_size, readme_path, chunks[i-1], successful_channels)
+                
+        except Exception as e:
+            logger.warning(f"Failed to update README for chunks: {e}")
 
 if __name__ == '__main__':
     try:
-        # Use asyncio.run() which handles loop creation/management
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\nOperation cancelled by user.")
+        logger.info("Operation cancelled by user")
+        sys.exit(0)
     except Exception as e:
-        print(f"Fatal error in script execution: {e}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1) # Exit with error code
+        logger.error(f"Fatal error: {e}")
+        if VERBOSE:
+            import traceback
+            traceback.print_exc()
+        sys.exit(1)

@@ -6,12 +6,13 @@ This script is designed to automatically update V2Ray configuration files from v
 
 | Channel                                                                                                                                                                                            | Subscription Link                                                                                                                                                            |
 | ------------------------- | ------------------------------------------------------------ |
-| Popular Channels - Part 1/6 | [ss_500](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels_1) <br/>*From: meli_proxyy, An0nymousTeam, Outlinev2rayNG +69 more* |
-| Popular Channels - Part 2/6 | [ss_500](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels_2) <br/>*From: meli_proxyy, An0nymousTeam, Outlinev2rayNG +69 more* |
-| Popular Channels - Part 3/6 | [trojan_ss_500](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels_3) <br/>*From: meli_proxyy, An0nymousTeam, Outlinev2rayNG +69 more* |
-| Popular Channels - Part 4/6 | [vless_trojan_500](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels_4) <br/>*From: meli_proxyy, An0nymousTeam, Outlinev2rayNG +69 more* |
-| Popular Channels - Part 5/6 | [vless_500](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels_5) <br/>*From: meli_proxyy, An0nymousTeam, Outlinev2rayNG +69 more* |
-| Popular Channels - Part 6/6 | [vmess_vless_213](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels_6) <br/>*From: meli_proxyy, An0nymousTeam, Outlinev2rayNG +69 more* |
+| Popular Channels | [vless_trojan_ss_hy2_2935](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels) <br/>*From: An0nymousTeam, redfree8, appsooner +37 more* |
+| Popular Channels | [vless_trojan_ss_hy2_2935](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels) <br/>*From: An0nymousTeam, redfree8, appsooner +37 more* |
+| Popular Channels | [vless_trojan_ss_hy2_2935](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels) <br/>*From: An0nymousTeam, redfree8, appsooner +37 more* |
+| Popular Channels | [vless_trojan_ss_hy2_2935](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels) <br/>*From: An0nymousTeam, redfree8, appsooner +37 more* |
+| Popular Channels | [vless_trojan_ss_hy2_2935](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels) <br/>*From: An0nymousTeam, redfree8, appsooner +37 more* |
+| Popular Channels | [vless_trojan_ss_hy2_2935](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/popular_channels) <br/>*From: An0nymousTeam, redfree8, appsooner +37 more* |
+| [Spdnetpro](https://t.me/Spdnetpro) | [vmess_vless_27](https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/telegram/Spdnetpro) |
 
 
 

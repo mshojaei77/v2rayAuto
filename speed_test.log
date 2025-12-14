@@ -1,0 +1,216 @@
+2025-12-14 00:21:44,672 - DEBUG - Unsupported protocol or invalid link format: hy2://71504eaf-29ac-4190-89d1-dd9ce2c9ee14@151.243...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hy2://71504eaf-29ac-4190-89d1-dd9ce2c9ee14@151.243.168.31:53667?obfs=salamander&obfs-password=484V0vNCtIBZGmVw&insecure=1&sni=Ab.ac#@V2ray_Collector
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hy2://9772ecf2-6732-4bfb-a8b1-f48af577c76c@113.192...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hy2://9772ecf2-6732-4bfb-a8b1-f48af577c76c@113.192.61.19:63979/?insecure=1&sni=www.bing.com#Channel%20id%3A%20%40proxy_kafee%F0%9F%87%BA%F0%9F%87%B8
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hy2://Telegram--%3E%40Ln2Ray@206.71.158.23:45000/?...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hy2://Telegram--%3E%40Ln2Ray@206.71.158.23:45000/?insecure=1&sni=gavazn.55994421.xyz&obfs=salamander&obfs-password=Telegram--%3E%40Ln2Ray#Channel%20id%3A%20%40proxy_kafee%F0%9F%87%BA%F0%9F%87%B8
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hy2://Yet-Another-Public-Config-1@206.71.158.37:35...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hy2://Yet-Another-Public-Config-1@206.71.158.37:35000/?insecure=1&sni=YAPC-1.afshin.ir&obfs=salamander&obfs-password=Yet-Another-Public-Config-1#Channel%20id%3A%20%40proxy_kafee%F0%9F%87%B3%F0%9F%87%B1
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hy2://a2678c97b8d79059@46.62.152.236:443/?insecure...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hy2://a2678c97b8d79059@46.62.152.236:443/?insecure=1&obfs=salamander&obfs-password=9242a8bf#%40NoForced
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hy2://dongtaiwang.com@208.87.243.187:22222?insecur...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hy2://dongtaiwang.com@208.87.243.187:22222?insecure=1&sni=www.bing.com#@V2ray_Collector
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hysteria://195.154.200.40:15010?upmbps=100&downmbp...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hysteria://195.154.200.40:15010?upmbps=100&downmbps=100&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%F0%9F%87%AB%F0%9F%87%B7FR%20%7C%20@V2ray_Collector
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hysteria://195.154.200.40:15010?upmbps=100&downmbp...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hysteria://195.154.200.40:15010?upmbps=100&downmbps=100&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#@V2ray_Collector
+2025-12-14 00:21:44,673 - DEBUG - Unsupported protocol or invalid link format: hysteria://208.87.243.187:15823?upmbps=100&downmbp...
+2025-12-14 00:21:44,673 - DEBUG - FAIL | hysteria://208.87.243.187:15823?upmbps=100&downmbps=100&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#@V2ray_Collector
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://00026cc2-d2a5-41b2-86a0-2c5fb2e5018d@104.17.242.183:443?security=tls&sni=sg.xyxy.dpdns.org&type=ws&host=sg.xyxy.dpdns.org&path=%2F00026cc2#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://01cb18d1-2062-47e7-999b-ec08e8b2ec85@104.24.148.184:80?type=ws&host=muddy-rain-0a28-ppal03.mitey24737.workers.dev&path=/?ed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://033a4982-a8c7-4bfb-9481-5a8a1c62cfd6@104.21.93.95:80?type=ws&host=azadnet.b0b723a182.workers.dev&path=%2FiDE2j5JJnqTGPjmS%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xb8 in position 2: invalid start byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://06e4425e-a8cb-4b63-929f-2105604ab0a9@108.162.195.173:443?security=tls&sni=yz.ylka.dpdns.org&type=ws&host=yz.ylka.dpdns.org&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xb7 in position 2: invalid start byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://07a3df8f-2a2c-42f8-ad92-65889d90f3bf@172.67.135.37:443?security=tls&sni=tTTtTTT67.459.PP.uA&type=ws&host=ttttttt67.459.pp.ua&path=%2F5UW2C42lpZ7Dj4VDwVOkZfoq&fp=chrome&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd1 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://0cca1132-94a6-476c-ab13-6b28e0727751@104.16.132.136:80?encryption=none&security=none&fp=chrome&type=ws&host=blue-pine-59a0-ppal03.haleyaw148.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://12345678-1234-1234-1234-123456789123@185.176.24.61:2096?path=%2Fsnippets&security=tls&encryption=none&host=vless.hubp.de&type=ws&sni=vless.hubp.de#Telegram%20%3A%20%40GOLDllVPN%20%F0%9F%94%A5
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://12b6fb4e-91a5-4b9c-b23f-aaf7917488fd@104.18.15.19:2082?security=none&type=ws&host=0108.9ro3grfw.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://131387aa-4b2a-43aa-bf7c-d94306ba55fb@104.18.32.69:80?security=none&type=ws&host=13tg.jpl8xmqb.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://13e26f64-2e0c-4461-92cd-d83294cc18f0@172.67.185.107:443?security=tls&sni=wWwde.00890604.xyz&type=ws&host=wwwde.00890604.xyz&path=%2FWfxcqrR5ycVpIit2OdWk0KwirdY&fp=chrome&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xbd in position 2: invalid start byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://15298f41-e80b-463a-b85b-0c903258a1c8@104.16.41.28:443?security=tls&sni=d5.medicaltreatment.ir&type=ws&host=d5.medicaltreatment.ir&path=sinavm-sinavm%2F%3Fed%3D2560&fp=chrome#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf5 in position 2: invalid start byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://163100aa-f9bd-4ada-ae17-ceeccc8ca66b@104.21.84.30:2053?path=%2FJ5aLQOY1R9ONWYCM&security=tls&encryption=none&host=name.api-music-fa.com&type=ws&sni=name.api-music-fa.com#nitru-%F0%9F%87%B8%F0%9F%87%AC%20%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%88%DB%8C%DA%98%D9%87%20%D9%88%20%D9%BE%D8%B1%D8%B3%D8%B1%D8%B9%D8%AA%20%40nitruStore
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf9 in position 6: invalid start byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://16d7a04d-e6f4-479f-8914-80d3817317f9@104.21.17.92:443?security=tls&sni=ed19-dc7.pages.dev&type=ws&host=ed19-dc7.pages.dev&path=%2Fazarbayjab1.tab.net%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,673 - DEBUG - FAIL | ss://1853d1d2-1ccf-48e6-ae05-0c0bb285a8c4@104.16.19.242:80?type=ws&host=winter-bush-f08c-ppal03.himigaw787.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,673 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://19b3cbba-e6ac-485a-9481-926a0415eab2@172.67.189.174:80?security=none&type=ws&host=sHrill-tErm-639b.TageLIT414.workeRs.dEv&path=%2F#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xfd in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://1a79d43f-b41c-496b-a241-dcbeefa81f0e@185.114.72.31:2053?security=tls&sni=0926.qiang2000.link&type=ws&host=0926.qiang2000.link&path=/Telegram@V2ray_Alpha&fp=chrome#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xfd in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://1a79d43f-b41c-496b-a241-dcbeefa81f0e@45.112.195.46:2053?security=tls&sni=0926.qiang2000.link&type=ws&host=0926.qiang2000.link&path=%2FTelegram%40WangCai2%2F#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://1ae17c7d-6074-41e2-894b-478c9fcf5715@172.64.157.124:80?security=none&type=ws&host=rough-hill-2959-ppal03.fawik58803.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdb in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://229a61b0-5925-43dc-83f9-661670cfe41d@188.114.96.9:443?security=tls&sni=n8yt9i7dizcb4nbicv55vdqyfahovzb6jvwipqntbtfmvpa4ugrxmzrlhqrfgfr.u19x5rr.workers.Dev&type=ws&host=n8yt9i7dizcb4nbicv55vdqyfahovzb6jvwipqntbtfmvpa4ugrxmzrlhqrfgfr.u19x5rr.workers.Dev&path=%2Ftelegram%40v2ray_alpha%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0x9f in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://25af9eb2-3310-4f2b-bc82-ebea62ba7906@104.18.41.138:8880?security=none&type=ws&host=config-proxy-vl.telegram-config-proxy.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xb7 in position 4: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://25c5cbda-39e5-47ed-b36c-b87ffef2378d@104.18.9.38:2053?security=tls&sni=worker-fancy-base-7d08.yajici1215.workers.DEV&type=ws&host=worker-fancy-base-7d08.yajici1215.workers.DEV&path=%2FTABRIZ.NET%3A%40AZARBAYJAB1%2CTABRIZ.NET%3A%40AZARBAYJAB1%2CTABRIZ.NET%3A%40AZARBAYJAB1%2CTABRIZ.NET%3A%40AZARBAYJAB1%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdb in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://280768e7-ebc7-48f1-91e8-af4fbe0f90b0@23.88.119.83:2025?mode=gun&security=reality&encryption=none&pbk=hGlEVjlgkbHz7APkZPO6ZV3WEtCJW3Wkdx7xOISyP3Y&fp=chrome&spx=%2F&type=grpc&serviceName=Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn---Join---Arshiavpn&sni=miro.com&sid=d9#%40Arshiavpn12%20%D8%AC%D9%88%DB%8C%D9%86%20%D8%B4%D9%88%20%D9%82%D8%B7%D8%B9%20%D9%86%D8%B4%DB%8C
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdb in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://288124da-0d68-42f4-9f48-70dc4dcc55a6@104.21.21.190:443?security=tls&sni=XCVFgT6.890606.XYz&type=ws&host=xcvfgt6.890606.xyz&path=%2Fe49RZLgIb0TdfgF5HdHEIupMZeK&fp=chrome&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdb in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://29187857-4a1f-4d1e-88eb-0016771e0dbb@162.159.152.53:443?path=%2F%3Fed%3D2560Join--B_T&security=tls&alpn=h3&encryption=none&fp=random&type=ws&sni=vless.hubp.de#Telegram%3A%40Enzewa_network
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf9 in position 6: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://2b4bed25-a5ef-439d-93b1-395b7bcec58b@45.131.208.238:80?sni=workerr.dimon22287.workers.dev&type=ws&host=workerr.dimon22287.workers.dev&path=Telegram%40WangCai2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf9 in position 6: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://2b4bed25-a5ef-439d-93b1-395b7bcec58b@45.131.6.179:80?security=none&sni=workerr.dimon22287.workers.dev&type=ws&host=workerr.dimon22287.workers.dev&path=Telegram%40WangCai2%2F%3Fed#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://2d8af6f4-ebc2-4ff9-b423-d9ad543c29a2@172.67.157.34:8880?security=none&type=ws&host=654747578685543986654987665498765489766536548763217654432765417.eeb1b765a2f1aa.workers.dev&path=/Telegramchannel:@pandavpntc#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xd9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://2fdc4bf4-82f3-4af9-81f1-1ee51a500267@94.156.114.161:443?security=reality&encryption---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn---ettehad_vpn=none&pbk=Q2tfEJk4isttQnop09k0CbyiknN3mahbciCqw8CaOQQ&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=tunnel.vk-apps.com&sid=0c81f9c6#%F0%9F%87%A9%F0%9F%87%AATelegram%20%40Ettehad_vpn%20%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF%20%D9%88%DB%8C%E2%80%8C%D9%BE%DB%8C%E2%80%8C%D8%A7%D9%86
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdf in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://3058e698-61fd-4d12-95bc-f1fe4c071713@104.17.148.22:443?security=tls&sni=hOZori.iR&type=ws&host=hozori.ir&path=%2FTelegram%40V2ray_Alpha&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdf in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://318c375c-1f29-4b30-8875-2c4c54d7c38d@104.21.23.72:8080?security=none&type=ws&host=feng3.2n7y5pja.workers.dev&path=%2F%3Fed%3D2048#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xee in position 4: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://3487ce43-b803-4770-97ff-f75880d7f9b4@104.24.175.2:80?security=none&type=ws&host=rough-mud-93b4-ppal03.wedane7745.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://34b3cbba-e6ac-495a-9481-976a0419eab9@172.67.200.215:443?security=tls&sni=eSEtsecuriTYLIceNse.pUDmnquf.WorKErS.dEv&type=ws&host=eSEtsecuriTYLIceNse.pUDmnquf.WorKErS.dEv&path=%2F#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf6 in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://35323594-9ee2-4f06-ae14-3148b6950621@188.114.97.171:443?security=tls&sni=ooao14004.74gwenneth.workers.dev&type=ws&host=ooao14004.74gwenneth.workers.dev&path=%2F#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdd in position 2: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://35bdc608-822d-42eb-ad20-4bb23e9c052b@104.21.96.1:2053?security=tls&sni=6Ny8J3m9BCe4gTsPtivSObeOkZvyI8CM.paGeS.DEV&type=ws&host=6ny8j3m9bce4gtsptivsobeokzvyi8cm.pages.dev&path=%2F1BvBMhk9nOFvi0vn%3Fed%3D2560&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xbb in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://376734bc-4db8-4317-b451-af0262cb01c7@104.21.39.214:8443?security=tls&sni=InVinCIble.faFA20.sHop&type=ws&host=invincible.fafa20.shop&path=%2Fhjj7ZLPwtn7oT2JS%2FNzguNDYuNTYuNDI%3D%3Fed%3D2560&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xbb in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://376734bc-4db8-4317-b451-af0262cb01c7@104.21.95.229:2083?security=tls&sni=iNvINCiBLe.faFa20.shOp&type=ws&host=invincible.fafa20.shop&path=%2FAFCier7hMiNrfcmm%2FMTI5LjE1OS44NC43MQ%3D%3D%3Fed%3D2560&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xbb in position 2: invalid start byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://376734bc-4db8-4317-b451-af0262cb01c7@172.67.171.131:2083?security=tls&sni=iNvINCiBLe.faFa20.shOp&type=ws&host=invincible.fafa20.shop&path=%2FAFCier7hMiNrfcmm%2FMTI5LjE1OS44NC43MQ%3D%3D%3Fed%3D2560&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdf in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://38141d3b-ddde-4a2f-8d26-a31ddcd49c8a@172.67.187.251:8080?security=none&type=ws&host=520.msdtlasm.workers.dev&path=%2F%3Fed%3D2560&fp=randomized#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdf in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://3855723f-0260-4014-9225-4b0025f1768c@188.132.141.112:2095?path=%2F&security=&encryption=none&type=httpupgrade#%F0%9F%A6%83%20%5B%F0%9F%87%B9%F0%9F%87%B7%5D%20%E2%8C%81%20%F0%9D%99%8F%F0%9D%99%90%F0%9D%99%8D%F0%9D%99%86%F0%9D%99%80%F0%9D%99%94%C2%B3
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xdd in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://3f5eba46-f9c9-4d49-985c-2a4345da4f5a@104.16.52.146:80?security=none&type=ws&host=billowing-recipe-c066-ppal03.kerocel835.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@104.26.2.186:443?security=tls&sni=pqh23v2.hiddendom.shop&type=grpc&host=pqh23v2.hiddendom.shop&alpn=h2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@154.197.64.43:443?security=tls&sni=pqh24v3.hiddendom.shop&type=grpc&host=pqh24v3.hiddendom.shop&alpn=h2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@156.238.18.155:443?security=tls&sni=pqh24v3.hiddendom.shop&type=grpc&host=pqh24v3.hiddendom.shop&alpn=h2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@167.68.42.168:443?security=tls&sni=pqh24v3.hiddendom.shop&type=grpc&host=pqh24v3.hiddendom.shop&alpn=h2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@31.43.179.38:443?security=tls&sni=pqh23v4.hiddendom.shop&type=grpc&host=pqh23v4.hiddendom.shop&alpn=h2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,674 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@45.205.0.58:443?security=tls&sni=pqh24v3.hiddendom.shop&type=grpc&host=pqh24v3.hiddendom.shop&alpn=h2#@VIProxys
+2025-12-14 00:21:44,674 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@45.82.251.34:80?note=---Telegram---NetifyVPN---Telegram---NetifyVPN---Telegram---NetifyVPN---Telegram---NetifyVPN---&mode=gun&security=none&encryption=none&type=grpc#🇺🇸
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://401374e6-df77-41fb-f638-dad8184f175b@45.85.118.141:443?security=tls&sni=pqh44v2.hiddendom.shop&type=grpc&alpn=h2#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://4179c595-08ca-45cd-b555-91b6f1faeadc@172.67.128.105:80?encryption=none&security=none&type=ws&host=di.dibdibini.dpdns.org&path=%2F%3Fed%3D2560#%D8%B9%D8%B6%D9%88%20%D8%B4%D9%88%20%3A%20%40zibanabz
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://4179c595-08ca-45cd-b555-91b6f1faeadc@172.67.128.105:80?security=none&sni=di.dibdibini.dpdns.org&type=ws&host=di.dibdibini.dpdns.org&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://4605f8c1-4818-4fd9-9bcd-ec1fc5c47abd@172.67.136.244:8443?path=%2FB9aKBZK1R8OBYWBZ&security=tls&encryption=none&host=hint.app-browser.org&type=ws&sni=hint.app-browser.org#nitru-%F0%9F%87%AE%F0%9F%87%A9%20%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%88%DB%8C%DA%98%D9%87%20%D9%88%20%D9%BE%D8%B1%D8%B3%D8%B1%D8%B9%D8%AA%20%40nitruStore
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://46dbac8b-eaba-4275-940c-819f95d16916@104.17.248.203:443?security=tls&sni=falcunargo.9cfaf68585.workers.Dev&type=ws&host=falcunargo.9cfaf68585.workers.Dev&path=%2F%3Fed%3D2048#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://46dbac8b-eaba-4275-940c-819f95d16916@104.18.1.22:443?security=tls&sni=falcunargo.9cfaf68585.workers.Dev&type=ws&host=falcunargo.9cfaf68585.workers.Dev&path=%2FTELEGRAM-MARAMBASHI-MARAMBASHI%2F%3Fed%3D2048#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xfb in position 6: invalid start byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://47e9a0db-50c6-4522-8819-502c55b06dde@159.112.235.174:2082?security=none&type=ws&host=workerr.schodog1.workers.dev&path=%2F%3Fed%3D2048#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://48eb8684-aa12-4b6d-b0ef-765193e6fb49@104.16.122.82:80?security=none&type=ws&host=tight-queen-5bc0-ppal03.siwome4657.workers.dev&path=%2FTelegram%40V2ray_Alpha%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://5240bfd4-ca6d-4757-8213-a6aab72d734e@104.18.32.69:8080?encryption=none&security=none&fp=chrome&type=ws&host=15tg.ddp6e6aw.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://5240bfd4-ca6d-4757-8213-a6aab72d734e@104.18.32.69:8080?security=none&type=ws&host=15tg.ddp6e6aw.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://53fff6cc-b4ec-43e8-ade5-e0c42972fc33@185.143.232.224:80?path=%2Fnews&security=none&encryption=none&host=bama.ir.german.cdnir.org&type=ws#%F0%9F%94%A5Join%2BTelegram%3A%40Farah_VPN%F0%9F%9F%A3
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe7 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://53fff6cc-b4ec-43e8-ade5-e0c42972fc33@185.143.232.224:80?path=%2Fnews&security=none&encryption=none&host=bama.ir.german.cdnir.org&type=ws#Telegram%20%3A%20%40GOLDllVPN%20%F0%9F%94%A5
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://5459f68e-d914-4b31-93a3-ecdf638b7a5b@172.66.134.126:80?security=none&sni=abcd.taraneh.dpdns.org&type=ws&host=abcd.taraneh.dpdns.org&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 3-4: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://54694a33-a8dc-47dd-bc38-acd3971e0055@15.204.153.29:443?security=tls&sni=147135004002.sec20org.com&type=tcp&fp=chrome#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://56718b04-3fe6-4ef3-a61f-cd9b3b5f64f1@5.129.252.60:443?security=reality&encryption=none&pbk=MNTWCLyV7EquFn-J0a6KRlQZ0dt6QY5mmu7Dq8uDkxw&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=cdnjs.com&sid=c2a0b2d60a7fc300#%F0%9D%97%9D%F0%9D%97%BC%F0%9D%97%B6%F0%9D%97%BB%20%E2%9E%A0%20%40tik7net_vpn%20%DA%A9%D8%A7%D9%86%D8%A7%D9%84%20%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20-%20%F0%9F%87%B7%F0%9F%87%BA%E2%9A%A1%20%7C
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe5 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://5df7962e-f9fe-41e6-ab49-ed96ccb856a7@172.66.44.135:80?security=none&type=ws&host=v2ra1.ecrgpk.workers.dev&path=/#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xeb in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://61c290d0-9a91-4233-a4eb-e1936a176ddf@116.203.127.84:443?security=tls&encryption=none&headerType=none&type=tcp&sni=nr.app-browser.org#nitru-%F0%9F%87%A9%F0%9F%87%AA%20%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%88%DB%8C%DA%98%D9%87%20%D9%88%20%D9%BE%D8%B1%D8%B3%D8%B1%D8%B9%D8%AA%20%40nitruStore
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://6c0c49c1-224d-4572-b2e8-e9f500c093dd@159.223.237.112:36562?type=tcp&host=www.speedtest.net&headerType=http#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://6f183280-b258-437a-a216-e83f7dece776@45.131.7.93:80?security=none&sni=901.dbodanwi.workers.dev&type=ws&host=901.dbodanwi.workers.dev&path=Telegram%40WangCai2%2F%3Fed#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://6f690965-3be3-43bb-9331-3ead6efb20aa@172.67.17.195:80?security=none&sni=sib.sibzamini.dpdns.org&type=ws&host=sib.sibzamini.dpdns.org&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://6f995056-7802-4a1d-bff7-61678e626c3f@52.187.36.104:443?security=tls&sni=werrr.azurewebsites.net&type=ws&host=werrr.azurewebsites.net&path=%2F&fp=chrome#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://6ff4726f-3650-4803-95eb-50b240f6ac75@104.16.194.204:80?security=none&type=ws&host=red-math-7092-ppal03.mewoco2522.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xe9 in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://6ff4726f-3650-4803-95eb-50b240f6ac75@104.24.186.156:80?security=none&type=ws&host=red-math-7092-ppal03.mewoco2522.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xef in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://7248e825-887c-48b9-83bc-c26bc6392bf8@104.21.57.88:443?security=tls&sni=xxsCDfr5.IRAN.pP.UA&type=ws&host=xxscdfr5.iran.pp.ua&path=%2FW02wBrOOqlSUywV3ibrzzKXJGy3S1&fp=chrome&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://741f2cb6-4d5b-4fd7-830a-d731c9e1e859@45.142.120.5:443?encryption=none&security=tls&sni=uciranirskiaromadarjendeh.bitokaw551.workers.dev&fp=randomized&type=ws&host=uciranirskiaromadarjendeh.bitokaw551.workers.dev&path=%2F%3Fed%3D443#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://741f2cb6-4d5b-4fd7-830a-d731c9e1e859@45.142.120.5:443?security=tls&sni=uciranirskiaromadarjendeh.bitokaw551.workers.dev&type=ws&host=uciranirskiaromadarjendeh.bitokaw551.workers.dev&path=%2F%3Fed%3D443&fp=randomized#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://74b56295-1845-4b22-b9a7-85b733218451@5.161.153.229:10443?security=tls&sni=etc.mesa.ip-ddns.com&type=ws&host=etc.mesa.ip-ddns.com&path=%2F%3Fed%3D2560&fp=random&alpn=h3#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://74bcfbf9-2596-4243-8c0f-1042e4725ae7@15.235.186.127:80?security=none&type=ws&host=m.facebook.com&path=%2Fws1#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://7556317c-dff6-46e8-ad29-b408f2a6456e@166.62.114.253:2096?path=%2FTelegram%F0%9F%87%A8%F0%9F%87%B3%2B%40WangCai2%2B%2F%3Fed%3D2560&security=tls&encryption=none&host=vless.muzheng.top&fp=chrome&type=ws&sni=vless.muzheng.top#%40v2ray313%20%DA%A9%D8%A7%D9%86%D8%A7%D9%84%D9%85%D9%88%D9%86%20%F0%9F%92%99
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xef in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://79a01b8d-48a7-424a-97d6-d4fa0f1bb2f2@104.18.27.90:2053?path=%2FJ5aLQOY1R9ONWYCM&security=tls&encryption=none&host=port.api-music-fa.com&type=ws&sni=port.api-music-fa.com#nitru-%F0%9F%87%BA%F0%9F%87%B2%20%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%88%DB%8C%DA%98%D9%87%20%D9%88%20%D9%BE%D8%B1%D8%B3%D8%B1%D8%B9%D8%AA%20%40nitruStore
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xed in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://7dc035ac-6d78-4df3-963e-13102fb92176@5.202.8.211:443?path=%2F&security=tls&encryption=none&type=ws&sni=r12.irlancer.ir#@VIProxys
+2025-12-14 00:21:44,675 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xed in position 0: invalid continuation byte
+2025-12-14 00:21:44,675 - DEBUG - FAIL | ss://7fea28c6-f9b0-45ce-b7c2-ed3a3991d1e8@104.16.52.89:80?security=none&type=ws&host=curly-waterfall-509e-ppal03.wimiba9167.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://8250d638-45df-41fa-b06f-160d1cb1de0c@172.67.229.214:443?security=tls&sni=abc.vpneee.top&type=ws&host=abc.vpneee.top&path=%2FYnqGMcAt%2F#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://832accbb-e9ca-4ae9-9f52-9aaafaa28e8a@172.67.202.251:443?security=tls&sni=W-fM31c626B071m8zad1Z891u-azf81B.VAZIfeDAnmohammAd8.WoRkErS.dev&type=ws&host=w-fm31c626b071m8zad1z891u-azf81b.vazifedanmohammad8.workers.dev&path=%2F9TxNVB761dUv9TIg%3Fed%3D2560&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://832accbb-e9ca-4ae9-9f52-9aaafaa28e8a@172.67.202.251:8443?security=tls&sni=w-FM31C626b071M8Zad1Z891u-AzF81b.VazIfeDANmOHAmMaD8.WORKErS.dEv&type=ws&host=w-fm31c626b071m8zad1z891u-azf81b.vazifedanmohammad8.workers.dev&path=%2Fj0xDXbyZ80VEDnnx%3Fed%3D2560&fp=randomized&alpn=http%2F1.1#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://838f5273-5d2d-4630-a0f5-9cc8e4aef4d6@188.119.112.3:2052?type=ws&host=vkvd127.mycdn.me&path=%2F#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://838f5273-5d2d-4630-a0f5-9cc8e4aef4d6@45.89.111.198:2052?security=none&type=ws&host=omidyzvg2.kamaleriz.info&path=/#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode bytes in position 0-1: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://86c50e3a-5b87-49dd-bd20-03c7f2735e40@104.18.13.229:8443?security=tls&sni=azadnet-3dr.pages.dev&type=ws&host=azadnet-3dr.pages.dev&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://89780139-39db-4ae9-adc5-00d9da4bb8b3@104.24.237.26:2082?security=none&type=ws&host=server123.amirjacksonpp.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://89b3cbba-e6ac-485a-9481-976a0415eab9@185.162.229.185:80?security=none&type=ws&host=uuhUHYygEsdFGH.UYHJHGvgFcjGUJhbUIlbVFDxDxM.xyz&path=Telegram%3A%40V2ray_Alpha%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://89b3cbba-e6ac-485a-9481-976a0415eab9@31.43.179.51:80?security=none&type=ws&host=uuhUHYygEsdFGH.UYHJHGvgFcjGUJhbUIlbVFDxDxM.xyz&path=Telegram%3A%40V2ray_Alpha%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://89b3cbba-e6ac-485a-9481-976a0415eab9@45.131.6.139:80?security=none&type=ws&host=uuhUHYygEsdFGH.UYHJHGvgFcjGUJhbUIlbVFDxDxM.xyz&path=Telegram%3A%40ShadowProxy66%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf3 in position 0: invalid continuation byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://89b64978-6244-4bf3-bf64-67ade4ce5c8f@172.67.153.74:2096?security=tls&sni=node.vauth.workers.dev&type=ws&host=node.vauth.workers.dev&path=%2F%3Fed%3D2048#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://93c51659-2a32-410c-86f2-25b1b5a7cead@172.67.168.34:2082?mode=auto&path=%2Ftelegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY-telegram%2C%40BINEXTIFY%3Fed%3D2560&security=none&encryption=none&host=am290.amin5646.ir&type=xhttp#%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%87%D8%A7%DB%8C%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D8%AF%D8%B1%20%DA%A9%D8%A7%D9%86%D8%A7%D9%84%20%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%DB%8C%20NormanV2raY%40%F0%9F%86%94%EF%B8%8F%F0%9F%94%94
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://941d092e-8313-452a-ba21-c9995dcba79d@104.18.182.185:80?security=none&sni=havvas.shohreh.dpdns.org&type=ws&host=havvas.shohreh.dpdns.org&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://946b3994-cbcc-402c-bd93-c7f9df4d1c3b@104.16.179.157:80?security=none&type=ws&host=nameless-silence-3ddd-ppal03.gecob30535.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://948f6596-66f9-4707-aa92-3107a214ce53@104.16.108.43:80?security=none&sni=oops.shalamshorba.dpdns.org&type=ws&host=oops.shalamshorba.dpdns.org&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://994c91dd-b282-4c25-a0c5-af76b480c080@66.235.200.1:443?encryption=none&security=tls&sni=mci-google-bing3164.sdb5j.workers.dev&fp=randomized&type=ws&host=mci-google-bing3164.sdb5j.workers.dev&path=%2F%3Fed%3D2048#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf7 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://9970aa48-37ce-4217-b525-579e61ab9cfa@104.16.49.221:80?security=none&type=ws&host=holy-bush-cbc8-ppal03.rawej75976.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf5 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://9dd24d01-2b7a-4bd8-8c76-129d6ca89b8c@104.22.22.237:443?security=tls&sni=kawaiifreevpn-7ds.pages.dev&type=ws&host=kawaiifreevpn-7ds.pages.dev&path=%2F%3Fed%3D2560&fp=random#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf5 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://9f0eae34-97c1-4c07-8a55-438379981334@104.16.86.2:80?security=none&type=ws&host=snowy-bush-4df8-ppal03.toxebex651.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
+2025-12-14 00:21:44,676 - DEBUG - Error parsing SS link (user_info decode): 'utf-8' codec can't decode byte 0xf5 in position 0: invalid start byte
+2025-12-14 00:21:44,676 - DEBUG - FAIL | ss://9ffa6da8-26dc-435c-884b-32662e7ffe7e@104.18.14.19:8880?security=none&type=ws&host=0314.hiyasta2.workers.dev&path=%2F%3Fed%3D2560#@VIProxys
