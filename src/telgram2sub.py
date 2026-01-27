@@ -677,6 +677,15 @@ V2RAY_PATTERN = re.compile(
 
 # List of popular telegram channels for V2Ray configs
 POPULAR_CHANNELS = [
+    "mitivpn"
+    "FREE2CONFIG",
+    "DeamNet_proxy",
+    "PinkOrca",
+    "Avkeys",
+    "VPNCloudy",
+    "sogoandfuckyourlove",
+    "",
+    "vpnbaz",
     "meli_proxyy",
     "An0nymousTeam",
     "Outlinev2rayNG", 
@@ -1334,7 +1343,7 @@ Examples:
     parser.add_argument(
         '--limit', '-l',
         type=int,
-        default=100,
+        default=500,
         metavar='N',
         help='Maximum number of messages to process per channel (default: 100, max: 10000)'
     )
