@@ -1341,7 +1341,7 @@ Examples:
   python telgram2sub.py --channels Spdnetpro,meli_proxyy --limit 100
   
   # Enable chunking for large outputs
-  python telgram2sub.py --popular --chunking --limit 200
+  python telgram2sub.py --popular --chunking --limit 500
   
   # Verbose mode with custom channels
   python telgram2sub.py --channels "t.me/Spdnetpro,@meli_proxyy" --verbose
