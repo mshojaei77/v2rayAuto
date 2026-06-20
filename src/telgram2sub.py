@@ -23,7 +23,6 @@ except ImportError:
     fcntl = None  # Windows doesn't have fcntl
 try:
     import msvcrt
-    import portalocker
     WINDOWS_LOCKING = True
 except ImportError:
     WINDOWS_LOCKING = False
@@ -677,14 +676,23 @@ V2RAY_PATTERN = re.compile(
 
 # List of popular telegram channels for V2Ray configs
 POPULAR_CHANNELS = [
-    "mitivpn"
+    "SOSkeyNET",
+    "Spotify_Porteghali",
+    "appsooner",
+    "Golestan_VPN",
+    "mitivpn",
     "FREE2CONFIG",
     "DeamNet_proxy",
     "PinkOrca",
     "Avkeys",
-    "VPNCloudy",
+    "AR14N24B",
+    "SOSkeyNET",
+    "sudoflux",
+    "xixv2ray",
+    "malvpn1",
+    "v2ray_tz",
+    "v2rayenglish",
     "sogoandfuckyourlove",
-    "",
     "vpnbaz",
     "meli_proxyy",
     "An0nymousTeam",
@@ -758,7 +766,11 @@ POPULAR_CHANNELS = [
     "golestan_vpn",
     "v2raygame",
     "oxnet_ir",
-    "maxvpnxx"
+    "maxvpnxx",
+    "soskeynet",
+    "blackray",
+    "clynoid",
+    "YamYamProxy"
 ]
 
 def validate_channel_name(channel: str) -> str:
@@ -1316,7 +1328,7 @@ Examples:
   python telgram2sub.py --popular
   
   # Scrape specific channels
-  python telgram2sub.py --channels Spdnetpro,meli_proxyy --limit 500
+  python telgram2sub.py --channels Spdnetpro,meli_proxyy --limit 100
   
   # Enable chunking for large outputs
   python telgram2sub.py --popular --chunking --limit 1000
@@ -1327,7 +1339,7 @@ Examples:
     )
     
     # Channel selection (mutually exclusive)
-    channel_group = parser.add_mutually_exclusive_group(required=True)
+    channel_group = parser.add_mutually_exclusive_group(required=False)
     channel_group.add_argument(
         '--popular', '-p',
         action='store_true',
@@ -1343,7 +1355,7 @@ Examples:
     parser.add_argument(
         '--limit', '-l',
         type=int,
-        default=500,
+        default=100,
         metavar='N',
         help='Maximum number of messages to process per channel (default: 100, max: 10000)'
     )
@@ -1374,6 +1386,7 @@ Examples:
 def parse_and_validate_arguments() -> Tuple[List[str], int, bool]:
     """
     Parse command-line arguments and validate them.
+    If no arguments are provided, defaults to --popular with limit=100 and chunking=False.
     
     Returns:
         Tuple of (channels, history_limit, enable_chunking)
@@ -1388,15 +1401,18 @@ def parse_and_validate_arguments() -> Tuple[List[str], int, bool]:
         logging.getLogger().setLevel(logging.DEBUG)
         logger.debug("Verbose mode enabled")
     
-    # Validate and process channels
-    if args.popular:
+    # Check if no arguments were provided (only script name)
+    default_mode = False
+    if len(sys.argv) == 1:
+        default_mode = True
+        logger.info("No arguments provided, running in default mode (popular channels, limit=100, chunking disabled)")
+    
+    # Determine channels based on arguments or default mode
+    if default_mode or args.popular:
         channels = POPULAR_CHANNELS.copy()
         logger.info(f"Selected {len(channels)} popular channels")
-    else:
+    elif args.channels:
         # Parse custom channels
-        if not args.channels:
-            raise ValidationError("Custom channels cannot be empty")
-        
         raw_channels = [ch.strip() for ch in args.channels.split(',')]
         channels = []
         
@@ -1420,10 +1436,24 @@ def parse_and_validate_arguments() -> Tuple[List[str], int, bool]:
             raise ValidationError("No valid channels provided")
         
         logger.info(f"Selected {len(channels)} custom channels: {', '.join(channels)}")
+    else:
+        # This case should not happen because if neither popular nor channels, default_mode would be True.
+        # But for safety, fallback to popular.
+        channels = POPULAR_CHANNELS.copy()
+        logger.info("No channel selection made, falling back to popular channels")
     
-    # Validate history limit
-    if args.limit <= 0 or args.limit > 10000:
-        raise ValidationError("History limit must be between 1 and 10000")
+    # Set history limit and chunking based on mode
+    if default_mode:
+        history_limit = 100
+        enable_chunking = False
+        logger.info("Default mode: limit=100, chunking disabled")
+    else:
+        # Validate provided limit
+        if args.limit <= 0 or args.limit > 10000:
+            raise ValidationError("History limit must be between 1 and 10000")
+        history_limit = args.limit
+        enable_chunking = args.chunking
+        logger.info(f"Configuration: limit={history_limit}, chunking={enable_chunking}")
     
     # Update global output directory if specified
     global OUTPUT_DIR
@@ -1431,9 +1461,7 @@ def parse_and_validate_arguments() -> Tuple[List[str], int, bool]:
         OUTPUT_DIR = args.output_dir
         logger.info(f"Output directory set to: {OUTPUT_DIR}")
     
-    logger.info(f"Configuration: limit={args.limit}, chunking={args.chunking}")
-    
-    return channels, args.limit, args.chunking
+    return channels, history_limit, enable_chunking
 
 async def main():
     """Main function orchestrating the entire scraping process."""
