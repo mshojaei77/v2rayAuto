@@ -1,6 +1,0 @@
-popular_channels
-popular_channels_1
-popular_channels_2
-popular_channels_3
-popular_channels_4
-popular_channels_5
