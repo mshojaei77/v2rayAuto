@@ -108,6 +108,16 @@ def get_required_env_var(var_name: str) -> str:
     
     return value.strip()
 
+def collect_credentials_securely(prompt: str = "", is_password: bool = False) -> str:
+    """Prompt for a single credential securely.
+    If is_password is True, use getpass to hide input; otherwise use input.
+    """
+    import getpass
+    if is_password:
+        return getpass.getpass(prompt)
+    else:
+        return input(prompt)
+
 def secure_input_credentials() -> Tuple[str, str]:
     """
     Securely prompt for credentials using getpass to prevent exposure.
@@ -1331,7 +1341,7 @@ Examples:
   python telgram2sub.py --channels Spdnetpro,meli_proxyy --limit 100
   
   # Enable chunking for large outputs
-  python telgram2sub.py --popular --chunking --limit 1000
+  python telgram2sub.py --popular --chunking --limit 200
   
   # Verbose mode with custom channels
   python telgram2sub.py --channels "t.me/Spdnetpro,@meli_proxyy" --verbose
